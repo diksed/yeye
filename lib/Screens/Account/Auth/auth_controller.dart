@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../Common/utils.dart';
 import '../../../Constants/app_texts.dart';
+import '../Widgets/AlertDialogs/user_agreement_dialog.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -52,7 +53,38 @@ class AuthController extends GetxController {
     TextEditingController universityController,
     TextEditingController campusController,
   ) async {
-    // Implement the registration logic here
+    final isValid = formKey.currentState!.validate();
+    if (!isValid) return;
+
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+    final university = universityController.text.trim();
+    final campus = campusController.text.trim();
+
+    if (email.isEmpty ||
+        password.isEmpty ||
+        university.isEmpty ||
+        campus.isEmpty) {
+      Utils.showSnackBar(WarningMessages.dontEmptyFields);
+    } else if (password.length < 6) {
+      Utils.showSnackBar(WarningMessages.least6Characters);
+    } else if (!email.endsWith('@samsun.edu.tr')) {
+      Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+    } else {
+      try {
+        final result =
+            await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+        if (result.isNotEmpty) {
+          Utils.showSnackBar(WarningMessages.emailAlreadyExists);
+        } else {
+          RxBool acceptedTerms = false.obs;
+
+          await showUserAgreementDialog(acceptedTerms, email, password);
+        }
+      } catch (e) {
+        Utils.showSnackBar(WarningMessages.unknownError);
+      }
+    }
   }
 
   Future<void> signIn() async {
@@ -61,7 +93,7 @@ class AuthController extends GetxController {
 
     if (emailController.text.trim().isEmpty ||
         passwordController.text.trim().isEmpty) {
-      Utils.showSnackBar(WarningMessages.dontEmptyFields);
+      Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
       return;
     }
 

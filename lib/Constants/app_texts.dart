@@ -62,7 +62,7 @@ class AccountActions {
   static const String samuBallica = "Ballıca Kampüsü";
   static const String samuKavak = "Kavak Meslek Yüksekokulu";
   static const String makeSureAboutRegister =
-      'Girdiğiniz üniversite ve kampüs bilgilerine göre hesap oluşturulacaktır. \n\nBu bilgilere göre etkileşimde olacağınız içerikler değişecektir.';
+      'Kayıt işlemini tamamlamadan önce lütfen aşağıdaki Kullanıcı Sözleşmesini dikkatlice okuyunuz.';
   static const String send = "Gönder";
   static const String deleteAccount = "Hesabı Sil";
   static const String deleteAccountWarning =
@@ -84,7 +84,9 @@ class WarningMessages {
   static const String wrongPasswordEmail = "Şifre veya email hatalı!";
   static const String unknownError = "Beklenmeyen bir hata ile karşılaştık!";
   static const String disabledUser = "Bu kullanıcı devre dışı bırakıldı.";
-  static const String dontEmptyFields = "E-mail ve şifre boş bırakılamaz.";
+  static const String dontEmptyMailPasswordFields =
+      "E-mail ve şifre boş bırakılamaz.";
+  static const String dontEmptyFields = "Boş alan bırakmayınız!";
   static const String tooManyRequests =
       "Çok fazla istek gönderildi. Lütfen daha sonra tekrar deneyin.";
   static const String isValidEmail =
@@ -106,6 +108,10 @@ class WarningMessages {
       "Kullanıcı Rapor Edildi. Bildiriminiz için teşekkür ederiz.";
   static const String reportedAndBlocked =
       "Kullanıcı engellendi ve rapor edildi. Engellenen kullanıcıların yorumlarını artık görmeyeceksiniz. Bildiriminiz için teşekkür ederiz.";
+  static const String cantLaunchUrl = "Bağlantı açılamadı.";
+  static const String registrationFailed = "Kayıt olma işlemi başarısız oldu.";
+  static const String emailAlreadyExists =
+      "Bu e-mail adresi zaten kullanılıyor.";
 }
 
 class TitleMessages {
@@ -125,7 +131,7 @@ class LoadMoneyMessages {
   static const String areYouSure =
       'Uygulamadan çıkış yapmak istediğinize emin misiniz?';
   static const String agreementUrl =
-      'https://yeye.z6.web.core.windows.net/agreement.html';
+      'https://flutter.dev';
 }
 
 class BottomNavBarMessages {
