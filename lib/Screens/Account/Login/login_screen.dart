@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Constants/app_texts.dart';
 import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
 import '../Auth/auth_controller.dart';
@@ -18,50 +19,53 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: accountGradientBoxDecoration(),
-          height: displayHeight(context),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              LogoSizedBox(
-                appHeight: displayHeight(context),
-                appWidth: displayWidth(context),
-              ),
-              Container(
-                width: displayWidth(context),
-                height: displayHeight(context) / 1.7,
-                decoration: accountBoxDecoration(),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(height: displayHeight(context) / 28.45),
-                    MailTextField(
-                        emailController: authController.emailController),
-                    PasswordTextField(
-                      passwordVisible: authController.passwordVisible,
-                      passwordController: authController.passwordController,
-                    ),
-                    const ForgotPasswordButton(),
-                    LoginRegisterButton(
-                      width: displayWidth(context) / 1.5,
-                      height: displayHeight(context) / 13,
-                      onPressed: () => authController.signIn(),
-                      child: const Text('Giriş Yap',
-                          style: TextStyle(fontSize: 23)),
-                    ),
-                    LoginRegisterTextButton(
-                      text: 'Hesabın yok mu? ',
-                      textButton: 'Kayıt Ol',
-                      onClicked: authController.isLogin.toggle,
-                    ),
-                  ],
+    return Form(
+      key: authController.formKey,
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: SingleChildScrollView(
+          child: Container(
+            decoration: accountGradientBoxDecoration(),
+            height: displayHeight(context),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                LogoSizedBox(
+                  appHeight: displayHeight(context),
+                  appWidth: displayWidth(context),
                 ),
-              ),
-            ],
+                Container(
+                  width: displayWidth(context),
+                  height: displayHeight(context) / 1.7,
+                  decoration: accountBoxDecoration(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(height: displayHeight(context) / 28.45),
+                      MailTextField(
+                          emailController: authController.emailController),
+                      PasswordTextField(
+                        passwordVisible: authController.passwordVisible,
+                        passwordController: authController.passwordController,
+                      ),
+                      const ForgotPasswordButton(),
+                      LoginRegisterButton(
+                        width: displayWidth(context) / 1.5,
+                        height: displayHeight(context) / 13,
+                        onPressed: () => authController.signIn(),
+                        child: const Text(AccountActions.login,
+                            style: TextStyle(fontSize: 23)),
+                      ),
+                      LoginRegisterTextButton(
+                        text: AccountActions.dontHaveAccount,
+                        textButton: AccountActions.register,
+                        onClicked: authController.isLogin.toggle,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

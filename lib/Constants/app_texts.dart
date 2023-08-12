@@ -72,6 +72,7 @@ class AccountActions {
 }
 
 class WarningMessages {
+  static const String warning = "Uyarı!";
   static const String userNotFound = "Kullanıcı bulunamadı.";
   static const String betweenFoodHours =
       'Yemek saatleri dışında değerlendirme yapamazsınız.';
@@ -81,6 +82,11 @@ class WarningMessages {
   static const String passwordResetMail = "Şifre sıfırlama maili gönderildi.";
   static const String emptyField = "Lütfen boş alan bırakmayınız!";
   static const String wrongPasswordEmail = "Şifre veya email hatalı!";
+  static const String unknownError = "Beklenmeyen bir hata ile karşılaştık!";
+  static const String disabledUser = "Bu kullanıcı devre dışı bırakıldı.";
+  static const String dontEmptyFields = "E-mail ve şifre boş bırakılamaz.";
+  static const String tooManyRequests =
+      "Çok fazla istek gönderildi. Lütfen daha sonra tekrar deneyin.";
   static const String isValidEmail =
       "Lütfen geçerli bir okul mail adresi giriniz!";
   static const String registerWithSchoolMail =

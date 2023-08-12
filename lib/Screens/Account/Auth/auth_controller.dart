@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../../Common/utils.dart';
 import '../../../Constants/app_texts.dart';
 
@@ -60,10 +59,11 @@ class AuthController extends GetxController {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
-    Get.dialog(
-      Center(child: Image.asset(AppTexts.loadingImage)),
-      barrierDismissible: false,
-    );
+    if (emailController.text.trim().isEmpty ||
+        passwordController.text.trim().isEmpty) {
+      Utils.showSnackBar(WarningMessages.dontEmptyFields);
+      return;
+    }
 
     try {
       await auth.signInWithEmailAndPassword(
@@ -72,15 +72,21 @@ class AuthController extends GetxController {
       );
 
       Get.offAllNamed('/menu');
-    } on FirebaseAuthException {
-      if (emailController.text.trim().isEmpty ||
-          passwordController.text.trim().isEmpty) {
-        Utils.showSnackBar(WarningMessages.emptyField);
-      } else {
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        Utils.showSnackBar(WarningMessages.userNotFound);
+        return;
+      } else if (e.code == 'wrong-password' || e.code == 'wrong-password') {
         Utils.showSnackBar(WarningMessages.wrongPasswordEmail);
+      } else if (e.code == 'user-disabled') {
+        Utils.showSnackBar(WarningMessages.disabledUser);
+      } else if (e.code == 'too-many-requests') {
+        Utils.showSnackBar(WarningMessages.tooManyRequests);
+      } else {
+        Utils.showSnackBar(WarningMessages.unknownError);
       }
-    } finally {
-      Get.back();
+    } catch (e) {
+      Utils.showSnackBar(WarningMessages.unknownError);
     }
   }
 
