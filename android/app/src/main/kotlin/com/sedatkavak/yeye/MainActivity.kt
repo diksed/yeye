@@ -1,4 +1,4 @@
-package com.example.yeye
+package com.sedatkavak.yeye
 
 import io.flutter.embedding.android.FlutterActivity
 
