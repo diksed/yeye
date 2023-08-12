@@ -1,29 +1,60 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../Common/utils.dart';
 import '../../../Constants/app_texts.dart';
 
-class LoginController extends GetxController {
+class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
+  RxBool isLogin = true.obs;
   RxBool passwordVisible = false.obs;
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  @override
-  void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.onClose();
-  }
+  final universityController = TextEditingController();
+  final campusController = TextEditingController();
+  late bool campusButton;
+  late String? university;
+  late String? campus;
+  var universities = <String>['Samsun Üniversitesi'];
+  var faculties = {
+    'Samsun Üniversitesi': [
+      'Canik Kampüsü',
+      'Ballıca Kampüsü',
+      'Kavak Meslek Yüksekokulu'
+    ],
+    '': ['']
+  };
 
   @override
   void onInit() {
     super.onInit();
     passwordVisible.value = false;
+    campusButton = true;
+    university = '';
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    universityController.dispose();
+    campusController.dispose();
+    super.dispose();
+  }
+
+  Future<void> signUpShowDialog(
+    GlobalKey<FormState> formKey,
+    BuildContext context,
+    TextEditingController emailController,
+    TextEditingController passwordController,
+    TextEditingController universityController,
+    TextEditingController campusController,
+  ) async {
+    // Implement the registration logic here
   }
 
   Future<void> signIn() async {
@@ -54,25 +85,6 @@ class LoginController extends GetxController {
     }
   }
 
-  void navigateToRegister() {
-    Get.offNamed('/register');
-  }
-
-  Future<void> signUp() async {
-    Get.dialog(
-      Center(child: Image.asset(AppTexts.loadingImage)),
-      barrierDismissible: false,
-    );
-
-    try {
-      await createUser(emailController, passwordController);
-
-      Get.offAllNamed('/menu');
-    } finally {
-      Get.back();
-    }
-  }
-
   Future<void> resetPassword() async {
     try {
       await auth.sendPasswordResetEmail(email: emailController.text.trim());
@@ -87,9 +99,7 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<UserCredential> createUser(TextEditingController emailController,
-      TextEditingController passwordController) {
-    return auth.createUserWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text);
+  void toggle() {
+    isLogin.value = !isLogin.value;
   }
 }

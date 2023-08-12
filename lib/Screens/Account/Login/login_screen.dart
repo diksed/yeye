@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
+import '../Auth/auth_controller.dart';
 import '../Widgets/Buttons/forgot_password_button.dart';
 import '../Widgets/Buttons/login_register_button.dart';
 import '../Widgets/Buttons/login_register_text_button.dart';
 import '../Widgets/Decorations/box_decorations.dart';
 import '../Widgets/TextFields/mail_text_field.dart';
 import '../Widgets/TextFields/password_text_field.dart';
-import 'login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
-  final LoginController controller = Get.put(LoginController());
+  final AuthController authController = Get.find();
+  final VoidCallback? onClickedRegister;
 
-  LoginScreen({super.key});
+  LoginScreen({super.key, this.onClickedRegister});
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +39,19 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(height: displayHeight(context) / 28.45),
-                    MailTextField(emailController: controller.emailController),
+                    MailTextField(
+                        emailController: authController.emailController),
                     const SizedBox(height: 16),
                     PasswordTextField(
-                      passwordVisible: controller.passwordVisible,
-                      passwordController: controller.passwordController,
+                      passwordVisible: authController.passwordVisible,
+                      passwordController: authController.passwordController,
                     ),
                     const SizedBox(height: 16),
                     const ForgotPasswordButton(),
                     LoginRegisterButton(
                       width: displayWidth(context) / 1.5,
                       height: displayHeight(context) / 13,
-                      onPressed: () => controller.signIn(),
+                      onPressed: () => authController.signIn(),
                       child: const Text('Giriş Yap',
                           style: TextStyle(fontSize: 23)),
                     ),
@@ -56,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                     LoginRegisterTextButton(
                       text: 'Hesabın yok mu? ',
                       textButton: 'Kayıt Ol',
-                      onClicked: controller.navigateToRegister,
+                      onClicked: authController.isLogin.toggle,
                     ),
                   ],
                 ),
@@ -67,16 +70,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Size displaySize(BuildContext context) {
-  return MediaQuery.of(context).size;
-}
-
-double displayHeight(BuildContext context) {
-  return displaySize(context).height;
-}
-
-double displayWidth(BuildContext context) {
-  return displaySize(context).width;
 }

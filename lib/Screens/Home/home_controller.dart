@@ -1,21 +1,24 @@
-import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
 
-  Rx<User?> currentUser = Rx<User?>(null);
+  Rx<User?> user = Rx<User?>(null);
 
   @override
   void onInit() {
     super.onInit();
-    _auth.authStateChanges().listen((user) {
-      currentUser.value = user;
-      if (user == null) {
-        Get.offAllNamed('/login');
-      } else {
-        Get.offAllNamed('/menu');
-      }
-    });
+    user.bindStream(auth.authStateChanges());
+  }
+
+  RxBool get isLoading => false.obs;
+
+  RxBool get hasError => false.obs;
+
+  RxBool get hasData => true.obs;
+
+  void signOut() async {
+    await auth.signOut();
   }
 }

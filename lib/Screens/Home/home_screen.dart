@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Screens/Account/Auth/auth_screen.dart';
 
+import '../../Constants/app_texts.dart';
 import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,8 +12,24 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+    return Scaffold(
+      body: Obx(
+        () {
+          if (controller.isLoading.value) {
+            return Center(
+              child: Image.asset(AppTexts.loadingImage),
+            );
+          } else if (controller.hasError.value) {
+            return const Center(
+              child: Text(WarningMessages.somethingWrong),
+            );
+          } else if (controller.hasData.value) {
+            return AuthScreen();
+          } else {
+            return AuthScreen();
+          }
+        },
+      ),
     );
   }
 }

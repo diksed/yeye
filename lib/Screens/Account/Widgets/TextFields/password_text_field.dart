@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Login/login_screen.dart';
+import '../../../../Common/display_size.dart';
 
 class PasswordTextField extends StatelessWidget {
   final RxBool passwordVisible;

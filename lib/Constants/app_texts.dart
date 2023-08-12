@@ -1,26 +1,26 @@
-class Texts {
+class AppTexts {
   static const String title = "SAMU Yemek";
-  static const String anaYemek = "anaYemek";
-  static const String araYemek = "araYemek";
-  static const String corba = "corba";
-  static const String kalori = "kalori";
-  static const String yanUrun = "yanUrun";
-  static const String cancelText = 'İptal';
-  static const String confirmText = 'Göster';
+  static const String mainDish = "anaYemek";
+  static const String sideDish = "araYemek";
+  static const String soup = "corba";
+  static const String calories = "kalori";
+  static const String sideItem = "yanUrun";
+  static const String cancel = 'İptal';
+  static const String confirm = 'Göster';
   static const String shareComment = 'Yorumu Paylaş';
-  static const String format = 'dd-MM-yyyy';
+  static const String dateFormat = 'dd-MM-yyyy';
   static const String colFormat = 'MM-yyyy';
-  static const String logoText = "assets/images/logo.png";
-  static const String splashText = "assets/images/splash.gif";
-  static const String loadingText = "assets/images/loadingAnimation.gif";
+  static const String logoImage = "assets/images/logo.png";
+  static const String splashImage = "assets/images/splash.gif";
+  static const String loadingImage = "assets/images/loadingAnimation.gif";
   static const String instagramLogo = "assets/images/instagram_logo.png";
   static const String mailLogo = "assets/images/mail_logo.png";
 }
 
-class ContactText {
+class ContactInfoText {
   static const String sedatKavak = 'Sedat KAVAK\n191118017@samsun.edu.tr';
   static const String ahmetCeylan = 'Ahmet CEYLAN\n201118022@samsun.edu.tr';
-  static const String contactWithUs = 'Bizimle iletişime geçmek için:';
+  static const String contactUs = 'Bizimle iletişime geçmek için:';
   static const String contactYeYeInstagram = ' yeye.app';
   static const String contactYeYeMail = ' yeye.app@yahoo.com';
 
@@ -29,10 +29,9 @@ class ContactText {
 
   static const String purpose =
       'Şu an sadece SAMÜ\nöğrencileri kullanabilmektedir.';
-  static const String purpose2 = '';
 }
 
-class UserModelText {
+class UserFields {
   static const String uid = 'uid';
   static const String email = 'email';
   static const String university = 'university';
@@ -40,7 +39,7 @@ class UserModelText {
   static const String createdAt = 'created_at';
 }
 
-class AccountText {
+class AccountActions {
   static const String logout = "Çıkış Yap";
   static const String login = "Giriş Yap";
   static const String register = "Kayıt Ol";
@@ -52,12 +51,12 @@ class AccountText {
   static const String least6Characters = "En az 6 karakterli bir şifre giriniz";
   static const String schoolMail = "@samsun.edu.tr";
   static const String goBack = "Geri Git";
-  static const String recieveLink = "Doğrulama linki\n";
+  static const String receiveLink = "Doğrulama linki\n";
   static const String sentToMail = "\nmail adresine gönderildi.";
   static const String sentToMailAgain = "Doğrulama Linkini Tekrar Gönder";
   static const String cancel = "İptal";
   static const String selectUniversity = "Üniversite Seçiniz";
-  static const String selectcampus = "Yemekhanenizi Seçiniz";
+  static const String selectCampus = "Yemekhanenizi Seçiniz";
   static const String samsunUniversity = "Samsun Üniversitesi";
   static const String samuCanik = "Canik Kampüsü";
   static const String samuBallica = "Ballıca Kampüsü";
@@ -72,7 +71,7 @@ class AccountText {
   static const String userAgreement = "Kullanıcı sözleşmesini";
 }
 
-class WarningText {
+class WarningMessages {
   static const String userNotFound = "Kullanıcı bulunamadı.";
   static const String betweenFoodHours =
       'Yemek saatleri dışında değerlendirme yapamazsınız.';
@@ -103,51 +102,51 @@ class WarningText {
       "Kullanıcı engellendi ve rapor edildi. Engellenen kullanıcıların yorumlarını artık görmeyeceksiniz. Bildiriminiz için teşekkür ederiz.";
 }
 
-class TitleTexts {
-  static const String foodMenuTitle = "Günün Yemekleri";
-  static const String commentsTitle = "Yorumlar";
+class TitleMessages {
+  static const String foodMenu = "Günün Yemekleri";
+  static const String comments = "Yorumlar";
   static const String announcements = "Günlük Duyurular";
   static const String accountInfo = "Hesap Bilgileri";
   static const String blockedAccounts = "Engellenen Hesaplar";
 }
 
-class LoadMoneyTexts {
-  static const String geriDon = 'Geri Dön';
-  static const String kartaParaYukle = 'Karta Para Yükle';
-  static const String paraYukle = 'Para Yükle';
+class LoadMoneyMessages {
+  static const String goBack = 'Geri Dön';
+  static const String loadMoneyToCard = 'Karta Para Yükle';
+  static const String loadMoney = 'Para Yükle';
   static const String websiteUrl =
       'https://akillikart.samsun.edu.tr/User/Login';
-  static const String eminMisin =
+  static const String areYouSure =
       'Uygulamadan çıkış yapmak istediğinize emin misiniz?';
   static const String agreementUrl =
       'https://yeye.z6.web.core.windows.net/agreement.html';
 }
 
-class BottomNavBarTexts {
-  static const String anaSayfa = 'Ana Sayfa';
-  static const String yorumlar = 'Yorumlar';
-  static const String paraYukle = 'Para Yükle';
-  static const String duyurular = 'Duyurular';
+class BottomNavBarMessages {
+  static const String home = 'Ana Sayfa';
+  static const String comments = 'Yorumlar';
+  static const String loadMoney = 'Para Yükle';
+  static const String announcements = 'Duyurular';
   static const String logout = 'Çıkış Yap';
-  static const String profil = 'Profil';
+  static const String profile = 'Profil';
 }
 
-class FoodText {
-  static const String anaYemek = "Ana Yemek";
-  static const String araYemek = "Ana Yemek";
-  static const String corba = "Çorba";
-  static const String kalori = "Kalori";
-  static const String yanUrun = "Aperitif";
+class FoodMessages {
+  static const String mainDish = "Ana Yemek";
+  static const String sideDish = "Ara Yemek";
+  static const String soup = "Çorba";
+  static const String calories = "Kalori";
+  static const String sideItem = "Aperitif";
 }
 
-class UserText {
+class UserMessages {
   static const String email = "email";
   static const String password = "password";
   static const String uid = "uid";
   static const String comment = "comment";
 }
 
-class AnnouncementText {
+class AnnouncementMessages {
   static const String noCommentToday = "Henüz yorum yok!";
   static const String makeCommentAboutFood = 'Bugünkü yemek hakkında';
   static const String makeCommentAboutFood2 = 'yorum yapmak ister misin?';
