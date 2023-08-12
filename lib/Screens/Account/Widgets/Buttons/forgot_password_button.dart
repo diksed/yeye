@@ -6,15 +6,21 @@ class ForgotPasswordButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed('/forgot_password');
-      },
-      child: Text(
-        'Şifremi Unuttum',
-        style: TextStyle(
-          color: Colors.black.withOpacity(0.7),
-          fontWeight: FontWeight.w600,
+    return SizedBox(
+      width: Get.width / 1.5,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: InkWell(
+          onTap: () {
+            Get.toNamed('/forgot_password');
+          },
+          child: Text(
+            'Şifremi Unuttum',
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.7),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
       ),
     );

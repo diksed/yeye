@@ -41,12 +41,10 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: displayHeight(context) / 28.45),
                     MailTextField(
                         emailController: authController.emailController),
-                    const SizedBox(height: 16),
                     PasswordTextField(
                       passwordVisible: authController.passwordVisible,
                       passwordController: authController.passwordController,
                     ),
-                    const SizedBox(height: 16),
                     const ForgotPasswordButton(),
                     LoginRegisterButton(
                       width: displayWidth(context) / 1.5,
@@ -55,7 +53,6 @@ class LoginScreen extends StatelessWidget {
                       child: const Text('Giriş Yap',
                           style: TextStyle(fontSize: 23)),
                     ),
-                    const SizedBox(height: 16),
                     LoginRegisterTextButton(
                       text: 'Hesabın yok mu? ',
                       textButton: 'Kayıt Ol',

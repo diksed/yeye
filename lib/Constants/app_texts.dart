@@ -55,7 +55,7 @@ class AccountActions {
   static const String sentToMail = "\nmail adresine gönderildi.";
   static const String sentToMailAgain = "Doğrulama Linkini Tekrar Gönder";
   static const String cancel = "İptal";
-  static const String selectUniversity = "Üniversite Seçiniz";
+  static const String selectUniversity = "Üniversitenizi Seçiniz";
   static const String selectCampus = "Yemekhanenizi Seçiniz";
   static const String samsunUniversity = "Samsun Üniversitesi";
   static const String samuCanik = "Canik Kampüsü";

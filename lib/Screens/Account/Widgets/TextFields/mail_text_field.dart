@@ -18,7 +18,7 @@ class MailTextField extends StatelessWidget {
         controller: emailController,
         textInputAction: TextInputAction.next,
         decoration: const InputDecoration(
-          hintText: 'Okul maili',
+          hintText: 'Okul Maili',
           hintStyle: TextStyle(color: Colors.grey),
           suffixIcon: Icon(Icons.email_outlined),
         ),

@@ -16,10 +16,10 @@ class AuthController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final universityController = TextEditingController();
   final campusController = TextEditingController();
-  late bool campusButton;
-  late String? university;
-  late String? campus;
-  var universities = <String>['Samsun Üniversitesi'];
+  late RxBool campusButton = true.obs;
+  late RxString? university;
+  late RxString? campus;
+  var universities = <RxString>['Samsun Üniversitesi'.obs];
   var faculties = {
     'Samsun Üniversitesi': [
       'Canik Kampüsü',
@@ -33,8 +33,7 @@ class AuthController extends GetxController {
   void onInit() {
     super.onInit();
     passwordVisible.value = false;
-    campusButton = true;
-    university = '';
+    university = ''.obs;
   }
 
   @override
