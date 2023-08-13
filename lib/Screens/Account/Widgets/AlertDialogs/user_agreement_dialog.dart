@@ -1,9 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../Common/utils.dart';
 import '../../../../Constants/app_texts.dart';
 
 void agreementLauncher() async {
@@ -16,8 +14,8 @@ void agreementLauncher() async {
   }
 }
 
-Future<void> showUserAgreementDialog(
-    RxBool acceptedTerms, String email, String password) async {
+Future<void> showUserAgreementDialog(RxBool acceptedTerms, String email,
+    String password, VoidCallback onRegisterPressed) async {
   await Get.dialog(
     AlertDialog(
       title: const Text(AccountActions.register),
@@ -63,24 +61,7 @@ Future<void> showUserAgreementDialog(
         ),
         Obx(
           () => TextButton(
-            onPressed: acceptedTerms.value
-                ? () async {
-                    try {
-                      await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                      );
-                      await FirebaseAuth.instance.currentUser!
-                          .sendEmailVerification();
-
-
-                      Get.toNamed('/verify-email');
-                    } catch (e) {
-                      Utils.showSnackBar(WarningMessages.registrationFailed);
-                    }
-                  }
-                : null,
+            onPressed: acceptedTerms.value ? onRegisterPressed : null,
             child: const Text(AccountActions.register),
           ),
         ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yeye/Screens/Account/Auth/auth_screen.dart';
+import 'package:yeye/Constants/app_colors.dart';
+import 'package:yeye/Constants/app_texts.dart';
 
-import '../../Constants/app_texts.dart';
-import '../Menu/menu_screen.dart';
 import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,23 +13,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(
-        () {
-          if (controller.isLoading.value) {
-            return Center(
-              child: Image.asset(AppTexts.loadingImage),
-            );
-          } else if (controller.hasError.value) {
-            return const Center(
-              child: Text(WarningMessages.somethingWrong),
-            );
-          } else if (controller.hasData.value && controller.isSignedIn.value) {
-            return const MenuScreen();
-          } else {
-            return AuthScreen();
-          }
-        },
-      ),
-    );
+        backgroundColor: AppColors.splashColor,
+        body: Center(
+          child: Image.asset(AppTexts.loadingImage),
+        ));
   }
 }

@@ -45,6 +45,7 @@ class AuthController extends GetxController {
     super.dispose();
   }
 
+
   Future<void> signUpShowDialog(
     GlobalKey<FormState> formKey,
     BuildContext context,
@@ -60,6 +61,18 @@ class AuthController extends GetxController {
     final password = passwordController.text.trim();
     final university = universityController.text.trim();
     final campus = campusController.text.trim();
+    void onRegisterPressed() async {
+  try {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+    Get.toNamed('/verify-email');
+  } catch (e) {
+    Utils.showSnackBar(WarningMessages.registrationFailed);
+  }
+}
 
     if (email.isEmpty ||
         password.isEmpty ||
@@ -79,7 +92,7 @@ class AuthController extends GetxController {
         } else {
           RxBool acceptedTerms = false.obs;
 
-          await showUserAgreementDialog(acceptedTerms, email, password);
+          await showUserAgreementDialog(acceptedTerms, email, password, onRegisterPressed);
         }
       } catch (e) {
         Utils.showSnackBar(WarningMessages.unknownError);

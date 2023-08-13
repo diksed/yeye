@@ -10,6 +10,25 @@ class ForgotPasswordController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
 
+  final RxBool isButtonActive = false.obs;
+
+  @override
+  void onInit() {
+    isButtonActive(false);
+
+    final RxString emailValue = ''.obs;
+
+    ever(emailValue, (_) {
+      isButtonActive(emailValue.value.trim().isNotEmpty);
+    });
+
+    emailController.addListener(() {
+      emailValue.value = emailController.text;
+    });
+
+    super.onInit();
+  }
+
   Future<void> resetPassword() async {
     final email = emailController.text.trim();
     if (email.isEmpty) {

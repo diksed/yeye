@@ -56,6 +56,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         LoginRegisterButton(
                           width: displayWidth(context) / 1.5,
                           height: displayHeight(context) / 13,
+                          isActive: controller.isButtonActive.value,
                           onPressed: controller.resetPassword,
                           child: const Text(
                             AccountActions.resetPassword,

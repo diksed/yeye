@@ -13,9 +13,13 @@ class HomeController extends GetxController {
 
     ever(user, (User? newUser) {
       if (newUser == null) {
-        isSignedIn.value = false;
+        Get.offAllNamed('/auth');
       } else {
-        isSignedIn.value = true;
+        if (!newUser.emailVerified) {
+          Get.offAllNamed('/verify-email');
+        } else {
+          Get.offAllNamed('/menu');
+        }
       }
     });
   }
