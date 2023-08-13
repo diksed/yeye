@@ -5,6 +5,7 @@ import 'package:yeye/Screens/Home/home_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 
 import '../Screens/Account/Auth/auth_screen.dart';
+import '../Screens/Account/ForgotPassword/forgot_password_screen.dart';
 import '../Screens/Splash/splash_screen.dart';
 
 appRoutes() => [
@@ -13,5 +14,6 @@ appRoutes() => [
       GetPage(name: '/login', page: () => LoginScreen()),
       GetPage(name: '/menu', page: () => const MenuScreen()),
       GetPage(name: '/auth', page: () => AuthScreen()),
-      GetPage(name: '/verify-email', page: () => const VerifyEmailScreen())
+      GetPage(name: '/verify-email', page: () => const VerifyEmailScreen()),
+      GetPage(name: '/forgot-password', page: () => const ForgotPasswordScreen())
     ];

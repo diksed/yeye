@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Constants/app_texts.dart';
 
 class ForgotPasswordButton extends StatelessWidget {
   const ForgotPasswordButton({super.key});
@@ -12,10 +13,10 @@ class ForgotPasswordButton extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: InkWell(
           onTap: () {
-            Get.toNamed('/forgot_password');
+            Get.toNamed('/forgot-password');
           },
           child: Text(
-            'Şifremi Unuttum',
+            AccountActions.forgotPassword,
             style: TextStyle(
               color: Colors.black.withOpacity(0.7),
               fontWeight: FontWeight.w600,

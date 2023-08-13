@@ -126,21 +126,6 @@ class AuthController extends GetxController {
   }
 }
 
-
-  Future<void> resetPassword() async {
-    try {
-      await auth.sendPasswordResetEmail(email: emailController.text.trim());
-      Utils.showSnackBar(WarningMessages.passwordResetMail);
-      Get.offAllNamed('/login');
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Utils.showSnackBar(WarningMessages.userNotFound);
-      } else if (e.code == 'invalid-email') {
-        Utils.showSnackBar(WarningMessages.isValidEmail);
-      }
-    }
-  }
-
   void toggle() {
     isLogin.value = !isLogin.value;
   }
