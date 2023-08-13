@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:yeye/Screens/Account/Auth/auth_screen.dart';
 
 import '../../Constants/app_texts.dart';
+import '../Menu/menu_screen.dart';
 import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,8 +24,8 @@ class HomeScreen extends StatelessWidget {
             return const Center(
               child: Text(WarningMessages.somethingWrong),
             );
-          } else if (controller.hasData.value) {
-            return AuthScreen();
+          } else if (controller.hasData.value && controller.isSignedIn.value) {
+            return const MenuScreen();
           } else {
             return AuthScreen();
           }

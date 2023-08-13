@@ -10,6 +10,14 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     user.bindStream(auth.authStateChanges());
+
+    ever(user, (User? newUser) {
+      if (newUser == null) {
+        isSignedIn.value = false;
+      } else {
+        isSignedIn.value = true;
+      }
+    });
   }
 
   RxBool get isLoading => false.obs;
@@ -17,6 +25,8 @@ class HomeController extends GetxController {
   RxBool get hasError => false.obs;
 
   RxBool get hasData => true.obs;
+
+  RxBool isSignedIn = false.obs;
 
   void signOut() async {
     await auth.signOut();
