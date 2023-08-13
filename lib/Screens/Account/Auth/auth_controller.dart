@@ -88,39 +88,44 @@ class AuthController extends GetxController {
   }
 
   Future<void> signIn() async {
-    final isValid = formKey.currentState!.validate();
-    if (!isValid) return;
+  final isValid = formKey.currentState!.validate();
+  if (!isValid) return;
 
-    if (emailController.text.trim().isEmpty ||
-        passwordController.text.trim().isEmpty) {
-      Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
-      return;
-    }
+  if (emailController.text.trim().isEmpty ||
+      passwordController.text.trim().isEmpty) {
+    Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
+    return;
+  }
 
-    try {
-      await auth.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+  try {
+    final userCredential = await auth.signInWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
 
+    if (userCredential.user!.emailVerified) {
       Get.offAllNamed('/menu');
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        Utils.showSnackBar(WarningMessages.userNotFound);
-        return;
-      } else if (e.code == 'wrong-password' || e.code == 'wrong-password') {
-        Utils.showSnackBar(WarningMessages.wrongPasswordEmail);
-      } else if (e.code == 'user-disabled') {
-        Utils.showSnackBar(WarningMessages.disabledUser);
-      } else if (e.code == 'too-many-requests') {
-        Utils.showSnackBar(WarningMessages.tooManyRequests);
-      } else {
-        Utils.showSnackBar(WarningMessages.unknownError);
-      }
-    } catch (e) {
+    } else {
+      Get.toNamed('/verify-email');
+    }
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      Utils.showSnackBar(WarningMessages.userNotFound);
+      return;
+    } else if (e.code == 'wrong-password' || e.code == 'wrong-password') {
+      Utils.showSnackBar(WarningMessages.wrongPasswordEmail);
+    } else if (e.code == 'user-disabled') {
+      Utils.showSnackBar(WarningMessages.disabledUser);
+    } else if (e.code == 'too-many-requests') {
+      Utils.showSnackBar(WarningMessages.tooManyRequests);
+    } else {
       Utils.showSnackBar(WarningMessages.unknownError);
     }
+  } catch (e) {
+    Utils.showSnackBar(WarningMessages.unknownError);
   }
+}
+
 
   Future<void> resetPassword() async {
     try {

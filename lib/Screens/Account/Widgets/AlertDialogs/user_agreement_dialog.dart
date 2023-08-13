@@ -71,8 +71,11 @@ Future<void> showUserAgreementDialog(
                         email: email,
                         password: password,
                       );
+                      await FirebaseAuth.instance.currentUser!
+                          .sendEmailVerification();
 
-                      Get.offAllNamed('/menu');
+
+                      Get.toNamed('/verify-email');
                     } catch (e) {
                       Utils.showSnackBar(WarningMessages.registrationFailed);
                     }

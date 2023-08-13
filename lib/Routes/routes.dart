@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:yeye/Screens/Account/Login/login_screen.dart';
+import 'package:yeye/Screens/Account/VerifyEmail/verify_email_screen.dart';
 import 'package:yeye/Screens/Home/home_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 
@@ -12,4 +13,5 @@ appRoutes() => [
       GetPage(name: '/login', page: () => LoginScreen()),
       GetPage(name: '/menu', page: () => const MenuScreen()),
       GetPage(name: '/auth', page: () => AuthScreen()),
+      GetPage(name: '/verify-email', page: () => const VerifyEmailScreen())
     ];

@@ -53,7 +53,7 @@ class AccountActions {
   static const String goBack = "Geri Git";
   static const String receiveLink = "Doğrulama linki\n";
   static const String sentToMail = "\nmail adresine gönderildi.";
-  static const String sentToMailAgain = "Doğrulama Linkini Tekrar Gönder";
+  static const String sentToMailAgain = "Tekrar Gönder";
   static const String cancel = "İptal";
   static const String selectUniversity = "Üniversitenizi Seçiniz";
   static const String selectCampus = "Yemekhanenizi Seçiniz";
@@ -130,8 +130,7 @@ class LoadMoneyMessages {
       'https://akillikart.samsun.edu.tr/User/Login';
   static const String areYouSure =
       'Uygulamadan çıkış yapmak istediğinize emin misiniz?';
-  static const String agreementUrl =
-      'https://flutter.dev';
+  static const String agreementUrl = 'https://flutter.dev';
 }
 
 class BottomNavBarMessages {
