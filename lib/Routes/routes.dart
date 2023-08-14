@@ -12,8 +12,14 @@ appRoutes() => [
       GetPage(name: '/splash', page: () => const SplashScreen()),
       GetPage(name: '/home', page: () => HomeScreen()),
       GetPage(name: '/login', page: () => LoginScreen()),
-      GetPage(name: '/menu', page: () => const MenuScreen(), transition: Transition.downToUp),
-      GetPage(name: '/auth', page: () => AuthScreen(), transition: Transition.downToUp),
+      GetPage(
+          name: '/menu',
+          page: () => MenuScreen(),
+          transition: Transition.downToUp),
+      GetPage(
+          name: '/auth',
+          page: () => AuthScreen(),
+          transition: Transition.downToUp),
       GetPage(name: '/verify-email', page: () => const VerifyEmailScreen()),
       GetPage(
           name: '/forgot-password',

@@ -9,15 +9,15 @@ class Utils {
       GlobalKey<ScaffoldMessengerState>();
 
   static void showSnackBar(String message) {
-  Get.snackbar(
-    WarningMessages.warning,
-    message,
-    duration: const Duration(seconds: 3),
-    backgroundColor: AppColors.themeBlueColor,
-    colorText: Colors.white,
-    borderRadius: 10.0,
-    margin: const EdgeInsets.all(16.0),
-    snackPosition: SnackPosition.BOTTOM,
-  );
-}
+    Get.snackbar(
+      WarningMessages.warning,
+      message,
+      duration: const Duration(seconds: 3),
+      backgroundColor: AppColors.themeBlueColor,
+      colorText: Colors.white,
+      borderRadius: 10.0,
+      margin: const EdgeInsets.all(16.0),
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 }

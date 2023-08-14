@@ -24,7 +24,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) => Obx(
         () => controller.isEmailVerified.value
-            ? const MenuScreen()
+            ?  MenuScreen()
             : Scaffold(
                 resizeToAvoidBottomInset: false,
                 body: SingleChildScrollView(
