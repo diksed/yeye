@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_colors.dart';
@@ -31,8 +32,7 @@ class MenuScreen extends StatelessWidget {
               Text(TitleMessages.foodMenu, style: titleTextStyle()),
               SizedBox(height: displayHeight(context) / 176.6),
               GestureDetector(
-                  onTap: () async {
-                  },
+                  onTap: () async {},
                   child: Obx(
                     () => Container(
                       height: displayHeight(context) / 17.07,
@@ -76,7 +76,9 @@ class MenuScreen extends StatelessWidget {
                     foodName: FoodMessages.sideDish,
                     stream: foodModelListStream),
               ]),
-            
+              ElevatedButton(
+                  onPressed: () => FirebaseAuth.instance.signOut(),
+                  child: const Text('Çıkış Yap')),
             ],
           ),
         ),

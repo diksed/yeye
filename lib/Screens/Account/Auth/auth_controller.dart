@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter/material.dart';
@@ -8,17 +9,18 @@ import '../Widgets/AlertDialogs/user_agreement_dialog.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth auth = FirebaseAuth.instance;
-
-  RxBool isLogin = true.obs;
-  RxBool passwordVisible = false.obs;
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final universityController = TextEditingController();
-  final campusController = TextEditingController();
-  late RxBool campusButton = true.obs;
-  late RxString? university;
-  late RxString? campus;
+  final TextEditingController universityController = TextEditingController();
+  final TextEditingController campusController = TextEditingController();
+
+  RxBool isLogin = true.obs;
+  RxBool passwordVisible = false.obs;
+  RxBool campusButton = true.obs;
+  RxString? university;
+  RxString? campus;
+
   var universities = <RxString>['Samsun Üniversitesi'.obs];
   var faculties = {
     'Samsun Üniversitesi': [
@@ -45,15 +47,11 @@ class AuthController extends GetxController {
     super.dispose();
   }
 
+  void toggle() {
+    isLogin.value = !isLogin.value;
+  }
 
-  Future<void> signUpShowDialog(
-    GlobalKey<FormState> formKey,
-    BuildContext context,
-    TextEditingController emailController,
-    TextEditingController passwordController,
-    TextEditingController universityController,
-    TextEditingController campusController,
-  ) async {
+  Future<void> signUpShowDialog() async {
     final isValid = formKey.currentState!.validate();
     if (!isValid) return;
 
@@ -61,18 +59,6 @@ class AuthController extends GetxController {
     final password = passwordController.text.trim();
     final university = universityController.text.trim();
     final campus = campusController.text.trim();
-    void onRegisterPressed() async {
-  try {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
-    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-    Get.toNamed('/verify-email');
-  } catch (e) {
-    Utils.showSnackBar(WarningMessages.registrationFailed);
-  }
-}
 
     if (email.isEmpty ||
         password.isEmpty ||
@@ -85,14 +71,13 @@ class AuthController extends GetxController {
       Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
     } else {
       try {
-        final result =
-            await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+        final result = await auth.fetchSignInMethodsForEmail(email);
         if (result.isNotEmpty) {
           Utils.showSnackBar(WarningMessages.emailAlreadyExists);
         } else {
           RxBool acceptedTerms = false.obs;
-
-          await showUserAgreementDialog(acceptedTerms, email, password, onRegisterPressed);
+          await showUserAgreementDialog(
+              acceptedTerms, email, password, onRegisterPressed);
         }
       } catch (e) {
         Utils.showSnackBar(WarningMessages.unknownError);
@@ -100,31 +85,64 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> signIn() async {
-  final isValid = formKey.currentState!.validate();
-  if (!isValid) return;
+  void onRegisterPressed() async {
+    try {
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      await auth.currentUser!.sendEmailVerification();
+      Get.toNamed('/verify-email');
 
-  if (emailController.text.trim().isEmpty ||
-      passwordController.text.trim().isEmpty) {
-    Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
-    return;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc('createdUsers')
+          .collection('allUsers')
+          .doc(userCredential.user!.uid)
+          .set({
+        'id': userCredential.user!.uid,
+        'created_at': Timestamp.now(),
+        'my_blocked': [],
+        'email': emailController.text.trim(),
+        'university': universityController.text.trim(),
+        'campus': campusController.text.trim(),
+      });
+    } catch (e) {
+      Utils.showSnackBar(WarningMessages.registrationFailed);
+    }
   }
 
-  try {
-    final userCredential = await auth.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+  Future<void> signIn() async {
+    final isValid = formKey.currentState!.validate();
+    if (!isValid) return;
 
-    if (userCredential.user!.emailVerified) {
-      Get.offAllNamed('/menu');
-    } else {
-      Get.toNamed('/verify-email');
+    if (emailController.text.trim().isEmpty ||
+        passwordController.text.trim().isEmpty) {
+      Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
+      return;
     }
-  } on FirebaseAuthException catch (e) {
+
+    try {
+      final userCredential = await auth.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      if (userCredential.user!.emailVerified) {
+        Get.offAllNamed('/menu');
+      } else {
+        Get.toNamed('/verify-email');
+      }
+    } on FirebaseAuthException catch (e) {
+      handleFirebaseAuthException(e);
+    } catch (e) {
+      Utils.showSnackBar(WarningMessages.unknownError);
+    }
+  }
+
+  void handleFirebaseAuthException(FirebaseAuthException e) {
     if (e.code == 'user-not-found') {
       Utils.showSnackBar(WarningMessages.userNotFound);
-      return;
     } else if (e.code == 'wrong-password' || e.code == 'wrong-password') {
       Utils.showSnackBar(WarningMessages.wrongPasswordEmail);
     } else if (e.code == 'user-disabled') {
@@ -134,12 +152,5 @@ class AuthController extends GetxController {
     } else {
       Utils.showSnackBar(WarningMessages.unknownError);
     }
-  } catch (e) {
-    Utils.showSnackBar(WarningMessages.unknownError);
-  }
-}
-
-  void toggle() {
-    isLogin.value = !isLogin.value;
   }
 }

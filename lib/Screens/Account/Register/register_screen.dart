@@ -63,12 +63,10 @@ class RegisterScreen extends StatelessWidget {
                             }).toList(),
                             onChanged: (String? value) {
                               authController.campusButton.value = false;
-                              authController.universityController.text =
-                                  value!;
+                              authController.universityController.text = value!;
                               authController.university = value.obs;
                               authController.campus = authController
-                                  .faculties[authController.university]![0]
-                                  .obs;
+                                  .faculties[authController.university]![0].obs;
                             },
                           ),
                         ),
@@ -110,8 +108,7 @@ class RegisterScreen extends StatelessWidget {
                         child: Obx(
                           () => TextFormField(
                             controller: authController.passwordController,
-                            obscureText:
-                                !authController.passwordVisible.value,
+                            obscureText: !authController.passwordVisible.value,
                             keyboardType: TextInputType.visiblePassword,
                             textInputAction: TextInputAction.done,
                             decoration: InputDecoration(
@@ -135,14 +132,7 @@ class RegisterScreen extends StatelessWidget {
                       LoginRegisterButton(
                         width: displayWidth(context) / 1.5,
                         height: displayHeight(context) / 13,
-                        onPressed: () => authController.signUpShowDialog(
-                          authController.formKey,
-                          context,
-                          authController.emailController,
-                          authController.passwordController,
-                          authController.universityController,
-                          authController.campusController,
-                        ),
+                        onPressed: () => authController.signUpShowDialog(),
                         child: const Text(
                           AccountActions.register,
                           style: TextStyle(fontSize: 23),
