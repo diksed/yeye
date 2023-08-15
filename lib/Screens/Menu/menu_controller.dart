@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -7,6 +5,7 @@ import 'package:yeye/Constants/app_texts.dart';
 
 import '../../Common/time_for_calendar.dart';
 import '../../Models/food_model.dart';
+import '../../Service/firebase.dart';
 
 class MenuScreenController extends GetxController {
   var formattedDate = ''.obs;
@@ -15,13 +14,18 @@ class MenuScreenController extends GetxController {
   var ratingVisible = false.obs;
   var foodVisible = false.obs;
   Rx<FoodModel> foodModel = FoodModel().obs;
-  
 
+  @override
+  void onInit() {
+    super.onInit();
+    formattedDate.value = DateFormat('dd-MM-yyyy').format(currentTime);
+    fetchFood(formattedDate.value);
+  }
 
   void onDateSelected(BuildContext context) async {
     DateTime? pickedDate = await selectDate(context, endOfMonth);
     if (pickedDate != null) {
-      formattedDate.value = DateFormat('yyyy-MM-dd').format(pickedDate);
+      formattedDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
       fetchFood(formattedDate.value);
     }
   }
@@ -41,9 +45,6 @@ class MenuScreenController extends GetxController {
     });
   }
 }
-
-final FirebaseAuth auth = FirebaseAuth.instance;
-final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 getSpecificData(String specific) async {
   final doc = await firestore

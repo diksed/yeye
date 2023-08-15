@@ -17,9 +17,9 @@ appRoutes() => [
           page: () => MenuScreen(),
           transition: Transition.downToUp),
       GetPage(
-          name: '/auth',
-          page: () => AuthScreen(),
-          transition: Transition.downToUp),
+        name: '/auth',
+        page: () => AuthScreen(),
+      ),
       GetPage(name: '/verify-email', page: () => const VerifyEmailScreen()),
       GetPage(
           name: '/forgot-password',

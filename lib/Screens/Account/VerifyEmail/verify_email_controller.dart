@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+import '../../../Service/firebase.dart';
+
 class VerifyEmailController extends GetxController {
-  final FirebaseAuth auth = FirebaseAuth.instance;
   late String userEmail;
   RxBool isEmailVerified = false.obs;
   RxBool canResendEmail = false.obs;

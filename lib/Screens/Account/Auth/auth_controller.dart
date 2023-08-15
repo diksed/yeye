@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../Common/utils.dart';
 import '../../../Constants/app_texts.dart';
+import '../../../Service/firebase.dart';
 import '../Widgets/AlertDialogs/user_agreement_dialog.dart';
 
 class AuthController extends GetxController {
-  final FirebaseAuth auth = FirebaseAuth.instance;
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -94,7 +94,7 @@ class AuthController extends GetxController {
       await auth.currentUser!.sendEmailVerification();
       Get.toNamed('/verify-email');
 
-      await FirebaseFirestore.instance
+      await firestore
           .collection('users')
           .doc('createdUsers')
           .collection('allUsers')
