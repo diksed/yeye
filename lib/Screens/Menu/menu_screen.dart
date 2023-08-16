@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yeye/Constants/app_colors.dart';
+import 'package:yeye/Common/box_decorations.dart';
+import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Service/firebase.dart';
 
@@ -8,7 +9,7 @@ import '../../Common/display_size.dart';
 import '../../Common/logo_box.dart';
 import '../../Common/utils.dart';
 import '../../Models/food_model.dart';
-import 'Widgets/food_card.dart';
+import 'Widgets/FoodCard/food_card.dart';
 import 'menu_controller.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -87,14 +88,4 @@ class MenuScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-TextStyle titleTextStyle() {
-  return const TextStyle(
-      color: Color(0xFF656464), fontSize: 25, fontWeight: FontWeight.bold);
-}
-
-BoxDecoration dateInsideContainerDecoration() {
-  return BoxDecoration(
-      borderRadius: BorderRadius.circular(10), color: AppColors.calendarGrey);
 }

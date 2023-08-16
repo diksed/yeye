@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Menu/Widgets/FoodCard/title_in_card.dart';
 
-import '../../../Constants/app_colors.dart';
-import '../../../Models/food_model.dart';
+import '../../../../Constants/app_colors.dart';
+import '../../../../Models/food_model.dart';
+import 'line_in_card.dart';
+import 'text_in.card.dart';
 
 class FoodCard extends StatefulWidget {
   const FoodCard({
@@ -62,58 +65,3 @@ class FoodCardState extends State<FoodCard> {
     );
   }
 }
-
-class LineInCard extends StatelessWidget {
-  const LineInCard({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Divider(
-      indent: 20,
-      endIndent: 20,
-      thickness: 2,
-      color: Colors.blue,
-    );
-  }
-}
-
-class TitleInCard extends StatelessWidget {
-  const TitleInCard({Key? key, required this.foodName}) : super(key: key);
-
-  final String foodName;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      foodName,
-      style: const TextStyle(
-        color: AppColors.cardTextColor,
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class FoodCardText extends StatelessWidget {
-  const FoodCardText({Key? key, required this.foods, required this.item}) : super(key: key);
-
-  final List<FoodModel> foods;
-  final String item;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      foods[0].getFood(item).toString(),
-      style: const TextStyle(
-        color: Colors.black,
-        fontSize: 18,
-        fontWeight: FontWeight.w400,
-      ),
-      textAlign: TextAlign.center,
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-}
-
