@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:yeye/Common/box_decorations.dart';
 import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Menu/Widgets/RatingBar/rating_bar_container.dart';
 import 'package:yeye/Service/firebase.dart';
 
 import '../../Common/display_size.dart';
 import '../../Common/logo_box.dart';
 import '../../Common/utils.dart';
 import '../../Models/food_model.dart';
+import '../../Models/rating_model.dart';
 import 'Widgets/FoodCard/food_card.dart';
 import 'menu_controller.dart';
 
@@ -21,6 +23,8 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Stream<List<FoodModel>> foodModelListStream =
         controller.foodModel.stream.map((foodModel) => [foodModel]);
+    Stream<List<RatingModel>> ratingListStream =
+        controller.ratingListStream.stream;
     return SafeArea(
       child: ScaffoldMessenger(
         key: Utils.messengerKey,
@@ -79,9 +83,15 @@ class MenuScreen extends StatelessWidget {
                     foodName: FoodMessages.sideDish,
                     stream: foodModelListStream),
               ]),
+              RatingBarContainer(
+                ratingStream: ratingListStream,
+                ratingVisible: controller.ratingVisible,
+              ),
               ElevatedButton(
-                  onPressed: () => auth.signOut(),
-                  child: const Text('Çıkış Yap')),
+                  onPressed: () {
+                    auth.signOut();
+                  },
+                  child: const Text('çıkış yap'))
             ],
           ),
         ),

@@ -67,9 +67,11 @@ class AuthController extends GetxController {
       Utils.showSnackBar(WarningMessages.dontEmptyFields);
     } else if (password.length < 6) {
       Utils.showSnackBar(WarningMessages.least6Characters);
-    } else if (!email.endsWith('@samsun.edu.tr')) {
-      Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
-    } else {
+    }
+    // else if (!email.endsWith('@samsun.edu.tr')) {
+    // Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+    // }
+    else {
       try {
         final result = await auth.fetchSignInMethodsForEmail(email);
         if (result.isNotEmpty) {
