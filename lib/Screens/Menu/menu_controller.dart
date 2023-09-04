@@ -22,14 +22,6 @@ class MenuScreenController extends GetxController {
   Rx<FoodModel> foodModel = FoodModel().obs;
   RxList<RatingModel> ratingListStream = <RatingModel>[].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    formattedDate.value = DateFormat('dd-MM-yyyy').format(currentTime);
-    fetchFood(formattedDate.value);
-    fetchRatings(formattedDate.value);
-  }
-
   void onRateButtonPressed(String today) {
     rateButtonVisible.value = false;
     isContainerVisible.value = true;

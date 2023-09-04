@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:yeye/Common/box_decorations.dart';
 import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Menu/Widgets/RatingBar/rating_bar_container.dart';
-import 'package:yeye/Service/firebase.dart';
 
 import '../../Common/display_size.dart';
 import '../../Common/logo_box.dart';
+import '../../Common/time_for_calendar.dart';
 import '../../Common/utils.dart';
 import '../../Models/food_model.dart';
 import '../../Models/rating_model.dart';
 import 'Widgets/FoodCard/food_card.dart';
 import 'menu_controller.dart';
 
-class MenuScreen extends StatelessWidget {
+class MenuScreen extends StatefulWidget {
+  const MenuScreen({super.key});
+
+  @override
+  State<MenuScreen> createState() => _MenuScreenState();
+}
+
+class _MenuScreenState extends State<MenuScreen> {
   final MenuScreenController controller = Get.put(MenuScreenController());
 
-  MenuScreen({super.key});
+  @override
+  void initState() {
+    super.initState();
+    controller.formattedDate.value =
+        DateFormat('dd-MM-yyyy').format(currentTime);
+    controller.fetchFood(controller.formattedDate.value);
+    controller.fetchRatings(controller.formattedDate.value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +102,6 @@ class MenuScreen extends StatelessWidget {
                 ratingStream: ratingListStream,
                 ratingVisible: controller.ratingVisible,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    auth.signOut();
-                  },
-                  child: const Text('çıkış yap'))
             ],
           ),
         ),

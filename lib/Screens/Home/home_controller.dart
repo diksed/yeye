@@ -19,7 +19,7 @@ class HomeController extends GetxController {
         if (!newUser.emailVerified) {
           Get.offAllNamed('/verify-email');
         } else {
-          Get.offAllNamed('/menu');
+          Get.offAllNamed('/bottom-nav-bar');
         }
       }
     });

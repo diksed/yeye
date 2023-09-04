@@ -24,7 +24,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) => Obx(
         () => controller.isEmailVerified.value
-            ?  MenuScreen()
+            ? const MenuScreen()
             : Scaffold(
                 resizeToAvoidBottomInset: false,
                 body: SingleChildScrollView(
@@ -60,8 +60,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                                         const TextSpan(
                                             text: AccountActions.sentToMail),
                                       ])),
-                              Obx( () =>
-                                LoginRegisterButton(
+                              Obx(
+                                () => LoginRegisterButton(
                                     height: displayHeight(context) / 13,
                                     width: displayWidth(context) / 1.5,
                                     onPressed: controller.canResendEmail.value

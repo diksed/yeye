@@ -131,7 +131,7 @@ class AuthController extends GetxController {
       );
 
       if (userCredential.user!.emailVerified) {
-        Get.offAllNamed('/menu');
+        Get.offAllNamed('/bottom-nav-bar');
       } else {
         Get.toNamed('/verify-email');
       }

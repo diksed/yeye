@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:yeye/Screens/Menu/menu_screen.dart';
+
+class BottomNavBarController extends GetxController {
+  late PageController pageController;
+
+  RxInt currentPage = 0.obs;
+
+  final List<Widget> pages = [
+    const MenuScreen(),
+    Container(color: Colors.red),
+    Container(color: Colors.green),
+    Container(color: Colors.yellow),
+  ];
+
+  void goToTab(int page) {
+    if (page == 4) {
+      print('Go to payment screen');
+    } else {
+      currentPage.value = page;
+      pageController.jumpToPage(page);
+    }
+  }
+
+  void animateToTab(int page) {
+    currentPage.value = page;
+    pageController.animateToPage(page,
+        duration: const Duration(milliseconds: 300), curve: Curves.ease);
+  }
+
+  @override
+  void onInit() {
+    pageController = PageController(initialPage: 0);
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+}
