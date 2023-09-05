@@ -35,3 +35,8 @@ Future<DateTime?> selectDate(BuildContext context, DateTime lastDate) {
       firstDate: DateTime(2023, 06, 01),
       lastDate: lastDate);
 }
+
+bool isWeekend(DateTime date) {
+  final day = date.weekday;
+  return day == DateTime.saturday || day == DateTime.sunday;
+}

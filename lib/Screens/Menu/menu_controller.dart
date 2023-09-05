@@ -57,7 +57,7 @@ class MenuScreenController extends GetxController {
       formattedDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
       fetchFood(formattedDate.value);
       fetchRatings(formattedDate.value);
-      if (pickedDate == currentTime) {
+      if (formattedDate.contains(formattedCurrentDate)) {
         ratingVisible.value = true;
       } else {
         ratingVisible.value = false;
@@ -95,7 +95,6 @@ class MenuScreenController extends GetxController {
             snapshot.docs.map((doc) => RatingModel.fromMap(doc)).toList())
         .listen((data) {
       ratingListStream.value = data;
-      ratingVisible.value = data.isNotEmpty;
     });
   }
 }

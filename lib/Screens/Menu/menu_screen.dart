@@ -32,6 +32,9 @@ class _MenuScreenState extends State<MenuScreen> {
         DateFormat('dd-MM-yyyy').format(currentTime);
     controller.fetchFood(controller.formattedDate.value);
     controller.fetchRatings(controller.formattedDate.value);
+    if (isWeekend(currentTime)) {
+      controller.ratingVisible.value = false;
+    }
   }
 
   @override
