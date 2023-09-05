@@ -34,6 +34,12 @@ class _MenuScreenState extends State<MenuScreen> {
     controller.fetchRatings(controller.formattedDate.value);
     if (isWeekend(currentTime)) {
       controller.ratingVisible.value = false;
+    } else {
+      if (isBetweenTimes()) {
+        controller.ratingVisible.value = true;
+      } else {
+        controller.ratingVisible.value = false;
+      }
     }
   }
 

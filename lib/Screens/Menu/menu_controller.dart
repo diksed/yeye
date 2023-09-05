@@ -58,7 +58,11 @@ class MenuScreenController extends GetxController {
       fetchFood(formattedDate.value);
       fetchRatings(formattedDate.value);
       if (formattedDate.contains(formattedCurrentDate)) {
-        ratingVisible.value = true;
+        if (isBetweenTimes()) {
+          ratingVisible.value = true;
+        } else {
+          ratingVisible.value = false;
+        }
       } else {
         ratingVisible.value = false;
       }

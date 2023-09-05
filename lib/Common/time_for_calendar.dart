@@ -8,15 +8,19 @@ final DateTime endOfMonth = (currentTime.month < 12)
     ? DateTime(currentTime.year, currentTime.month + 1, 0)
     : DateTime(currentTime.year + 1, 1, 0);
 
-String formattedCurrentDate = DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
-String commentDate = DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
-String currentDate = DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
+String formattedCurrentDate =
+    DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
+String commentDate =
+    DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
+String currentDate =
+    DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
 String collectionDateForCurrentTime =
     DateFormat(AppTexts.colFormat).format(transactionTime).toString();
 String collectionDateForAll = formattedCurrentDate.substring(3, 10);
 
 var outputFormat = DateFormat('HH.mm');
-var transactionTimeHourMinute = double.parse(outputFormat.format(transactionTime));
+var transactionTimeHourMinute =
+    double.parse(outputFormat.format(transactionTime));
 double startTimeComparison = 11.30;
 double endTimeComparison = 13.30;
 int weekendDay = 0;
@@ -39,4 +43,13 @@ Future<DateTime?> selectDate(BuildContext context, DateTime lastDate) {
 bool isWeekend(DateTime date) {
   final day = date.weekday;
   return day == DateTime.saturday || day == DateTime.sunday;
+}
+
+bool isBetweenTimes() {
+  if (transactionTimeHourMinute >= startTimeComparison &&
+      transactionTimeHourMinute <= endTimeComparison) {
+    return true;
+  } else {
+    return false;
+  }
 }
