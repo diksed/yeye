@@ -104,7 +104,7 @@ class AuthController extends GetxController {
           .set({
         'id': userCredential.user!.uid,
         'created_at': Timestamp.now(),
-        'my_blocked': [],
+        'myBlocked': [],
         'email': emailController.text.trim(),
         'university': universityController.text.trim(),
         'campus': campusController.text.trim(),

@@ -5,8 +5,11 @@ import '../Constants/app_colors.dart';
 import '../Constants/app_texts.dart';
 
 class Utils {
-  static final GlobalKey<ScaffoldMessengerState> messengerKey =
+  static final GlobalKey<ScaffoldMessengerState> menuMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
+  static final GlobalKey<ScaffoldMessengerState> commentsMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
+
 
   static void showSnackBar(String message) {
     Get.snackbar(

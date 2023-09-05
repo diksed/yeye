@@ -26,7 +26,6 @@ class RatingBarContainer extends StatefulWidget {
 class _RatingBarContainerState extends State<RatingBarContainer> {
   @override
   Widget build(BuildContext context) {
-
     return SizedBox(
       width: displayWidth(context) / 1.17,
       child: Column(
@@ -42,9 +41,10 @@ class _RatingBarContainerState extends State<RatingBarContainer> {
               if (snapshot.hasData) {
                 final ratings = snapshot.data!;
                 if (ratings.isNotEmpty) {
-                  return Text('${ratings.length} kişi değerlendirdi.');
+                  return Text(
+                      '${ratings.length} ${AnnouncementMessages.peopleRating}');
                 } else {
-                  return const Text('Herhangi bir değerlendirme yok.');
+                  return const Text(AnnouncementMessages.noRating);
                 }
               } else {
                 return const Text(WarningMessages.somethingWrong);

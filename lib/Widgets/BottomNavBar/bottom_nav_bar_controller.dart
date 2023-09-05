@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Screens/Comments/comments_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 
 class BottomNavBarController extends GetxController {
@@ -9,7 +10,7 @@ class BottomNavBarController extends GetxController {
 
   final List<Widget> pages = [
     const MenuScreen(),
-    Container(color: Colors.red),
+    const CommentsScreen(),
     Container(color: Colors.green),
     Container(color: Colors.yellow),
   ];

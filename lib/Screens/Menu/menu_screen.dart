@@ -51,13 +51,11 @@ class _MenuScreenState extends State<MenuScreen> {
         controller.ratingListStream.stream;
     return SafeArea(
       child: ScaffoldMessenger(
-        key: Utils.messengerKey,
+        key: Utils.menuMessengerKey,
         child: Scaffold(
           body: Column(
             children: [
-              LogoSizedBox(
-                  appHeight: displayHeight(context) / 3,
-                  appWidth: displayWidth(context) / 3),
+              LogoSizedBox(height: Get.height / 3, width: Get.width / 3),
               Text(TitleMessages.foodMenu, style: titleTextStyle()),
               SizedBox(height: displayHeight(context) / 176.6),
               GestureDetector(

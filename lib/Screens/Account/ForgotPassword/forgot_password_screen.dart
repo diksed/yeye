@@ -28,10 +28,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  LogoSizedBox(
-                    appHeight: displayHeight(context),
-                    appWidth: displayWidth(context),
-                  ),
+                  const LogoSizedBox(),
                   Container(
                     width: displayWidth(context),
                     height: displayHeight(context) / 1.7,

@@ -167,6 +167,8 @@ class AnnouncementMessages {
   static const String makeCommentAboutFood2 = 'yorum yapmak ister misin?';
   static const String makeFirstComment = 'İlk yorumu sen yap!';
   static const String date = ' tarihine ait';
-  static const String anything = 'herhangi bir yorum';
+  static const String anythingComment = 'herhangi bir yorum';
   static const String didntMakeComment = 'bulunamadı!';
+  static const String peopleRating = 'kişi değerlendirdi.';
+  static const String noRating = 'Herhangi bir değerlendirme yok.';
 }
