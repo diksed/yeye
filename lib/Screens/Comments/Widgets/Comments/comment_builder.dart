@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Service/firebase.dart';
 
 import '../../../../Common/box_decorations.dart';
-import '../../../../Common/display_size.dart';
 import '../../../../Constants/app_colors.dart';
 import '../../../../Models/comments_model.dart';
 import '../Report/report_block_button.dart';
@@ -32,7 +32,7 @@ class CommentBuilder extends StatelessWidget {
         child: Align(
           child: Container(
             height: commentHeight,
-            width: Get.width / 1.52,
+            width: Get.width / 1.5,
             decoration:
                 customBoxDecoration(10, AppColors.cardColor, Colors.black, 0.1),
             child: Row(
@@ -52,7 +52,7 @@ class CommentBuilder extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: Get.width / 1.86,
+                        width: comment.email == auth.currentUser?.email ? Get.width / 1.65 : Get.width / 1.8,
                         child: Text(
                           comment.comment,
                           style: const TextStyle(color: AppColors.blackShade),
@@ -64,8 +64,8 @@ class CommentBuilder extends StatelessWidget {
                 Visibility(
                   visible: currentUser!.email == comment.email ? false : true,
                   child: SizedBox(
-                    height: displayHeight(context) / 34.15,
-                    width: displayWidth(context) / 20.55,
+                    height: Get.height / 34.15,
+                    width: Get.width / 20.55,
                     child: ReportAndBlockButton(email: comment.email),
                   ),
                 ),

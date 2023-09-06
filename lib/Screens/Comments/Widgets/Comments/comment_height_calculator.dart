@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
 
 double calculateCommentHeight(int length) {
-  if (length <= 10) {
-    return Get.height / 22.4;
-  } else if (length <= 20) {
+  if (length <= 20) {
     return Get.height / 16.8;
   } else if (length <= 30) {
     return Get.height / 13.44;

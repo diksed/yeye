@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:yeye/Common/utils.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 import '../../Common/time_for_calendar.dart';
@@ -11,6 +12,9 @@ import '../Menu/menu_controller.dart';
 class CommentsScreenController extends GetxController {
   final RxString commentDate = ''.obs;
   final RxList<String> comments = <String>[].obs;
+  final TextEditingController controllerComment = TextEditingController();
+  final RxBool isCommented = false.obs;
+  final RxDouble listViewHeight = (Get.height/2.43).obs;
 
   RxList<CommentModel> commentListStream = <CommentModel>[].obs;
   RxList<CommentModel> blockedSnapshot = <CommentModel>[].obs;
@@ -54,20 +58,45 @@ class CommentsScreenController extends GetxController {
     }
   }
 
+  void shareComment() async {
+    if (controllerComment.text.isNotEmpty) {
+      final comment = CommentModel(
+        comment: controllerComment.text,
+        email: getCurrentUser().toString(),
+      );
+      createComment(comment, currentDate, collectionDateForCurrentTime);
+      controllerComment.clear();
+      isCommented.value = true;
+      listViewHeight.value = Get.height / 1.5627;
+
+      Get.back();
+    } else {
+      Utils.showSnackBar(WarningMessages.writeComment);
+    }
+  }
+
+  Future createComment(
+      CommentModel comment, String formattedDate, String collectionDate) async {
+    final university = await getSpecificData(UserFields.university);
+    final campus = await getSpecificData(UserFields.campus);
+    final docUser = firestore
+        .collection(university)
+        .doc(campus)
+        .collection(collectionDateForCurrentTime)
+        .doc('comments')
+        .collection(formattedDate)
+        .doc(comment.email);
+
+    final json = comment.toMap();
+    await docUser.set(json);
+  }
+
   void onDateSelected(BuildContext context) async {
     DateTime? pickedDate = await selectDate(context, endOfMonth);
     if (pickedDate != null) {
       commentDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
       fetchComments(commentDate.value);
       fetchBlockedComments();
-    }
-  }
-
-  double listViewHeight() {
-    if (currentDate.contains(commentDate)) {
-      return Get.height / 2.43;
-    } else {
-      return Get.height / 1.62;
     }
   }
 }

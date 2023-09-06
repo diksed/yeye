@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:yeye/Common/utils.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Comments/Widgets/MakeComment/make_comment_card.dart';
 import 'package:yeye/Service/firebase.dart';
 
 import '../../Common/box_decorations.dart';
@@ -17,7 +17,7 @@ import 'Widgets/Comments/read_comment_sized_box.dart';
 import 'comments_controller.dart';
 
 class CommentsScreen extends StatefulWidget {
-  const CommentsScreen({super.key});
+  const CommentsScreen({Key? key}) : super(key: key);
 
   @override
   State<CommentsScreen> createState() => _CommentsScreenState();
@@ -30,25 +30,23 @@ class _CommentsScreenState extends State<CommentsScreen> {
   @override
   void initState() {
     super.initState();
-    controller.commentDate.value = DateFormat('dd-MM-yyyy').format(currentTime);
-    controller.fetchComments(controller.commentDate.value);
+    final commentDate = DateFormat('dd-MM-yyyy').format(currentTime);
+    controller.commentDate.value = commentDate;
+    controller.fetchComments(commentDate);
     controller.fetchBlockedComments();
   }
 
   @override
   Widget build(BuildContext context) {
-    Stream<List<CommentModel>> commentListStream =
-        controller.commentListStream.stream;
     return SafeArea(
-      child: ScaffoldMessenger(
-        key: Utils.commentsMessengerKey,
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          body: SingleChildScrollView(
-            child: GestureDetector(
-              onTap: () {
-                Get.focusScope!.unfocus();
-              },
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: SingleChildScrollView(
+          child: GestureDetector(
+            onTap: () {
+              Get.focusScope!.unfocus();
+            },
+            child: Center(
               child: Column(
                 children: [
                   LogoSizedBox(
@@ -82,8 +80,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         )),
                   ),
                   SizedBox(height: Get.height / 68.3),
-                  StreamBuilder(
-                    stream: commentListStream,
+                  StreamBuilder<List<CommentModel>>(
+                    stream: controller.commentListStream.stream,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         List<CommentModel> commentSnapshot = snapshot.data!;
@@ -123,7 +121,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             );
                           } else {
                             return SizedBox(
-                              height: controller.listViewHeight(),
+                              height: controller.listViewHeight.value,
                               width: Get.width / 1.37,
                               child: NoCommentDay(
                                   height: Get.height / 1.43,
@@ -138,9 +136,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         } else {
                           return StreamBuilder<List<CommentModel>>(
                             builder: (context, snapshot) {
-                              return ReadCommentSizedBox(
-                                comments: controller.blockedSnapshot,
-                                sizedBoxHeight: controller.listViewHeight(),
+                              return Obx(
+                                () => ReadCommentSizedBox(
+                                  comments: controller.blockedSnapshot,
+                                  sizedBoxHeight:
+                                      controller.listViewHeight.value,
+                                ),
                               );
                             },
                             stream: controller.blockedSnapshot.stream,
@@ -153,9 +154,29 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     },
                   ),
                   SizedBox(height: Get.height / 136.6),
-                  const LineInCommentCard(color: Colors.black, width: 150),
+                  Obx(
+                    () => Visibility(
+                      visible: controller.commentDate.value == currentDate
+                          ? true
+                          : false,
+                      child: LineInCommentCard(
+                          color: Colors.black, width: Get.width / 2.4),
+                    ),
+                  ),
                   SizedBox(height: Get.height / 68.3),
-                  Container(height: Get.height / 5.49)
+                  Obx(
+                    () => Visibility(
+                      visible: controller.commentDate.value == currentDate &&
+                              controller.isCommented.value == false
+                          ? true
+                          : controller.isCommented.value == true
+                              ? false
+                              : true,
+                      child: MakeCommentCard(
+                          controllerComment: controller.controllerComment,
+                          shareComment: () => controller.shareComment()),
+                    ),
+                  ),
                 ],
               ),
             ),
