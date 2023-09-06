@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:yeye/Service/firebase.dart';
 
 import '../../../../Common/box_decorations.dart';
+import '../../../../Common/calculator_functions.dart';
 import '../../../../Constants/app_colors.dart';
 import '../../../../Models/comments_model.dart';
 import '../Report/report_block_button.dart';
 import 'comment_email_fixer.dart';
-import 'comment_height_calculator.dart';
 
 class CommentBuilder extends StatelessWidget {
   const CommentBuilder({
@@ -52,7 +52,9 @@ class CommentBuilder extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: comment.email == auth.currentUser?.email ? Get.width / 1.65 : Get.width / 1.8,
+                        width: comment.email == auth.currentUser?.email
+                            ? Get.width / 1.65
+                            : Get.width / 1.8,
                         child: Text(
                           comment.comment,
                           style: const TextStyle(color: AppColors.blackShade),

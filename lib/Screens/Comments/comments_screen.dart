@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Comments/Widgets/MakeComment/make_comment_card.dart';
 import 'package:yeye/Service/firebase.dart';
 
 import '../../Common/box_decorations.dart';
+import '../../Common/calculator_functions.dart';
 import '../../Common/logo_box.dart';
 import '../../Common/text_styles.dart';
 import '../../Common/time_for_calendar.dart';
@@ -30,10 +30,11 @@ class _CommentsScreenState extends State<CommentsScreen> {
   @override
   void initState() {
     super.initState();
-    final commentDate = DateFormat('dd-MM-yyyy').format(currentTime);
-    controller.commentDate.value = commentDate;
+    controller.commentDate.value = currentDate;
     controller.fetchComments(commentDate);
     controller.fetchBlockedComments();
+    controller.listViewHeight.value = calculateListViewHeight(
+        controller.commentDate.value, controller.isCommented.value);
   }
 
   @override
@@ -104,7 +105,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         if (commentSnapshot.isEmpty) {
                           if (controller.commentDate.value == currentDate) {
                             return SizedBox(
-                              height: controller.listViewHeight(),
+                              height: controller.listViewHeight.value,
                               width: Get.width / 1.37,
                               child: DefaultAnnouncement(
                                   height: Get.height / 4.01,
@@ -166,12 +167,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   SizedBox(height: Get.height / 68.3),
                   Obx(
                     () => Visibility(
-                      visible: controller.commentDate.value == currentDate &&
-                              controller.isCommented.value == false
-                          ? true
-                          : controller.isCommented.value == true
-                              ? false
-                              : true,
+                      visible: commentCardIsVisible(
+                          controller.commentDate.value,
+                          controller.isCommented.value),
                       child: MakeCommentCard(
                           controllerComment: controller.controllerComment,
                           shareComment: () => controller.shareComment()),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:yeye/Common/calculator_functions.dart';
 import 'package:yeye/Common/utils.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
@@ -14,7 +15,7 @@ class CommentsScreenController extends GetxController {
   final RxList<String> comments = <String>[].obs;
   final TextEditingController controllerComment = TextEditingController();
   final RxBool isCommented = false.obs;
-  final RxDouble listViewHeight = (Get.height/2.43).obs;
+  final RxDouble listViewHeight = (Get.height / 2.43).obs;
 
   RxList<CommentModel> commentListStream = <CommentModel>[].obs;
   RxList<CommentModel> blockedSnapshot = <CommentModel>[].obs;
@@ -97,6 +98,8 @@ class CommentsScreenController extends GetxController {
       commentDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
       fetchComments(commentDate.value);
       fetchBlockedComments();
+      listViewHeight.value =
+          calculateListViewHeight(commentDate.value, isCommented.value);
     }
   }
 }
