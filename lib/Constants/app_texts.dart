@@ -134,7 +134,7 @@ class LoadMoneyMessages {
       'https://akillikart.samsun.edu.tr/User/Login';
   static const String areYouSure =
       'Uygulamadan çıkış yapmak istediğinize emin misiniz?';
-  static const String agreementUrl = 'https://flutter.dev';
+  static const String agreementUrl = 'http://www.yeyeapp.net/agreement';
 }
 
 class BottomNavBarMessages {

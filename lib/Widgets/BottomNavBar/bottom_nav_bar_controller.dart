@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Screens/Comments/comments_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
+import 'package:yeye/Service/firebase.dart';
 
 class BottomNavBarController extends GetxController {
   late PageController pageController;
@@ -17,6 +18,7 @@ class BottomNavBarController extends GetxController {
 
   void goToTab(int page) {
     if (page == 4) {
+      auth.signOut();
       print('Go to payment screen');
     } else {
       currentPage.value = page;
