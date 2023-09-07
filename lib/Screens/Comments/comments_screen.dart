@@ -85,7 +85,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     stream: controller.commentListStream.stream,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        List<CommentModel> commentSnapshot = snapshot.data!;
+                        controller.commentSnapshot = snapshot.data!;
                         firestore
                             .collection('users')
                             .doc('createdUsers')
@@ -96,14 +96,29 @@ class _CommentsScreenState extends State<CommentsScreen> {
                           if (snapshot.exists) {
                             List<dynamic> myBlocked =
                                 snapshot.data()!['myBlocked'] ?? [];
-                            controller.blockedSnapshot.value = commentSnapshot
+                            controller.blockedSnapshot.value = controller
+                                .commentSnapshot
                                 .where((comment) =>
                                     !myBlocked.contains(comment.email))
                                 .toList();
                           }
                         });
-                        if (commentSnapshot.isEmpty) {
+                        if (controller.commentSnapshot.isEmpty) {
                           if (controller.commentDate.value == currentDate) {
+                            if (isWeekend(currentTime)) {
+                              return SizedBox(
+                                height: controller.listViewHeight.value,
+                                width: Get.width / 1.37,
+                                child: NoCommentDay(
+                                    height: Get.height / 1.43,
+                                    textFirst:
+                                        '${controller.commentDate} ${AnnouncementMessages.date}',
+                                    textSecond:
+                                        AnnouncementMessages.anythingComment,
+                                    textThird:
+                                        AnnouncementMessages.didntMakeComment),
+                              );
+                            }
                             return SizedBox(
                               height: controller.listViewHeight.value,
                               width: Get.width / 1.37,
@@ -122,7 +137,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             );
                           } else {
                             return SizedBox(
-                              height: controller.listViewHeight.value,
+                              height: controller.listViewHeight.value / 1.55,
                               width: Get.width / 1.37,
                               child: NoCommentDay(
                                   height: Get.height / 1.43,
@@ -157,9 +172,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   SizedBox(height: Get.height / 136.6),
                   Obx(
                     () => Visibility(
-                      visible: controller.commentDate.value == currentDate
-                          ? true
-                          : false,
+                      visible:
+                          commentLineIsVisible(controller.commentDate.value),
                       child: LineInCommentCard(
                           color: Colors.black, width: Get.width / 2.4),
                     ),

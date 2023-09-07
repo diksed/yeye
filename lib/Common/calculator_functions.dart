@@ -2,14 +2,30 @@ import 'package:get/get.dart';
 import 'package:yeye/Common/time_for_calendar.dart';
 
 bool commentCardIsVisible(String commentDate, bool isCommented) {
-  if (commentDate == currentDate) {
-    if (isCommented == false) {
+  if (isWeekend(currentTime)) {
+    return false;
+  } else {
+    if (commentDate == currentDate) {
+      if (isCommented == false) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+}
+
+bool commentLineIsVisible(String commentDate) {
+  if (isWeekend(currentTime)) {
+    return false;
+  } else {
+    if (commentDate == currentDate) {
       return true;
     } else {
       return false;
     }
-  } else {
-    return false;
   }
 }
 

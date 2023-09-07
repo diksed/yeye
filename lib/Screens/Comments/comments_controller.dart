@@ -16,6 +16,7 @@ class CommentsScreenController extends GetxController {
   final TextEditingController controllerComment = TextEditingController();
   final RxBool isCommented = false.obs;
   final RxDouble listViewHeight = (Get.height / 2.43).obs;
+  late List<CommentModel> commentSnapshot = <CommentModel>[];
 
   RxList<CommentModel> commentListStream = <CommentModel>[].obs;
   RxList<CommentModel> blockedSnapshot = <CommentModel>[].obs;
