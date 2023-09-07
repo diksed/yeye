@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../Common/display_size.dart';
-import '../../Announcement/Widgets/default_announcement_text.dart';
+import '../../Announcement/Widgets/Texts/default_announcement_text.dart';
 
 class NoCommentDay extends StatelessWidget {
   const NoCommentDay({

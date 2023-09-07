@@ -28,7 +28,7 @@ class ContactInfoText {
   static const String yeYe = 'YeYe, kâr amacı gütmeyen\nbir mobil uygulamadır.';
 
   static const String purpose =
-      'Şu an sadece SAMÜ\nöğrencileri kullanabilmektedir.';
+      'Şu an için sadece SAMÜ\nöğrencileri kullanabilmektedir.';
 }
 
 class UserFields {
