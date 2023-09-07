@@ -5,9 +5,13 @@ bool commentCardIsVisible(String commentDate, bool isCommented) {
   if (isWeekend(currentTime)) {
     return false;
   } else {
-    if (commentDate == currentDate) {
-      if (isCommented == false) {
-        return true;
+    if (isBetweenTimes()) {
+      if (commentDate == currentDate) {
+        if (isCommented == false) {
+          return true;
+        } else {
+          return false;
+        }
       } else {
         return false;
       }
@@ -21,8 +25,12 @@ bool commentLineIsVisible(String commentDate) {
   if (isWeekend(currentTime)) {
     return false;
   } else {
-    if (commentDate == currentDate) {
-      return true;
+    if (isBetweenTimes()) {
+      if (commentDate == currentDate) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -33,8 +41,12 @@ double calculateListViewHeight(String commentDate, bool isCommented) {
   if (!commentDate.contains(currentDate)) {
     return Get.height / 1.5627;
   } else {
-    if (isCommented == false) {
-      return Get.height / 2.43;
+    if (isBetweenTimes()) {
+      if (isCommented == false) {
+        return Get.height / 2.43;
+      } else {
+        return Get.height / 1.5627;
+      }
     } else {
       return Get.height / 1.5627;
     }
