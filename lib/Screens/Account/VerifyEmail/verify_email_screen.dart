@@ -5,7 +5,7 @@ import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Account/VerifyEmail/verify_email_controller.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart';
 import 'package:yeye/Screens/Account/Widgets/TextFields/check_spam_text.dart';
-import 'package:yeye/Screens/Menu/menu_screen.dart';
+import 'package:yeye/Widgets/BottomNavBar/bottom_nav_bar.dart';
 
 import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
@@ -24,7 +24,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) => Obx(
         () => controller.isEmailVerified.value
-            ? const MenuScreen()
+            ? BottomNavBar()
             : Scaffold(
                 resizeToAvoidBottomInset: false,
                 body: SingleChildScrollView(

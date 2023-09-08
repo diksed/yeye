@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:yeye/Screens/Announcement/announcement_screen.dart';
 import 'package:yeye/Screens/Comments/comments_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
+import 'package:yeye/Screens/Profile/profile_screen.dart';
 import 'package:yeye/Service/firebase.dart';
 
 class BottomNavBarController extends GetxController {
@@ -14,7 +15,7 @@ class BottomNavBarController extends GetxController {
     const MenuScreen(),
     const CommentsScreen(),
     const AnnouncementScreen(),
-    Container(color: Colors.yellow),
+    const ProfileScreen()
   ];
 
   void goToTab(int page) {

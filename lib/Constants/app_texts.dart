@@ -69,6 +69,7 @@ class AccountActions {
       "Hesabınızı silmek istediğinize emin misiniz?";
   static const String accept = "Kabul ediyorum.";
   static const String userAgreement = "Kullanıcı sözleşmesini";
+  static const String noBlockedAccount = "Engellenmiş hesap yok.";
 }
 
 class WarningMessages {
@@ -116,6 +117,7 @@ class WarningMessages {
   static const String registrationFailed = "Kayıt olma işlemi başarısız oldu.";
   static const String emailAlreadyExists =
       "Bu e-mail adresi zaten kullanılıyor.";
+      static const String noInformation = "Bilgi bulunamadı!";
 }
 
 class TitleMessages {
@@ -142,7 +144,6 @@ class BottomNavBarMessages {
   static const String comments = 'Yorumlar';
   static const String loadMoney = 'Para Yükle';
   static const String announcements = 'Duyurular';
-  static const String logout = 'Çıkış Yap';
   static const String profile = 'Profil';
 }
 
