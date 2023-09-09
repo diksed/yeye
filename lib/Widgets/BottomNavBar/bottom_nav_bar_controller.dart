@@ -4,7 +4,7 @@ import 'package:yeye/Screens/Announcement/announcement_screen.dart';
 import 'package:yeye/Screens/Comments/comments_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 import 'package:yeye/Screens/Profile/profile_screen.dart';
-import 'package:yeye/Service/firebase.dart';
+import 'package:yeye/Widgets/AlertDialog/alert_dialogs.dart';
 
 class BottomNavBarController extends GetxController {
   late PageController pageController;
@@ -20,8 +20,7 @@ class BottomNavBarController extends GetxController {
 
   void goToTab(int page) {
     if (page == 4) {
-      auth.signOut();
-      print('Go to payment screen');
+      loadMoneyAlertDialog();
     } else {
       currentPage.value = page;
       pageController.jumpToPage(page);

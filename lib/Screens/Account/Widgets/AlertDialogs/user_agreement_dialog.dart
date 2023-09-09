@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../Constants/app_texts.dart';
 
-void agreementLauncher() async {
-  Uri url = Uri.parse(LoadMoneyMessages.agreementUrl);
+void agreementLauncher(String urlPath) async {
+  Uri url = Uri.parse(urlPath);
   var urllaunchable = await canLaunchUrl(url);
   if (urllaunchable) {
     await launchUrl(url, mode: LaunchMode.inAppWebView);
@@ -44,7 +44,7 @@ Future<void> showUserAgreementDialog(RxBool acceptedTerms, String email,
                       style: TextStyle(color: Colors.blue),
                     ),
                     onTap: () {
-                      agreementLauncher();
+                      agreementLauncher(LoadMoneyMessages.agreementUrl);
                     },
                   ),
                   const Text(AccountActions.accept),

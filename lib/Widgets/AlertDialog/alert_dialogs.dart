@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Account/Widgets/AlertDialogs/user_agreement_dialog.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart';
 import 'package:yeye/Screens/Profile/delete_user_controller.dart';
 import 'package:yeye/Service/firebase.dart';
@@ -17,6 +18,14 @@ Future<void> logoutAlertDialog() {
           ]));
 }
 
+Future<void> loadMoneyAlertDialog() {
+  return Get.dialog(CustomAlertDialog(
+      titleText: LoadMoneyMessages.loadMoneyToCard,
+      contentText: LoadMoneyMessages.areYouSure,
+      buttonText: LoadMoneyMessages.loadMoney,
+      onPressed: () => agreementLauncher(LoadMoneyMessages.websiteUrl)));
+}
+
 Future<void> deleteAccountAlertDialog() {
   return Get.bottomSheet(
       isScrollControlled: true,
@@ -29,7 +38,7 @@ Future<void> deleteAccountAlertDialog() {
             children: [
               const SizedBox(height: 20),
               const Text(
-                'Hesabınızı silmek istediğinize emin misiniz?',
+                AccountActions.deleteAccountWarning,
               ),
               const SizedBox(height: 20),
               Row(
