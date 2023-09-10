@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:yeye/Screens/Account/Login/login_screen.dart';
 import 'package:yeye/Screens/Account/VerifyEmail/verify_email_screen.dart';
 import 'package:yeye/Screens/Home/home_screen.dart';
+import 'package:yeye/Screens/InternetConnection/internet_connection_screen.dart';
 import 'package:yeye/Screens/Maintenance/maintenance_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 import 'package:yeye/Widgets/BottomNavBar/bottom_nav_bar.dart';
@@ -29,4 +30,6 @@ appRoutes() => [
           transition: Transition.rightToLeftWithFade),
       GetPage(name: '/bottom-nav-bar', page: () => BottomNavBar()),
       GetPage(name: '/maintenance', page: () => const MaintenanceScreen()),
+      GetPage(
+          name: '/internet-connection', page: () => InternetConnectionScreen()),
     ];

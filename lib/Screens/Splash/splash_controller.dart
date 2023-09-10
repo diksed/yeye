@@ -1,4 +1,4 @@
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -6,7 +6,16 @@ class SplashController extends GetxController {
   void onInit() {
     super.onInit();
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAllNamed('/home');
+      checkInternetConnection();
     });
+  }
+
+  Future<void> checkInternetConnection() async {
+    var connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      Get.offAllNamed('/internet-connection');
+    } else {
+      Get.offAllNamed('/home');
+    }
   }
 }
