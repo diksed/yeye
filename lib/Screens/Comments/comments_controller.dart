@@ -94,7 +94,7 @@ class CommentsScreenController extends GetxController {
   }
 
   void onDateSelected(BuildContext context) async {
-    DateTime? pickedDate = await selectDate(context, endOfMonth);
+    DateTime? pickedDate = await selectDate(context, currentTime);
     if (pickedDate != null) {
       commentDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
       fetchComments(commentDate.value);

@@ -36,7 +36,7 @@ Future<DateTime?> selectDate(BuildContext context, DateTime lastDate) {
       cancelText: AppTexts.cancel,
       confirmText: AppTexts.confirm,
       initialEntryMode: DatePickerEntryMode.calendarOnly,
-      firstDate: DateTime(2023, 06, 01),
+      firstDate: DateTime(2023, 09, 01),
       lastDate: lastDate);
 }
 
