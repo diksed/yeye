@@ -13,28 +13,45 @@ import '../Screens/Account/ForgotPassword/forgot_password_screen.dart';
 import '../Screens/Splash/splash_screen.dart';
 
 appRoutes() => [
-      GetPage(name: '/splash', page: () => const SplashScreen()),
-      GetPage(name: '/home', page: () => HomeScreen()),
-      GetPage(name: '/login', page: () => LoginScreen()),
       GetPage(
-        name: '/menu',
-        page: () => const MenuScreen(),
-      ),
+          name: '/splash',
+          page: () => const SplashScreen(),
+          transition: Transition.fadeIn),
       GetPage(
-        name: '/auth',
-        page: () => AuthScreen(),
-      ),
-      GetPage(name: '/verify-email', page: () => const VerifyEmailScreen()),
+          name: '/home',
+          page: () => HomeScreen(),
+          transition: Transition.fadeIn),
+      GetPage(
+          name: '/login',
+          page: () => LoginScreen(),
+          transition: Transition.rightToLeftWithFade),
+      GetPage(
+          name: '/menu',
+          page: () => const MenuScreen(),
+          transition: Transition.fadeIn),
+      GetPage(
+          name: '/auth',
+          page: () => AuthScreen(),
+          transition: Transition.fadeIn),
+      GetPage(
+          name: '/verify-email',
+          page: () => const VerifyEmailScreen(),
+          transition: Transition.fadeIn),
       GetPage(
           name: '/forgot-password',
           page: () => const ForgotPasswordScreen(),
           transition: Transition.rightToLeftWithFade),
       GetPage(name: '/bottom-nav-bar', page: () => BottomNavBar()),
-      GetPage(name: '/maintenance', page: () => const MaintenanceScreen()),
+      GetPage(
+          name: '/maintenance',
+          page: () => const MaintenanceScreen(),
+          transition: Transition.fadeIn),
       GetPage(
           name: '/internet-connection',
-          page: () => const InternetConnectionScreen()),
+          page: () => const InternetConnectionScreen(),
+          transition: Transition.fadeIn),
       GetPage(
           name: '/splash-internet-connection',
-          page: () => const SplashInternetConnectionScreen()),
+          page: () => const SplashInternetConnectionScreen(),
+          transition: Transition.fadeIn),
     ];
