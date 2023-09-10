@@ -13,7 +13,7 @@ class SplashController extends GetxController {
   Future<void> checkInternetConnection() async {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
-      Get.offAllNamed('/internet-connection');
+      Get.offAllNamed('/splash-internet-connection');
     } else {
       Get.offAllNamed('/home');
     }
