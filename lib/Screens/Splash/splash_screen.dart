@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_colors.dart';
+import 'package:yeye/Constants/app_texts.dart';
 
 import 'splash_controller.dart';
 
@@ -14,9 +15,7 @@ class SplashScreen extends StatelessWidget {
       body: GetBuilder<SplashController>(
         init: SplashController(),
         builder: (controller) {
-          return  Center(
-            child: Image.asset('assets/images/splash.gif')
-          );
+          return Center(child: Image.asset(AppTexts.splashImage));
         },
       ),
     );

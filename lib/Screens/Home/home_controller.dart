@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../Service/firebase.dart';
 
 class HomeController extends GetxController {
-
   Rx<User?> user = Rx<User?>(null);
 
   @override
@@ -13,15 +12,25 @@ class HomeController extends GetxController {
     user.bindStream(auth.authStateChanges());
 
     ever(user, (User? newUser) {
-      if (newUser == null) {
-        Get.offAllNamed('/auth');
-      } else {
-        if (!newUser.emailVerified) {
-          Get.offAllNamed('/verify-email');
-        } else {
-          Get.offAllNamed('/bottom-nav-bar');
-        }
-      }
+      firestore.collection('maintenance').doc('isMaintenance').get().then(
+        (docSnapshot) {
+          bool isMaintenance = docSnapshot.data()?['value'];
+
+          if (isMaintenance) {
+            Get.offAllNamed('/maintenance');
+          } else {
+            if (newUser == null) {
+              Get.offAllNamed('/auth');
+            } else {
+              if (!newUser.emailVerified) {
+                Get.offAllNamed('/verify-email');
+              } else {
+                Get.offAllNamed('/bottom-nav-bar');
+              }
+            }
+          }
+        },
+      );
     });
   }
 
