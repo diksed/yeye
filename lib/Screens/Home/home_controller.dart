@@ -12,25 +12,15 @@ class HomeController extends GetxController {
     user.bindStream(auth.authStateChanges());
 
     ever(user, (User? newUser) {
-      firestore.collection('maintenance').doc('isMaintenance').get().then(
-        (docSnapshot) {
-          bool isMaintenance = docSnapshot.data()?['value'];
-
-          if (isMaintenance) {
-            Get.offAllNamed('/maintenance');
-          } else {
-            if (newUser == null) {
-              Get.offAllNamed('/auth');
-            } else {
-              if (!newUser.emailVerified) {
-                Get.offAllNamed('/verify-email');
-              } else {
-                Get.offAllNamed('/bottom-nav-bar');
-              }
-            }
-          }
-        },
-      );
+      if (newUser == null) {
+        Get.offAllNamed('/auth');
+      } else {
+        if (!newUser.emailVerified) {
+          Get.offAllNamed('/verify-email');
+        } else {
+          Get.offAllNamed('/bottom-nav-bar');
+        }
+      }
     });
   }
 

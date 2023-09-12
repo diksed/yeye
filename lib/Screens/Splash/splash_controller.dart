@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Service/maintenance.dart';
 
 class SplashController extends GetxController {
   @override
@@ -12,10 +13,15 @@ class SplashController extends GetxController {
 
   Future<void> checkInternetConnection() async {
     var connectivityResult = await Connectivity().checkConnectivity();
+
     if (connectivityResult == ConnectivityResult.none) {
       Get.offAllNamed('/splash-internet-connection');
     } else {
-      Get.offAllNamed('/home');
+      if (remoteConfig.getBool("maintenance_mode")) {
+        Get.offAllNamed('/maintenance');
+      } else {
+        Get.offAllNamed('/home');
+      }
     }
   }
 }
