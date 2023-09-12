@@ -110,5 +110,9 @@ getSpecificData(String specific) async {
       .collection('allUsers')
       .doc(auth.currentUser!.uid)
       .get();
-  return doc[specific].toString();
+  if (specific == UserFields.suspended) {
+    return doc[specific];
+  } else {
+    return doc[specific].toString();
+  }
 }

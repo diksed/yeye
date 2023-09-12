@@ -36,7 +36,7 @@ class UserFields {
   static const String email = 'email';
   static const String university = 'university';
   static const String campus = 'campus';
-  static const String createdAt = 'created_at';
+  static const String suspended = 'suspended';
 }
 
 class AccountActions {
@@ -117,7 +117,7 @@ class WarningMessages {
   static const String registrationFailed = "Kayıt olma işlemi başarısız oldu.";
   static const String emailAlreadyExists =
       "Bu e-mail adresi zaten kullanılıyor.";
-      static const String noInformation = "Bilgi bulunamadı!";
+  static const String noInformation = "Bilgi bulunamadı!";
 }
 
 class TitleMessages {

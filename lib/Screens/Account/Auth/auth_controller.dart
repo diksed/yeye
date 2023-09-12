@@ -108,6 +108,7 @@ class AuthController extends GetxController {
         'email': emailController.text.trim(),
         'university': universityController.text.trim(),
         'campus': campusController.text.trim(),
+        'suspended': false,
       });
     } catch (e) {
       Utils.showSnackBar(WarningMessages.registrationFailed);

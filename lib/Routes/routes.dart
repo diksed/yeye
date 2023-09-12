@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:yeye/Screens/Account/Login/login_screen.dart';
+import 'package:yeye/Screens/Account/Suspended/suspended_screen.dart';
 import 'package:yeye/Screens/Account/VerifyEmail/verify_email_screen.dart';
 import 'package:yeye/Screens/Home/home_screen.dart';
 import 'package:yeye/Screens/InternetConnection/internet_connection_screen.dart';
@@ -53,5 +54,9 @@ appRoutes() => [
       GetPage(
           name: '/splash-internet-connection',
           page: () => const SplashInternetConnectionScreen(),
+          transition: Transition.fadeIn),
+      GetPage(
+          name: '/suspended',
+          page: () => const SuspendedScreen(),
           transition: Transition.fadeIn),
     ];
