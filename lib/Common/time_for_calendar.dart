@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:yeye/Constants/app_colors.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 final DateTime currentTime = DateTime.now();
@@ -33,6 +34,30 @@ Future<DateTime?> selectDate(BuildContext context, DateTime lastDate) {
       context: context,
       currentDate: transactionTime,
       initialDate: transactionTime,
+      selectableDayPredicate: (day) {
+        if (day.weekday == DateTime.saturday ||
+            day.weekday == DateTime.sunday) {
+          return currentTime.day == day.day &&
+              currentTime.month == day.month &&
+              currentTime.year == day.year;
+        } else {
+          return true;
+        }
+      },
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: AppColors.themeBlueColor,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: Colors.black,
+            ),
+            dialogBackgroundColor: Colors.white,
+          ),
+          child: child!,
+        );
+      },
       cancelText: AppTexts.cancel,
       confirmText: AppTexts.confirm,
       initialEntryMode: DatePickerEntryMode.calendarOnly,

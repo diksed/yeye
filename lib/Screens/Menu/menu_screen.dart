@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:yeye/Common/box_decorations.dart';
 import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Menu/Widgets/FoodCard/weekend_food_card.dart';
 import 'package:yeye/Screens/Menu/Widgets/RatingBar/rating_bar_container.dart';
 
 import '../../Common/display_size.dart';
@@ -30,11 +31,11 @@ class _MenuScreenState extends State<MenuScreen> {
     super.initState();
     controller.formattedDate.value =
         DateFormat('dd-MM-yyyy').format(currentTime);
-    controller.fetchFood(controller.formattedDate.value);
-    controller.fetchRatings(controller.formattedDate.value);
     if (isWeekend(currentTime)) {
       controller.ratingVisible.value = false;
     } else {
+      controller.fetchFood(controller.formattedDate.value);
+      controller.fetchRatings(controller.formattedDate.value);
       if (isBetweenTimes()) {
         controller.ratingVisible.value = true;
       } else {
@@ -45,8 +46,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Stream<List<FoodModel>> foodModelListStream =
-        controller.foodModel.stream.map((foodModel) => [foodModel]);
     Stream<List<RatingModel>> ratingListStream =
         controller.ratingListStream.stream;
     return SafeArea(
@@ -82,29 +81,51 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                   )),
               SizedBox(height: displayHeight(context) / 80.3),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                FoodCard(
-                    item: AppTexts.mainDish,
-                    foodName: FoodMessages.mainDish,
-                    stream: foodModelListStream),
-                SizedBox(width: displayWidth(context) / 41.1),
-                FoodCard(
-                    item: AppTexts.sideDish,
-                    foodName: FoodMessages.sideDish,
-                    stream: foodModelListStream),
-              ]),
-              SizedBox(height: displayHeight(context) / 80.3),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                FoodCard(
-                    item: AppTexts.soup,
-                    foodName: FoodMessages.soup,
-                    stream: foodModelListStream),
-                SizedBox(width: displayWidth(context) / 41.1),
-                FoodCard(
-                    item: AppTexts.sideItem,
-                    foodName: FoodMessages.sideDish,
-                    stream: foodModelListStream),
-              ]),
+              StreamBuilder(
+                stream:
+                    controller.foodModel.stream.map((foodModel) => [foodModel]),
+                builder: (context, snapshot) {
+                  if (isWeekend(controller.selectedPickedDate.value)) {
+                    return Center(child: weekendFoodCard());
+                  }
+                  if (snapshot.hasData) {
+                    final foods = snapshot.data as List<FoodModel>;
+                    return Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FoodCard(
+                                  item: AppTexts.mainDish,
+                                  foodName: FoodMessages.mainDish,
+                                  foods: foods),
+                              SizedBox(width: Get.width / 41.1),
+                              FoodCard(
+                                  item: AppTexts.sideDish,
+                                  foodName: FoodMessages.sideDish,
+                                  foods: foods),
+                            ]),
+                        SizedBox(height: Get.height / 80.3),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FoodCard(
+                                  item: AppTexts.soup,
+                                  foodName: FoodMessages.soup,
+                                  foods: foods),
+                              SizedBox(width: Get.width / 41.1),
+                              FoodCard(
+                                  item: AppTexts.sideItem,
+                                  foodName: FoodMessages.sideDish,
+                                  foods: foods),
+                            ]),
+                      ],
+                    );
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
               RatingBarContainer(
                 ratingStream: ratingListStream,
                 ratingVisible: controller.ratingVisible,

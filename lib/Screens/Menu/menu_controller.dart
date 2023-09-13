@@ -10,6 +10,7 @@ import '../../Service/firebase.dart';
 
 class MenuScreenController extends GetxController {
   var formattedDate = ''.obs;
+  Rx<DateTime> selectedPickedDate = DateTime.now().obs;
   var stream = ''.obs;
   var ratingstream = ''.obs;
   var ratingVisible = true.obs;
@@ -55,8 +56,11 @@ class MenuScreenController extends GetxController {
     DateTime? pickedDate = await selectDate(context, endOfMonth);
     if (pickedDate != null) {
       formattedDate.value = DateFormat('dd-MM-yyyy').format(pickedDate);
-      fetchFood(formattedDate.value);
-      fetchRatings(formattedDate.value);
+      selectedPickedDate.value = pickedDate;
+      if (!isWeekend(pickedDate)) {
+        fetchFood(formattedDate.value);
+        fetchRatings(formattedDate.value);
+      }
       if (formattedDate.contains(formattedCurrentDate)) {
         if (isBetweenTimes()) {
           ratingVisible.value = true;
