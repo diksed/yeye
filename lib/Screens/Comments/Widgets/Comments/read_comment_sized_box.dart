@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../Common/display_size.dart';
+import 'package:get/get.dart';
 import '../../../../Models/comments_model.dart';
 import '../../../../Service/firebase.dart';
 import 'comment_builder.dart';
@@ -19,7 +18,7 @@ class ReadCommentSizedBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: sizedBoxHeight,
-      width: displayWidth(context) / 1.37,
+      width: Get.width / 1.37,
       child: ListView(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

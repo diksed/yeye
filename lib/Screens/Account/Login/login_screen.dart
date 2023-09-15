@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
-import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
 import '../Auth/auth_controller.dart';
 import '../Widgets/Buttons/forgot_password_button.dart';
@@ -26,19 +25,19 @@ class LoginScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             decoration: accountGradientBoxDecoration(),
-            height: displayHeight(context),
+            height: Get.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                  const LogoSizedBox(),
                 Container(
-                  width: displayWidth(context),
-                  height: displayHeight(context) / 1.7,
+                  width: Get.width,
+                  height: Get.height / 1.7,
                   decoration: accountBoxDecoration(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(height: displayHeight(context) / 28.45),
+                      SizedBox(height: Get.height / 28.45),
                       MailTextField(
                           emailController: authController.emailController),
                       PasswordTextField(
@@ -47,8 +46,8 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const ForgotPasswordButton(),
                       LoginRegisterButton(
-                        width: displayWidth(context) / 1.5,
-                        height: displayHeight(context) / 13,
+                        width: Get.width / 1.5,
+                        height: Get.height / 13,
                         onPressed: () => authController.signIn(),
                         child: const Text(AccountActions.login,
                             style: TextStyle(fontSize: 23)),

@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_text_button.dart';
-
-import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
 import '../Auth/auth_controller.dart';
 import '../Widgets/Decorations/box_decorations.dart';
@@ -25,25 +23,25 @@ class RegisterScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             decoration: accountGradientBoxDecoration(),
-            height: displayHeight(context),
-            width: displayWidth(context),
+            height: Get.height,
+            width: Get.width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                  const LogoSizedBox(),
                 Container(
-                  width: displayWidth(context),
-                  height: displayHeight(context) / 1.7,
+                  width: Get.width,
+                  height: Get.height / 1.7,
                   decoration: accountBoxDecoration(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        height: displayHeight(context) / 28.45,
+                        height: Get.height / 28.45,
                       ),
                       Obx(
                         () => SizedBox(
-                          width: displayWidth(context) / 1.5,
+                          width: Get.width / 1.5,
                           child: DropdownButtonFormField(
                             icon: const Padding(
                               padding: EdgeInsets.only(right: 12),
@@ -72,7 +70,7 @@ class RegisterScreen extends StatelessWidget {
                         () => IgnorePointer(
                           ignoring: authController.campusButton.value,
                           child: SizedBox(
-                            width: displayWidth(context) / 1.5,
+                            width: Get.width / 1.5,
                             child: DropdownButtonFormField(
                               enableFeedback: false,
                               icon: const Padding(
@@ -100,8 +98,8 @@ class RegisterScreen extends StatelessWidget {
                       MailTextField(
                           emailController: authController.emailController),
                       SizedBox(
-                        height: displayHeight(context) / 19.51,
-                        width: displayWidth(context) / 1.5,
+                        height: Get.height / 19.51,
+                        width: Get.width / 1.5,
                         child: Obx(
                           () => TextFormField(
                             controller: authController.passwordController,
@@ -127,8 +125,8 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                       LoginRegisterButton(
-                        width: displayWidth(context) / 1.5,
-                        height: displayHeight(context) / 13,
+                        width: Get.width / 1.5,
+                        height: Get.height / 13,
                         onPressed: () => authController.signUpShowDialog(),
                         child: const Text(
                           AccountActions.register,

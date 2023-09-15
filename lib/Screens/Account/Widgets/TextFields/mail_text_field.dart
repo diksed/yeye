@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../Common/display_size.dart';
+import 'package:get/get.dart';
 
 class MailTextField extends StatelessWidget {
   const MailTextField({Key? key, required this.emailController})
@@ -11,8 +10,8 @@ class MailTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: displayHeight(context) / 19.51,
-      width: displayWidth(context) / 1.5,
+      height: Get.height / 19.51,
+      width: Get.width / 1.5,
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         controller: emailController,

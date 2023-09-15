@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yeye/Common/display_size.dart';
-
+import 'package:get/get.dart';
 import '../../../Constants/app_colors.dart';
 
 class BottomNavBarGradientContainer extends StatelessWidget {
@@ -12,7 +11,7 @@ class BottomNavBarGradientContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(gradient: AppColors.themeColor),
-      height: displayHeight(context)/12.218,
+      height: Get.height / 12.218,
     );
   }
 }

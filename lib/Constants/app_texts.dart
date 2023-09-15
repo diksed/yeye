@@ -70,6 +70,7 @@ class AccountActions {
   static const String accept = "Kabul ediyorum.";
   static const String userAgreement = "Kullanıcı sözleşmesini";
   static const String noBlockedAccount = "Engellenmiş hesap yok.";
+  static const String evaluate = "Değerlendir";
 }
 
 class WarningMessages {

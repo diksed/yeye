@@ -6,8 +6,6 @@ import 'package:yeye/Screens/Account/VerifyEmail/verify_email_controller.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart';
 import 'package:yeye/Screens/Account/Widgets/TextFields/check_spam_text.dart';
 import 'package:yeye/Widgets/BottomNavBar/bottom_nav_bar.dart';
-
-import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
 import '../Widgets/Decorations/box_decorations.dart';
 
@@ -30,15 +28,15 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                 body: SingleChildScrollView(
                   child: Container(
                     decoration: accountGradientBoxDecoration(),
-                    height: displayHeight(context),
-                    width: displayWidth(context),
+                    height: Get.height,
+                    width: Get.width,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                          const LogoSizedBox(),
                         Container(
-                          width: displayWidth(context),
-                          height: displayHeight(context) / 1.7,
+                          width: Get.width,
+                          height: Get.height / 1.7,
                           decoration: accountBoxDecoration(),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -60,8 +58,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                                       ])),
                               Obx(
                                 () => LoginRegisterButton(
-                                    height: displayHeight(context) / 13,
-                                    width: displayWidth(context) / 1.5,
+                                    height: Get.height / 13,
+                                    width: Get.width / 1.5,
                                     onPressed: controller.canResendEmail.value
                                         ? controller.sendVerificationEmail
                                         : null,

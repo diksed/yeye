@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart';
 import 'package:yeye/Screens/Account/Widgets/TextFields/check_spam_text.dart';
-
-import '../../../Common/display_size.dart';
 import '../../../Common/logo_box.dart';
 import '../Widgets/Decorations/box_decorations.dart';
 import '../Widgets/TextFields/mail_text_field.dart';
@@ -23,15 +21,15 @@ class ForgotPasswordScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Container(
               decoration: accountGradientBoxDecoration(),
-              height: displayHeight(context),
-              width: displayWidth(context),
+              height: Get.height,
+              width: Get.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const LogoSizedBox(),
                   Container(
-                    width: displayWidth(context),
-                    height: displayHeight(context) / 1.7,
+                    width: Get.width,
+                    height: Get.height / 1.7,
                     decoration: accountBoxDecoration(),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -51,8 +49,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                             emailController: controller.emailController),
                         const CheckSpamFieldError(),
                         LoginRegisterButton(
-                          width: displayWidth(context) / 1.5,
-                          height: displayHeight(context) / 13,
+                          width: Get.width / 1.5,
+                          height: Get.height / 13,
                           isActive: controller.isButtonActive.value,
                           onPressed: controller.resetPassword,
                           child: const Text(

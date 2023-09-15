@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../Common/display_size.dart';
+import 'package:get/get.dart';
 import '../../Announcement/Widgets/Texts/default_announcement_text.dart';
 
 class NoCommentDay extends StatelessWidget {
@@ -23,7 +22,7 @@ class NoCommentDay extends StatelessWidget {
     return Center(
       child: SizedBox(
         height: height,
-        width: displayWidth(context) / 1.37,
+        width: Get.width / 1.37,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.values[2],
           children: [

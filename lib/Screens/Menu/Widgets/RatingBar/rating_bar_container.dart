@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yeye/Common/display_size.dart';
 import 'package:yeye/Common/time_for_calendar.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Models/rating_model.dart';
@@ -27,14 +26,14 @@ class _RatingBarContainerState extends State<RatingBarContainer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: displayWidth(context) / 1.17,
+      width: Get.width / 1.17,
       child: Column(
         children: [
-          SizedBox(height: displayHeight(context) / 136.6),
+          SizedBox(height: Get.height / 136.6),
           AverageRatingStreamBuilder(ratingStream: widget.ratingStream),
-          SizedBox(height: displayHeight(context) / 341.5),
+          SizedBox(height: Get.height / 341.5),
           AverageTextStreamBuilder(ratingStream: widget.ratingStream),
-          SizedBox(height: displayHeight(context) / 136.6),
+          SizedBox(height: Get.height / 136.6),
           StreamBuilder<List<RatingModel>>(
             stream: widget.ratingStream,
             builder: (context, snapshot) {
@@ -51,7 +50,7 @@ class _RatingBarContainerState extends State<RatingBarContainer> {
               }
             },
           ),
-          SizedBox(height: displayHeight(context) / 136.6),
+          SizedBox(height: Get.height / 136.6),
           Obx(() => RatingButton(
               visible: widget.ratingVisible.value, today: currentDate)),
         ],

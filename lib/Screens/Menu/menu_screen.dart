@@ -6,8 +6,6 @@ import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Menu/Widgets/FoodCard/weekend_food_card.dart';
 import 'package:yeye/Screens/Menu/Widgets/RatingBar/rating_bar_container.dart';
-
-import '../../Common/display_size.dart';
 import '../../Common/logo_box.dart';
 import '../../Common/time_for_calendar.dart';
 import '../../Common/utils.dart';
@@ -56,15 +54,15 @@ class _MenuScreenState extends State<MenuScreen> {
             children: [
               LogoSizedBox(height: Get.height / 3, width: Get.width / 3),
               Text(TitleMessages.foodMenu, style: titleTextStyle()),
-              SizedBox(height: displayHeight(context) / 176.6),
+              SizedBox(height: Get.height / 176.6),
               GestureDetector(
                   onTap: () async {
                     controller.onDateSelected(context);
                   },
                   child: Obx(
                     () => Container(
-                      height: displayHeight(context) / 17.07,
-                      width: displayWidth(context) / 3.04,
+                      height: Get.height / 17.07,
+                      width: Get.width / 3.04,
                       decoration: dateInsideContainerDecoration(),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,7 +78,7 @@ class _MenuScreenState extends State<MenuScreen> {
                       ),
                     ),
                   )),
-              SizedBox(height: displayHeight(context) / 80.3),
+              SizedBox(height: Get.height / 80.3),
               StreamBuilder(
                 stream:
                     controller.foodModel.stream.map((foodModel) => [foodModel]),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-
+import 'package:yeye/Constants/app_texts.dart';
 import '../../../../../Common/box_decorations.dart';
-import '../../../../../Common/display_size.dart';
 import '../../../menu_controller.dart';
 
 class ColoredContainer extends StatelessWidget {
@@ -17,8 +16,8 @@ class ColoredContainer extends StatelessWidget {
       child: Obx(
         () => Container(
           decoration: dateInsideContainerDecoration(),
-          height: controller.isContainerVisible.value ? displayHeight(context) / 8.03 : 0.0,
-          width: controller.isContainerVisible.value ? displayWidth(context) / 1.86 : 0.0,
+          height: controller.isContainerVisible.value ? Get.height / 8.03 : 0.0,
+          width: controller.isContainerVisible.value ? Get.width / 1.86 : 0.0,
           child: Column(
             children: [
               Center(
@@ -42,7 +41,7 @@ class ColoredContainer extends StatelessWidget {
                   controller.onRatingUpdate();
                 },
                 child: const Text(
-                  'Değerlendir',
+                  AccountActions.evaluate,
                   style: TextStyle(color: Colors.white),
                 ),
               ),

@@ -26,31 +26,29 @@ class FoodCard extends StatefulWidget {
 class FoodCardState extends State<FoodCard> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: Get.height / 5.93,
-        width: Get.width / 2.28,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
-          color: AppColors.cardColor,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.08),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Column(
-          children: [
-            SizedBox(height: Get.height / 68.3),
-            TitleInCard(foodName: widget.foodName),
-            const LineInCard(),
-            SizedBox(height: Get.height / 45.53),
-            FoodCardText(foods: widget.foods, item: widget.item),
-          ],
-        ),
+    return Container(
+      height: Get.height / 5.93,
+      width: Get.width / 2.28,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        color: AppColors.cardColor,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.08),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: Get.height / 68.3),
+          TitleInCard(foodName: widget.foodName),
+          const LineInCard(),
+          SizedBox(height: Get.height / 45.53),
+          FoodCardText(foods: widget.foods, item: widget.item),
+        ],
       ),
     );
   }

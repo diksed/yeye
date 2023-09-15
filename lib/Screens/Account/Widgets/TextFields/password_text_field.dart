@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../Common/display_size.dart';
-
 class PasswordTextField extends StatelessWidget {
   final RxBool passwordVisible;
   final TextEditingController passwordController;
@@ -16,8 +14,8 @@ class PasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: displayHeight(context) / 19.51,
-      width: displayWidth(context) / 1.5,
+      height: Get.height / 19.51,
+      width: Get.width / 1.5,
       child: Obx(() {
         return TextFormField(
           controller: passwordController,
