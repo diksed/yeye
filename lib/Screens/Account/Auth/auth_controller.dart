@@ -143,17 +143,5 @@ class AuthController extends GetxController {
     }
   }
 
-  void handleFirebaseAuthException(FirebaseAuthException e) {
-    if (e.code == 'user-not-found') {
-      Utils.showSnackBar(WarningMessages.userNotFound);
-    } else if (e.code == 'wrong-password' || e.code == 'wrong-password') {
-      Utils.showSnackBar(WarningMessages.wrongPasswordEmail);
-    } else if (e.code == 'user-disabled') {
-      Utils.showSnackBar(WarningMessages.disabledUser);
-    } else if (e.code == 'too-many-requests') {
-      Utils.showSnackBar(WarningMessages.tooManyRequests);
-    } else {
-      Utils.showSnackBar(WarningMessages.unknownError);
-    }
-  }
+
 }

@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               LoginRegisterButton(
                   onPressed: () {
-                    deleteAccountAlertDialog();
+                    deleteAccountAlertDialog(controller);
                   },
                   height: Get.height / 19,
                   width: Get.width / 3.2,

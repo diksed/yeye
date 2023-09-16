@@ -89,6 +89,8 @@ class WarningMessages {
   static const String wrongPasswordEmail = "Şifre veya email hatalı!";
   static const String unknownError = "Beklenmeyen bir hata ile karşılaştık!";
   static const String disabledUser = "Bu kullanıcı devre dışı bırakıldı.";
+  static const String invalidEmail = "Geçersiz email!";
+  static const String userMismatch = "Mail ve şifre eşleşmiyor!";
   static const String dontEmptyMailPasswordFields =
       "E-mail ve şifre boş bırakılamaz!";
   static const String dontEmptyFields = "Boş alan bırakmayınız!";
