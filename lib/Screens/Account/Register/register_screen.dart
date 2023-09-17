@@ -5,6 +5,7 @@ import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_button.dart'
 import 'package:yeye/Screens/Account/Widgets/Buttons/login_register_text_button.dart';
 import '../../../Common/logo_box.dart';
 import '../Auth/auth_controller.dart';
+import '../Widgets/AlertDialogs/user_agreement_dialog.dart';
 import '../Widgets/Decorations/box_decorations.dart';
 import '../Widgets/TextFields/mail_text_field.dart';
 
@@ -28,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                 const LogoSizedBox(),
+                const LogoSizedBox(),
                 Container(
                   width: Get.width,
                   height: Get.height / 1.7,
@@ -36,9 +37,6 @@ class RegisterScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(
-                        height: Get.height / 28.45,
-                      ),
                       Obx(
                         () => SizedBox(
                           width: Get.width / 1.5,
@@ -123,6 +121,31 @@ class RegisterScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Obx(
+                            () => Checkbox(
+                              value: authController.acceptedTerms.value,
+                              onChanged: (value) {
+                                authController.acceptedTerms.value = value!;
+                              },
+                            ),
+                          ),
+                          InkWell(
+                            child: const Text(
+                              AccountActions.userAgreement,
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            onTap: () {
+                              agreementLauncher(LoadMoneyMessages.agreementUrl);
+                            },
+                          ),
+                          SizedBox(width: Get.width / 36),
+                          const Text(AccountActions.accept),
+                        ],
                       ),
                       LoginRegisterButton(
                         width: Get.width / 1.5,

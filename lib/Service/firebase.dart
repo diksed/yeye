@@ -24,6 +24,8 @@ void handleFirebaseAuthException(FirebaseAuthException e) {
     Utils.showSnackBar(WarningMessages.tooManyRequests);
   } else if (e.code == 'invalid-email') {
     Utils.showSnackBar(WarningMessages.invalidEmail);
+  } else if (e.code == 'email-already-in-use') {
+    Utils.showSnackBar(WarningMessages.emailAlreadyInUse);
   } else if (e.code == 'user-mitmatch') {
     Utils.showSnackBar(WarningMessages.userMismatch);
   } else {

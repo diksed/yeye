@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yeye/Common/utils.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 import '../../Models/delete_user_model.dart';
@@ -36,10 +35,14 @@ class ProfileController extends GetxController {
     final credential = EmailAuthProvider.credential(
         email: emailController.text, password: passwordController.text);
     await user!.reauthenticateWithCredential(credential);
+    Get.dialog(
+      Center(child: Image.asset(AppTexts.loadingImage)),
+      barrierDismissible: false,
+    );
     try {
-      await user.delete();
       deleteUser(DeleteUserModel(
           uid: user.uid, email: user.email, deletedAt: Timestamp.now()));
+      await user.delete();
       await Future.delayed(const Duration(seconds: 2));
       firestore
           .collection('users')
@@ -49,9 +52,8 @@ class ProfileController extends GetxController {
           .delete();
       Get.back(canPop: true);
     } on FirebaseAuthException catch (e) {
+      Get.back();
       handleFirebaseAuthException(e);
-    } catch (e) {
-      Utils.showSnackBar(WarningMessages.unknownError);
     }
   }
 

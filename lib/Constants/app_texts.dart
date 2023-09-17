@@ -67,7 +67,7 @@ class AccountActions {
   static const String deleteAccount = "Hesabı Sil";
   static const String deleteAccountWarning =
       "Hesabınızı silmek istediğinize emin misiniz?";
-  static const String accept = "Kabul ediyorum.";
+  static const String accept = "kabul ediyorum.";
   static const String userAgreement = "Kullanıcı sözleşmesini";
   static const String noBlockedAccount = "Engellenmiş hesap yok.";
   static const String evaluate = "Değerlendir";
@@ -90,6 +90,7 @@ class WarningMessages {
   static const String unknownError = "Beklenmeyen bir hata ile karşılaştık!";
   static const String disabledUser = "Bu kullanıcı devre dışı bırakıldı.";
   static const String invalidEmail = "Geçersiz email!";
+  static const String emailAlreadyInUse = "Bu email zaten kullanılıyor.";
   static const String userMismatch = "Mail ve şifre eşleşmiyor!";
   static const String dontEmptyMailPasswordFields =
       "E-mail ve şifre boş bırakılamaz!";
@@ -97,6 +98,7 @@ class WarningMessages {
   static const String dontEmptyMail = "E-mail boş bırakılamaz!";
   static const String tooManyRequests =
       "Çok fazla istek gönderildi. Lütfen daha sonra tekrar deneyin!";
+  static const String acceptTerms = "Kullanıcı sözleşmesini kabul etmelisiniz.";
   static const String isValidEmail =
       "Lütfen geçerli bir okul mail adresi giriniz!";
   static const String registerWithSchoolMail =

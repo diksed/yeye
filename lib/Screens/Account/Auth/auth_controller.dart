@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../Common/utils.dart';
 import '../../../Constants/app_texts.dart';
 import '../../../Service/firebase.dart';
-import '../Widgets/AlertDialogs/user_agreement_dialog.dart';
 
 class AuthController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -14,7 +12,7 @@ class AuthController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController universityController = TextEditingController();
   final TextEditingController campusController = TextEditingController();
-
+  RxBool acceptedTerms = false.obs;
   RxBool isLogin = true.obs;
   RxBool passwordVisible = false.obs;
   RxBool campusButton = true.obs;
@@ -57,37 +55,35 @@ class AuthController extends GetxController {
 
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
-    final university = universityController.text.trim();
     final campus = campusController.text.trim();
-
+    final university = universityController.text.trim();
     if (email.isEmpty ||
         password.isEmpty ||
-        university.isEmpty ||
-        campus.isEmpty) {
+        campus.isEmpty ||
+        university.isEmpty) {
       Utils.showSnackBar(WarningMessages.dontEmptyFields);
-    } else if (password.length < 6) {
-      Utils.showSnackBar(WarningMessages.least6Characters);
+      return;
+    } else if (!acceptedTerms.value) {
+      Utils.showSnackBar(WarningMessages.acceptTerms);
+      return;
     }
-    // else if (!email.endsWith('@samsun.edu.tr')) {
-    // Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+    // else if (!email.contains('@samsun.edu.tr')) {
+    //   Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+    //   return;
     // }
-    else {
-      try {
-        final result = await auth.fetchSignInMethodsForEmail(email);
-        if (result.isNotEmpty) {
-          Utils.showSnackBar(WarningMessages.emailAlreadyExists);
-        } else {
-          RxBool acceptedTerms = false.obs;
-          await showUserAgreementDialog(
-              acceptedTerms, email, password, onRegisterPressed);
-        }
-      } catch (e) {
-        Utils.showSnackBar(WarningMessages.unknownError);
-      }
+    else if (password.length < 6) {
+      Utils.showSnackBar(WarningMessages.least6Characters);
+      return;
+    } else {
+      onRegisterPressed();
     }
   }
 
   void onRegisterPressed() async {
+    Get.dialog(
+      Center(child: Image.asset(AppTexts.loadingImage)),
+      barrierDismissible: false,
+    );
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -110,8 +106,9 @@ class AuthController extends GetxController {
         'campus': campusController.text.trim(),
         'suspended': false,
       });
-    } catch (e) {
-      Utils.showSnackBar(WarningMessages.registrationFailed);
+    } on FirebaseAuthException catch (e) {
+      Get.back();
+      handleFirebaseAuthException(e);
     }
   }
 
@@ -124,6 +121,10 @@ class AuthController extends GetxController {
       Utils.showSnackBar(WarningMessages.dontEmptyMailPasswordFields);
       return;
     }
+    Get.dialog(
+      Center(child: Image.asset(AppTexts.loadingImage)),
+      barrierDismissible: false,
+    );
 
     try {
       final userCredential = await auth.signInWithEmailAndPassword(
@@ -137,11 +138,8 @@ class AuthController extends GetxController {
         Get.toNamed('/verify-email');
       }
     } on FirebaseAuthException catch (e) {
+      Get.back();
       handleFirebaseAuthException(e);
-    } catch (e) {
-      Utils.showSnackBar(WarningMessages.unknownError);
     }
   }
-
-
 }
