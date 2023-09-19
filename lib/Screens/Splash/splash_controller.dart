@@ -17,6 +17,7 @@ class SplashController extends GetxController {
     if (connectivityResult == ConnectivityResult.none) {
       Get.offAllNamed('/splash-internet-connection');
     } else {
+      await fetchRemoteConfig();
       if (remoteConfig.getBool("maintenance_mode")) {
         Get.offAllNamed('/maintenance');
       } else {

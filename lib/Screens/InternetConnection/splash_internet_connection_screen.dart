@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Service/network_connection.dart';
 
+import 'internet_connection_screen.dart';
+
 class SplashInternetConnectionScreen extends StatelessWidget {
   const SplashInternetConnectionScreen({super.key});
 
@@ -29,7 +31,7 @@ class SplashInternetConnectionScreen extends StatelessWidget {
                   return const Text('Not Connected');
               }
             } else {
-              return const Text('Splash Internet Bağlantısı Yok Ekranı');
+              return const InternetConnectionScreen();
             }
           },
         ),

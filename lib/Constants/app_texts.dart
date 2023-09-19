@@ -18,6 +18,8 @@ class AppTexts {
   static const String maintenanceLogo =
       "assets/animations/maintenance-lottie.json";
   static const String suspendedLogo = "assets/animations/suspended-lottie.json";
+  static const String internetConnectionLogo =
+      "assets/animations/internet-connection-lottie.json";
 }
 
 class ContactInfoText {
@@ -129,6 +131,8 @@ class WarningMessages {
   static const String inMaintenance = "Bakımdayız!";
   static const String thanksForPatience = "Sabrınız için teşekkür ederiz.";
   static const String yourAccountSuspended = "Hesabınız askıya alınmıştır!";
+  static const String waitingConnection = "İnternet bağlantısı bekleniyor!";
+  static const String checkConnection = "Lütfen bağlantınızı kontrol ediniz.";
 }
 
 class TitleMessages {
