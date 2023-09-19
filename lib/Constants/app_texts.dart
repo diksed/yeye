@@ -15,6 +15,8 @@ class AppTexts {
   static const String loadingImage = "assets/images/loadingAnimation.gif";
   static const String instagramLogo = "assets/images/instagram_logo.png";
   static const String mailLogo = "assets/images/mail_logo.png";
+  static const String maintenanceLogo =
+      "assets/animations/maintenance-lottie.json";
 }
 
 class ContactInfoText {
@@ -123,6 +125,8 @@ class WarningMessages {
   static const String emailAlreadyExists =
       "Bu e-mail adresi zaten kullanılıyor.";
   static const String noInformation = "Bilgi bulunamadı!";
+  static const String inMaintenance = "Bakımdayız!";
+  static const String thanksForPatience = "Sabrınız için teşekkür ederiz.";
 }
 
 class TitleMessages {
