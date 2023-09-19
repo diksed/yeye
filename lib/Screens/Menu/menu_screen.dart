@@ -84,7 +84,13 @@ class _MenuScreenState extends State<MenuScreen> {
                     controller.foodModel.stream.map((foodModel) => [foodModel]),
                 builder: (context, snapshot) {
                   if (isWeekend(controller.selectedPickedDate.value)) {
-                    return Center(child: weekendFoodCard());
+                    return Center(
+                        child: Column(
+                      children: [
+                        SizedBox(height: Get.height / 33.6),
+                        weekendFoodCard(),
+                      ],
+                    ));
                   }
                   if (snapshot.hasData) {
                     final foods = snapshot.data as List<FoodModel>;
@@ -124,9 +130,16 @@ class _MenuScreenState extends State<MenuScreen> {
                   }
                 },
               ),
-              RatingBarContainer(
-                ratingStream: ratingListStream,
-                ratingVisible: controller.ratingVisible,
+              Obx(
+                () => Visibility(
+                  visible: isWeekend(controller.selectedPickedDate.value)
+                      ? false
+                      : true,
+                  child: RatingBarContainer(
+                    ratingStream: ratingListStream,
+                    ratingVisible: controller.ratingVisible,
+                  ),
+                ),
               ),
             ],
           ),

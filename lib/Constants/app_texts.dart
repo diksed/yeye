@@ -20,6 +20,8 @@ class AppTexts {
   static const String suspendedLogo = "assets/animations/suspended-lottie.json";
   static const String internetConnectionLogo =
       "assets/animations/internet-connection-lottie.json";
+  static const String weekendFoodCardLogo =
+      "assets/animations/weekend-food-card-lottie.json";
 }
 
 class ContactInfoText {
@@ -113,7 +115,6 @@ class WarningMessages {
   static const String writeYourComment = 'Yorumunuzu Yazınız..';
   static const String cantShareComment =
       'Yemek saatleri dışında yorum yapamazsınız.';
-  static const String noFoodToday = 'Bugün yemek yok!';
   static const String noSwear = "Lütfen küfür içerikli yorum yapmayınız.";
   static const String report = "Rapor Et";
   static const String reportUser = "Kullanıcıyı Rapor Et";
@@ -133,6 +134,7 @@ class WarningMessages {
   static const String yourAccountSuspended = "Hesabınız askıya alınmıştır!";
   static const String waitingConnection = "İnternet bağlantısı bekleniyor!";
   static const String checkConnection = "Lütfen bağlantınızı kontrol ediniz.";
+  static const String refectoryClosed = "Kampüs yemekhanesi\nhafta sonları kapalıdır.";
 }
 
 class TitleMessages {
