@@ -17,6 +17,7 @@ class AppTexts {
   static const String mailLogo = "assets/images/mail_logo.png";
   static const String maintenanceLogo =
       "assets/animations/maintenance-lottie.json";
+  static const String suspendedLogo = "assets/animations/suspended-lottie.json";
 }
 
 class ContactInfoText {
@@ -127,6 +128,7 @@ class WarningMessages {
   static const String noInformation = "Bilgi bulunamadı!";
   static const String inMaintenance = "Bakımdayız!";
   static const String thanksForPatience = "Sabrınız için teşekkür ederiz.";
+  static const String yourAccountSuspended = "Hesabınız askıya alınmıştır!";
 }
 
 class TitleMessages {
