@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:profanity_filter/profanity_filter.dart';
 import 'package:yeye/Common/calculator_functions.dart';
 import 'package:yeye/Common/utils.dart';
 import 'package:yeye/Constants/app_texts.dart';
@@ -17,6 +18,7 @@ class CommentsScreenController extends GetxController {
   final RxBool isCommented = false.obs;
   final RxDouble listViewHeight = (Get.height / 2.43).obs;
   late List<CommentModel> commentSnapshot = <CommentModel>[];
+  final filter = ProfanityFilter();
 
   RxList<CommentModel> commentListStream = <CommentModel>[].obs;
   RxList<CommentModel> blockedSnapshot = <CommentModel>[].obs;
@@ -62,16 +64,20 @@ class CommentsScreenController extends GetxController {
 
   void shareComment() async {
     if (controllerComment.text.isNotEmpty) {
-      final comment = CommentModel(
-        comment: controllerComment.text,
-        email: getCurrentUser().toString(),
-      );
-      createComment(comment, currentDate, collectionDateForCurrentTime);
-      controllerComment.clear();
-      isCommented.value = true;
-      listViewHeight.value = Get.height / 1.5627;
+      if (filter.hasProfanity(controllerComment.text)) {
+        Utils.showSnackBar(WarningMessages.noSwear);
+      } else {
+        final comment = CommentModel(
+          comment: controllerComment.text,
+          email: getCurrentUser().toString(),
+        );
+        createComment(comment, currentDate, collectionDateForCurrentTime);
+        controllerComment.clear();
+        isCommented.value = true;
+        listViewHeight.value = Get.height / 1.5627;
 
-      Get.back();
+        Get.back();
+      }
     } else {
       Utils.showSnackBar(WarningMessages.writeComment);
     }
