@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:yeye/Screens/Account/Delete/delete_account_screen.dart';
 import 'package:yeye/Screens/Account/Login/login_screen.dart';
 import 'package:yeye/Screens/Account/Suspended/suspended_screen.dart';
 import 'package:yeye/Screens/Account/VerifyEmail/verify_email_screen.dart';
@@ -59,4 +60,8 @@ appRoutes() => [
           name: '/suspended',
           page: () => const SuspendedScreen(),
           transition: Transition.fadeIn),
+      GetPage(
+          name: '/delete-account',
+          page: () => const DeleteAccountScreen(),
+          transition: Transition.downToUp)
     ];

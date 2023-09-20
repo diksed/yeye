@@ -39,7 +39,7 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       Obx(
                         () => SizedBox(
-                          width: Get.width / 1.5,
+                          width: Get.width / 1.4,
                           child: DropdownButtonFormField(
                             icon: const Padding(
                               padding: EdgeInsets.only(right: 12),
@@ -68,7 +68,7 @@ class RegisterScreen extends StatelessWidget {
                         () => IgnorePointer(
                           ignoring: authController.campusButton.value,
                           child: SizedBox(
-                            width: Get.width / 1.5,
+                            width: Get.width / 1.4,
                             child: DropdownButtonFormField(
                               enableFeedback: false,
                               icon: const Padding(
@@ -97,7 +97,7 @@ class RegisterScreen extends StatelessWidget {
                           emailController: authController.emailController),
                       SizedBox(
                         height: Get.height / 19.51,
-                        width: Get.width / 1.5,
+                        width: Get.width / 1.4,
                         child: Obx(
                           () => TextFormField(
                             controller: authController.passwordController,
@@ -148,7 +148,7 @@ class RegisterScreen extends StatelessWidget {
                         ],
                       ),
                       LoginRegisterButton(
-                        width: Get.width / 1.5,
+                        width: Get.width / 1.4,
                         height: Get.height / 13,
                         onPressed: () => authController.signUpShowDialog(),
                         child: const Text(

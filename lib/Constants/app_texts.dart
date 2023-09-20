@@ -50,6 +50,7 @@ class AccountActions {
   static const String logout = "Çıkış Yap";
   static const String login = "Giriş Yap";
   static const String register = "Kayıt Ol";
+  static const String giveUp = "Vazgeç";
   static const String forgotPassword = "Şifremi Unuttum";
   static const String resetPassword = "Şifreyi Sıfırla";
   static const String dontHaveAccount = "Hesabın yok mu? ";
@@ -73,7 +74,7 @@ class AccountActions {
   static const String send = "Gönder";
   static const String deleteAccount = "Hesabı Sil";
   static const String deleteAccountWarning =
-      "Hesabınızı silmek istediğinize emin misiniz?";
+      'Hesabını silmek üzeresin.\nDevam etmek için aşağıdaki bilgileri doldurunuz.';
   static const String accept = "kabul ediyorum.";
   static const String userAgreement = "Kullanıcı sözleşmesini";
   static const String noBlockedAccount = "Engellenmiş hesap yok.";
@@ -134,7 +135,8 @@ class WarningMessages {
   static const String yourAccountSuspended = "Hesabınız askıya alınmıştır!";
   static const String waitingConnection = "İnternet bağlantısı bekleniyor!";
   static const String checkConnection = "Lütfen bağlantınızı kontrol ediniz.";
-  static const String refectoryClosed = "Kampüs yemekhanesi\nhafta sonları kapalıdır.";
+  static const String refectoryClosed =
+      "Kampüs yemekhanesi\nhafta sonları kapalıdır.";
 }
 
 class TitleMessages {
@@ -143,6 +145,7 @@ class TitleMessages {
   static const String announcements = "Günlük Duyurular";
   static const String accountInfo = "Hesap Bilgileri";
   static const String blockedAccounts = "Engellenen Hesaplar";
+  static const String deleteAccount = "Hesap Silme";
 }
 
 class LoadMoneyMessages {

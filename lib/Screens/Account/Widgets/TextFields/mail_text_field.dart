@@ -11,7 +11,7 @@ class MailTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: Get.height / 19.51,
-      width: Get.width / 1.5,
+      width: Get.width / 1.4,
       child: TextFormField(
         keyboardType: TextInputType.emailAddress,
         controller: emailController,

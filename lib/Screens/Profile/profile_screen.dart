@@ -35,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Scaffold(
       body: Column(
         children: [
-          LogoSizedBox(height: Get.height / 3, width: Get.height / 3),
+          LogoSizedBox(height: Get.height / 3, width: Get.width / 3),
           Text(TitleMessages.accountInfo, style: titleTextStyle()),
           SizedBox(height: Get.height / 20),
           LineInCommentCard(color: Colors.grey, width: Get.width),
@@ -63,9 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               LoginRegisterButton(
-                  onPressed: () {
-                    deleteAccountAlertDialog(controller);
-                  },
+                  onPressed: () => Get.toNamed('/delete-account'),
                   height: Get.height / 19,
                   width: Get.width / 3.2,
                   child: const Text(AccountActions.deleteAccount)),

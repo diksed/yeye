@@ -15,7 +15,7 @@ class PasswordTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: Get.height / 19.51,
-      width: Get.width / 1.5,
+      width: Get.width / 1.4,
       child: Obx(() {
         return TextFormField(
           controller: passwordController,
@@ -26,6 +26,7 @@ class PasswordTextField extends StatelessWidget {
             hintText: 'Şifre',
             hintStyle: const TextStyle(color: Colors.grey),
             suffixIcon: IconButton(
+              splashColor: Colors.transparent,
               icon: Icon(
                 passwordVisible.value
                     ? Icons.visibility_outlined
