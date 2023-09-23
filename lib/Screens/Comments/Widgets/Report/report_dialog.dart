@@ -32,7 +32,7 @@ class _ReportAlertDialogState extends State<ReportAlertDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return AlertDialog.adaptive(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       title: const Text(WarningMessages.reportUser),
