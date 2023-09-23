@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 import '../../../../Common/utils.dart';
@@ -28,19 +29,17 @@ class ReportAlertDialog extends StatefulWidget {
 
 class _ReportAlertDialogState extends State<ReportAlertDialog> {
   var textfieldController = TextEditingController();
-  var reportText = '';
+  var reportText = ''.obs;
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog.adaptive(
+    return AlertDialog(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       title: const Text(WarningMessages.reportUser),
       content: TextField(
         onChanged: (value) {
-          setState(() {
-            reportText = value;
-          });
+          reportText.value = value;
         },
         controller: textfieldController,
         decoration: const InputDecoration(
@@ -59,7 +58,7 @@ class _ReportAlertDialogState extends State<ReportAlertDialog> {
                 final report = ReportModel(
                     reporterEmail: auth.currentUser!.email,
                     reportedEmail: widget.reportedEmail,
-                    reason: reportText,
+                    reason: reportText.value,
                     reportedTime: Timestamp.now());
                 if (widget.value == 1) {
                   createReport(report);

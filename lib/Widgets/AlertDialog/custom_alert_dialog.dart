@@ -22,13 +22,14 @@ class CustomAlertDialog extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       title: Text(titleText),
       content: RichText(
+        textAlign: TextAlign.center,
         text: TextSpan(
           style: const TextStyle(
             fontSize: 14.0,
             color: Colors.black,
           ),
           children: [
-            TextSpan(text: contentText, style: const TextStyle(height: 1.5)),
+            TextSpan(text: contentText,style: const TextStyle(height: 1.5)),
           ],
         ),
       ),

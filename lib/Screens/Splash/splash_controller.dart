@@ -18,11 +18,14 @@ class SplashController extends GetxController {
       Get.offAllNamed('/splash-internet-connection');
     } else {
       await fetchRemoteConfig();
-      if (remoteConfig.getBool("maintenance_mode")) {
-        Get.offAllNamed('/maintenance');
-      } else {
-        Get.offAllNamed('/home');
-      }
+      Future.delayed(const Duration(seconds: 1), () {
+        if (remoteConfig.getBool("maintenance_mode")) {
+          Get.offAllNamed('/maintenance');
+        } else {
+          Get.offAllNamed('/home');
+        }
+      });
+
     }
   }
 }
