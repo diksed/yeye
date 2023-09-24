@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:399352122256:android:272eeb1cafe716ecb2c115",
+        "mobilesdk_app_id": "1:399352122256:android:0bea14c6ce97e674b2c115",
         "android_client_info": {
-          "package_name": "com.sedatkavak.yeye"
+          "package_name": "com.diksed.yeye"
         }
       },
       "oauth_client": [
