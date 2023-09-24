@@ -66,12 +66,10 @@ class AuthController extends GetxController {
     } else if (!acceptedTerms.value) {
       Utils.showSnackBar(WarningMessages.acceptTerms);
       return;
-    }
-    // else if (!email.contains('@samsun.edu.tr')) {
-    //   Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
-    //   return;
-    // }
-    else if (password.length < 6) {
+    } else if (!email.contains('@samsun.edu.tr')) {
+      Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+      return;
+    } else if (password.length < 6) {
       Utils.showSnackBar(WarningMessages.least6Characters);
       return;
     } else {
