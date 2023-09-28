@@ -30,6 +30,7 @@ class _RatingBarContainerState extends State<RatingBarContainer> {
       child: Column(
         children: [
           SizedBox(height: Get.height / 136.6),
+          const Text(AccountActions.evaluations),
           AverageRatingStreamBuilder(ratingStream: widget.ratingStream),
           SizedBox(height: Get.height / 341.5),
           AverageTextStreamBuilder(ratingStream: widget.ratingStream),

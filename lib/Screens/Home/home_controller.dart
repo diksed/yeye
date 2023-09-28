@@ -30,14 +30,6 @@ class HomeController extends GetxController {
     });
   }
 
-  RxBool get isLoading => false.obs;
-
-  RxBool get hasError => false.obs;
-
-  RxBool get hasData => true.obs;
-
-  RxBool isSignedIn = false.obs;
-
   void signOut() async {
     await auth.signOut();
   }

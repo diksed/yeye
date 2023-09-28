@@ -22,6 +22,8 @@ class AppTexts {
       "assets/animations/internet-connection-lottie.json";
   static const String weekendFoodCardLogo =
       "assets/animations/weekend-food-card-lottie.json";
+  static const String appUpdateLogo =
+      "assets/animations/app-update-lottie.json";
 }
 
 class ContactInfoText {
@@ -84,6 +86,8 @@ class AccountActions {
   static const String noBlockedAccount = "Engellenmiş hesap yok.";
   static const String evaluate = "Değerlendir";
   static const String update = "Güncelle";
+  static const String join = "Çekilişe Katıl";
+  static const String evaluations = "Değerlendirmeler";
 }
 
 class WarningMessages {
@@ -199,4 +203,12 @@ class AnnouncementMessages {
   static const String didntMakeComment = 'bulunamadı!';
   static const String peopleRating = 'kişi değerlendirdi.';
   static const String noRating = 'Herhangi bir değerlendirme yok.';
+}
+
+class RemoteParametres {
+  static const String giveawayMode = 'giveaway_mode';
+  static const String giveawayDesc = 'giveaway_description';
+  static const String giveawayUrl = 'giveaway_url';
+  static const String maintenanceMode = 'maintenance_mode';
+  static const String appVersion = 'app_version';
 }

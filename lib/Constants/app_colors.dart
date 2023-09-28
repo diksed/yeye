@@ -18,6 +18,7 @@ class AppColors {
   static const calendarGrey = Color(0xFFc0c0c2);
   static const splashColor = Color(0xFF3061d4);
   static const warningIconColor = Color(0xFFffce00);
+  static const rawSnackbarColor = Color(0xFF6386C9);
   static const themeColor = LinearGradient(colors: [
     Color.fromARGB(255, 48, 97, 212),
     Color.fromARGB(255, 108, 141, 204),

@@ -4,8 +4,10 @@ import 'package:intl/intl.dart';
 import 'package:yeye/Common/box_decorations.dart';
 import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Announcement/Widgets/giveaway_announcement.dart';
 import 'package:yeye/Screens/Menu/Widgets/FoodCard/weekend_food_card.dart';
 import 'package:yeye/Screens/Menu/Widgets/RatingBar/rating_bar_container.dart';
+import 'package:yeye/Service/maintenance.dart';
 import '../../Common/logo_box.dart';
 import '../../Common/time_for_calendar.dart';
 import '../../Common/utils.dart';
@@ -13,6 +15,8 @@ import '../../Models/food_model.dart';
 import '../../Models/rating_model.dart';
 import 'Widgets/FoodCard/food_card.dart';
 import 'menu_controller.dart';
+
+RxBool isSnackbarShown = false.obs;
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -27,6 +31,17 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
+    if (!isSnackbarShown.value) {
+      var giveawayMode = remoteConfig.getBool(RemoteParametres.giveawayMode);
+      var giveawayDesc = remoteConfig.getString(RemoteParametres.giveawayDesc);
+      var giveawayLink = remoteConfig.getString(RemoteParametres.giveawayUrl);
+      if (giveawayMode) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          giveawaySnackbar(giveawayDesc, giveawayLink);
+          isSnackbarShown.value = true;
+        });
+      }
+    }
     controller.formattedDate.value =
         DateFormat('dd-MM-yyyy').format(currentTime);
     if (isWeekend(currentTime)) {

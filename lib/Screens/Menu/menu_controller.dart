@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:yeye/Constants/app_texts.dart';
-
 import '../../Common/time_for_calendar.dart';
 import '../../Models/food_model.dart';
 import '../../Models/rating_model.dart';

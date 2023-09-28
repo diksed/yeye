@@ -20,7 +20,7 @@ class AppUpdateScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset(AppTexts.internetConnectionLogo,
+            Lottie.asset(AppTexts.appUpdateLogo,
                 width: Get.width / 1.3),
             SizedBox(height: Get.height / 33.6),
             Text(WarningMessages.newestVersion,
