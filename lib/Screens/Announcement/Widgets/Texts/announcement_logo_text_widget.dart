@@ -30,7 +30,10 @@ class AnnouncementLogoTextWidgetState
           child: SizedBox(
               height: 20,
               width: 20,
-              child: Image.asset(widget.imageText ?? AppTexts.mailLogo)),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 3),
+                child: Image.asset(widget.imageText ?? AppTexts.mailLogo),
+              )),
         ),
         DefaultAnnouncementText(text: widget.text, textAlign: TextAlign.center),
       ],

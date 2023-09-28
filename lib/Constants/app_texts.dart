@@ -14,7 +14,7 @@ class AppTexts {
   static const String splashImage = "assets/images/splash.gif";
   static const String loadingImage = "assets/images/loadingAnimation.gif";
   static const String instagramLogo = "assets/images/instagram_logo.png";
-  static const String mailLogo = "assets/images/mail_logo.png";
+  static const String mailLogo = "assets/images/yahoo_logo.png";
   static const String maintenanceLogo =
       "assets/animations/maintenance-lottie.json";
   static const String suspendedLogo = "assets/animations/suspended-lottie.json";
