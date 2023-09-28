@@ -50,7 +50,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                       onPressed: () => controller.refreshUser(),
                       width: Get.width / 1.5,
                       height: Get.height / 13,
-                      child: const Text(AccountActions.deleteAccount)),
+                      text: AccountActions.deleteAccount),
                 ),
                 SizedBox(height: Get.height / 33.6),
                 TextButton(

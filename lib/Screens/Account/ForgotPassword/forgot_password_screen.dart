@@ -53,10 +53,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                           height: Get.height / 13,
                           isActive: controller.isButtonActive.value,
                           onPressed: controller.resetPassword,
-                          child: const Text(
-                            AccountActions.resetPassword,
-                            style: TextStyle(fontSize: 23),
-                          ),
+                          text: AccountActions.resetPassword,
+                          textFontSize: 23,
                         ),
                       ],
                     ),

@@ -66,14 +66,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onPressed: () => Get.toNamed('/delete-account'),
                   height: Get.height / 19,
                   width: Get.width / 3.2,
-                  child: const Text(AccountActions.deleteAccount)),
+                  text: AccountActions.deleteAccount),
               LoginRegisterButton(
                   onPressed: () {
                     logoutAlertDialog();
                   },
                   height: Get.height / 19,
                   width: Get.width / 3.2,
-                  child: const Text(AccountActions.logout)),
+                  text: AccountActions.logout),
             ],
           )
         ],

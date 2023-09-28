@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                 const LogoSizedBox(),
+                const LogoSizedBox(),
                 Container(
                   width: Get.width,
                   height: Get.height / 1.7,
@@ -49,8 +49,8 @@ class LoginScreen extends StatelessWidget {
                         width: Get.width / 1.5,
                         height: Get.height / 13,
                         onPressed: () => authController.signIn(),
-                        child: const Text(AccountActions.login,
-                            style: TextStyle(fontSize: 23)),
+                        text: AccountActions.login,
+                        textFontSize: 23,
                       ),
                       LoginRegisterTextButton(
                         text: AccountActions.dontHaveAccount,

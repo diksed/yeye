@@ -33,7 +33,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                         const LogoSizedBox(),
+                        const LogoSizedBox(),
                         Container(
                           width: Get.width,
                           height: Get.height / 1.7,
@@ -58,14 +58,14 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                                       ])),
                               Obx(
                                 () => LoginRegisterButton(
-                                    height: Get.height / 13,
-                                    width: Get.width / 1.5,
-                                    onPressed: controller.canResendEmail.value
-                                        ? controller.sendVerificationEmail
-                                        : null,
-                                    child: const Text(
-                                        AccountActions.sentToMailAgain,
-                                        style: TextStyle(fontSize: 16))),
+                                  height: Get.height / 13,
+                                  width: Get.width / 1.5,
+                                  onPressed: controller.canResendEmail.value
+                                      ? controller.sendVerificationEmail
+                                      : null,
+                                  text: AccountActions.sentToMailAgain,
+                                  textFontSize: 16,
+                                ),
                               ),
                               const CheckSpamFieldError(),
                               TextButton(

@@ -1,48 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:yeye/Constants/app_colors.dart';
 
 class LoginRegisterButton extends StatelessWidget {
   final VoidCallback? onPressed;
-  final Widget child;
+  final String text;
+  final double? textFontSize;
   final double width;
   final double height;
   final bool isActive;
-  final Color inactiveColor;
 
   const LoginRegisterButton({
     Key? key,
     required this.onPressed,
-    required this.child,
+    this.textFontSize,
+    required this.text,
     required this.height,
     required this.width,
     this.isActive = true,
-    this.inactiveColor =  const Color.fromARGB(255, 138, 138, 138),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final buttonColor = isActive
-        ? const LinearGradient(colors: [
-            Color.fromARGB(255, 48, 97, 212),
-            Color.fromARGB(255, 148, 191, 235),
-          ])
-        : LinearGradient(colors: [inactiveColor, Colors.grey[300]!],begin: Alignment.topLeft,end: Alignment.bottomRight);
-
-    return Container(
+    return SizedBox(
       width: width,
       height: height,
-      decoration: BoxDecoration(
-        gradient: buttonColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
       child: ElevatedButton(
-        onPressed: isActive ? onPressed : null,
+        onPressed: isActive ? onPressed : () {},
         style: ElevatedButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
-          backgroundColor: Colors.transparent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shadowColor: Colors.transparent,
+          backgroundColor: isActive ? AppColors.rawSnackbarColor : const Color.fromARGB(255, 255, 255, 255),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: AppColors.rawSnackbarColor)),
         ),
-        child: child,
+        child: Text(text,
+            style: TextStyle(
+                color: isActive ? Colors.white : AppColors.rawSnackbarColor,
+                fontSize: textFontSize)),
       ),
     );
   }

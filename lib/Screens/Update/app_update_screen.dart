@@ -39,7 +39,7 @@ class AppUpdateScreen extends StatelessWidget {
               },
               width: Get.width / 2,
               height: Get.height / 13,
-              child: const Text(AccountActions.update),
+              text: AccountActions.update,
             )
           ],
         ),

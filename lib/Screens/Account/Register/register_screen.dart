@@ -151,10 +151,8 @@ class RegisterScreen extends StatelessWidget {
                         width: Get.width / 1.4,
                         height: Get.height / 13,
                         onPressed: () => authController.signUpShowDialog(),
-                        child: const Text(
-                          AccountActions.register,
-                          style: TextStyle(fontSize: 23),
-                        ),
+                        text: AccountActions.register,
+                        textFontSize: 23,
                       ),
                       LoginRegisterTextButton(
                         text: AccountActions.alreadyHaveAnAccount,
