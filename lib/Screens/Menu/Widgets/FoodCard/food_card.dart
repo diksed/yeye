@@ -5,7 +5,7 @@ import 'package:yeye/Screens/Menu/Widgets/FoodCard/title_in_card.dart';
 import '../../../../Constants/app_colors.dart';
 import '../../../../Models/food_model.dart';
 import 'line_in_card.dart';
-import 'text_in.card.dart';
+import 'text_in_card.dart';
 
 class FoodCard extends StatefulWidget {
   const FoodCard({
