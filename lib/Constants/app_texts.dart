@@ -137,6 +137,8 @@ class WarningMessages {
   static const String checkConnection = "Lütfen bağlantınızı kontrol ediniz.";
   static const String refectoryClosed =
       "Kampüs yemekhanesi\nhafta sonları kapalıdır.";
+  static const String newestVersion = "Yeni bir güncelleme mevcut!";
+  static const String updateApp = "Devam edebilmek için güncelleme yapınız.";
 }
 
 class TitleMessages {

@@ -8,6 +8,7 @@ import 'package:yeye/Screens/InternetConnection/internet_connection_screen.dart'
 import 'package:yeye/Screens/InternetConnection/splash_internet_connection_screen.dart';
 import 'package:yeye/Screens/Maintenance/maintenance_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
+import 'package:yeye/Screens/Update/update_screen.dart';
 import 'package:yeye/Widgets/BottomNavBar/bottom_nav_bar.dart';
 
 import '../Screens/Account/Auth/auth_screen.dart';
@@ -63,5 +64,9 @@ appRoutes() => [
       GetPage(
           name: '/delete-account',
           page: () => const DeleteAccountScreen(),
-          transition: Transition.downToUp)
+          transition: Transition.downToUp),
+      GetPage(
+          name: '/update',
+          page: () => const AppUpdateScreen(),
+          transition: Transition.fadeIn),
     ];

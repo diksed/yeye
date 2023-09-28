@@ -50,6 +50,7 @@ dependencies:
   firebase_remote_config: ^4.2.5
   lottie: ^2.6.0
   profanity_filter: ^2.0.0
+  package_info_plus: ^4.1.0
 
 dev_dependencies:
   flutter_test:
