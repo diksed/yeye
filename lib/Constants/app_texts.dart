@@ -36,6 +36,10 @@ class ContactInfoText {
 
   static const String purpose =
       'Şu an için sadece SAMÜ\nöğrencileri kullanabilmektedir.';
+  static const String googlePlayLink =
+      "https://play.google.com/store/apps/details?id=com.diksed.yeye";
+  static const String appStoreLink =
+      "https://apps.apple.com/tr/app/yeye/id6467549574";
 }
 
 class UserFields {
@@ -79,6 +83,7 @@ class AccountActions {
   static const String userAgreement = "Kullanıcı sözleşmesini";
   static const String noBlockedAccount = "Engellenmiş hesap yok.";
   static const String evaluate = "Değerlendir";
+  static const String update = "Güncelle";
 }
 
 class WarningMessages {
