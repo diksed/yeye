@@ -7,6 +7,7 @@ import 'package:yeye/Routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:yeye/Service/maintenance.dart';
 import 'Service/dependency_injection.dart';
+import 'Service/firebase.dart';
 
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -14,6 +15,7 @@ Future<void> main() async {
   ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await getDeviceToken();
   await fetchRemoteConfig();
   runApp(const MyApp());
   DependencyInjection.init();
