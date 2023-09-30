@@ -11,7 +11,8 @@ import 'Service/firebase.dart';
 
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: AppColors.rawSnackbarColor,
+    statusBarColor: AppColors.splashColor,
+    systemNavigationBarColor: AppColors.splashColor,
   ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

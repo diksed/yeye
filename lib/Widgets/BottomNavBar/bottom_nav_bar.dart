@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Constants/app_colors.dart';
 import 'package:yeye/Constants/app_texts.dart';
-import 'package:yeye/Widgets/BottomNavBar/Widgets/bottom_nav_bar_gradient_color.dart';
-
 import 'Widgets/bottom_nav_bar_item.dart';
 import 'bottom_nav_bar_controller.dart';
 
@@ -17,9 +16,9 @@ class BottomNavBar extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Stack(
         children: [
-          const BottomNavBarGradientContainer(),
           BottomAppBar(
-            color: Colors.transparent,
+            color: AppColors.splashColor,
+            height: Get.height / 12.218,
             elevation: 0,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
