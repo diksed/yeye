@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_colors.dart';
-import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Account/Widgets/AlertDialogs/user_agreement_dialog.dart';
 
-giveawaySnackbar(String? giveawayDesc, String giveawayLink) {
+giveawaySnackbar(String? giveawayDesc, String giveawayLink, String buttonText) {
   Get.rawSnackbar(
     margin: const EdgeInsets.only(top: 7),
     message: giveawayDesc,
@@ -15,7 +14,7 @@ giveawaySnackbar(String? giveawayDesc, String giveawayLink) {
     duration: const Duration(minutes: 2),
     backgroundColor: AppColors.rawSnackbarColor,
     forwardAnimationCurve: Curves.easeInOut,
-    animationDuration: const Duration(seconds: 1,milliseconds: 500),
+    animationDuration: const Duration(seconds: 1, milliseconds: 500),
     mainButton: Padding(
       padding: const EdgeInsets.only(right: 10),
       child: Transform.scale(
@@ -25,12 +24,12 @@ giveawaySnackbar(String? giveawayDesc, String giveawayLink) {
               shadowColor: Colors.transparent,
               splashFactory: NoSplash.splashFactory,
               backgroundColor: Colors.white,
-              shape:
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
             ),
             onPressed: () => agreementLauncher(giveawayLink),
-            child: const Text(AccountActions.join,
-                style: TextStyle(color: AppColors.rawSnackbarColor))),
+            child: Text(buttonText,
+                style: const TextStyle(color: AppColors.rawSnackbarColor))),
       ),
     ),
   );

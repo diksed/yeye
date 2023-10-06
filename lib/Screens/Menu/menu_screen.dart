@@ -32,12 +32,14 @@ class _MenuScreenState extends State<MenuScreen> {
   void initState() {
     super.initState();
     if (!isSnackbarShown.value) {
-      var giveawayMode = remoteConfig.getBool(RemoteParametres.giveawayMode);
-      var giveawayDesc = remoteConfig.getString(RemoteParametres.giveawayDesc);
-      var giveawayLink = remoteConfig.getString(RemoteParametres.giveawayUrl);
-      if (giveawayMode) {
+      var snackbarMode = remoteConfig.getBool(RemoteParametres.snackbarMode);
+      var snackbarDesc = remoteConfig.getString(RemoteParametres.snackbarDesc);
+      var snackbarLink = remoteConfig.getString(RemoteParametres.snackbarUrl);
+      var snackbarButtonText =
+          remoteConfig.getString(RemoteParametres.snackbarButtonText);
+      if (snackbarMode) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          giveawaySnackbar(giveawayDesc, giveawayLink);
+          giveawaySnackbar(snackbarDesc, snackbarLink, snackbarButtonText);
           isSnackbarShown.value = true;
         });
       }

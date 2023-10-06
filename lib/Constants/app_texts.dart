@@ -211,9 +211,10 @@ class AnnouncementMessages {
 }
 
 class RemoteParametres {
-  static const String giveawayMode = 'giveaway_mode';
-  static const String giveawayDesc = 'giveaway_description';
-  static const String giveawayUrl = 'giveaway_url';
+  static const String snackbarMode = 'snackbar_mode';
+  static const String snackbarDesc = 'snackbar_description';
+  static const String snackbarUrl = 'snackbar_url';
+  static const String snackbarButtonText = 'snackbar_button_text';
   static const String maintenanceMode = 'maintenance_mode';
   static const String appVersion = 'app_version';
 }
