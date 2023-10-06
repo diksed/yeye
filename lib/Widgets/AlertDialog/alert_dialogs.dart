@@ -15,10 +15,11 @@ Future<void> logoutAlertDialog() {
           ]));
 }
 
-Future<void> loadMoneyAlertDialog() {
+Future<void> loadMoneyAlertDialog(
+    String title, String content, String buttonText, String url) {
   return Get.dialog(CustomAlertDialog(
-      titleText: LoadMoneyMessages.loadMoneyToCard,
-      contentText: LoadMoneyMessages.areYouSure,
-      buttonText: LoadMoneyMessages.loadMoney,
-      onPressed: () => agreementLauncher(LoadMoneyMessages.websiteUrl)));
+      titleText: title,
+      contentText: content,
+      buttonText: buttonText,
+      onPressed: () => agreementLauncher(url)));
 }

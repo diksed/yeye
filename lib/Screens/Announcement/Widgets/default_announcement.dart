@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Widgets/AlertDialog/alert_dialogs.dart';
 import '../../../Common/box_decorations.dart';
 import '../../../Constants/app_colors.dart';
 import 'Texts/announcement_logo_text_widget.dart';
@@ -17,11 +18,13 @@ class DefaultAnnouncement extends StatelessWidget {
       required this.height,
       required this.firstLogoVisible,
       required this.secondLogoVisible,
+      required this.gestureActive,
       this.firstLogoText,
       this.secondLogoText,
       this.color})
       : super(key: key);
 
+  final bool gestureActive;
   final double height;
   final Color? color;
   final String textFirst;
@@ -52,14 +55,36 @@ class DefaultAnnouncement extends StatelessWidget {
                   child: DefaultAnnouncementText(
                       text: textFirst, textAlign: TextAlign.center),
                 ),
-                AnnouncementLogoTextWidget(
-                    text: textSecond,
-                    visible: firstLogoVisible,
-                    imageText: firstLogoText),
-                AnnouncementLogoTextWidget(
-                    text: textThird,
-                    visible: secondLogoVisible,
-                    imageText: secondLogoText),
+                GestureDetector(
+                  onTap: gestureActive == true
+                      ? () {
+                          loadMoneyAlertDialog(
+                              LoadMoneyMessages.visitToInstagram,
+                              LoadMoneyMessages.areYouSure,
+                              AccountActions.okay,
+                              LoadMoneyMessages.instagramUrl);
+                        }
+                      : null,
+                  child: AnnouncementLogoTextWidget(
+                      text: textSecond,
+                      visible: firstLogoVisible,
+                      imageText: firstLogoText),
+                ),
+                GestureDetector(
+                  onTap: gestureActive == true
+                      ? () {
+                          loadMoneyAlertDialog(
+                              LoadMoneyMessages.visitToMail,
+                              LoadMoneyMessages.areYouSure,
+                              AccountActions.okay,
+                              LoadMoneyMessages.mailUrl);
+                        }
+                      : null,
+                  child: AnnouncementLogoTextWidget(
+                      text: textThird,
+                      visible: secondLogoVisible,
+                      imageText: secondLogoText),
+                ),
                 DefaultAnnouncementText(
                     text: textFourth,
                     textAlign: TextAlign.center,

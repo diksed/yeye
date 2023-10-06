@@ -22,7 +22,7 @@ class CustomAlertDialog extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15.0))),
       title: Text(titleText),
       content: RichText(
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.start,
         text: TextSpan(
           style: const TextStyle(
             fontSize: 14.0,

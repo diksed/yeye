@@ -53,6 +53,7 @@ class UserFields {
 }
 
 class AccountActions {
+  static const String okay = "Tamam";
   static const String logout = "Çıkış Yap";
   static const String login = "Giriş Yap";
   static const String register = "Kayıt Ol";
@@ -165,9 +166,13 @@ class LoadMoneyMessages {
   static const String loadMoney = 'Para Yükle';
   static const String websiteUrl =
       'https://akillikart.samsun.edu.tr/User/Login';
+  static const String instagramUrl = 'https://www.instagram.com/yeye.app/';
+  static const String mailUrl = 'mailto:yeye.app@yahoo.com';
   static const String areYouSure =
       'Uygulamadan çıkış yapmak istediğinize emin misiniz?';
   static const String agreementUrl = 'http://www.yeyeapp.net/agreement';
+  static const String visitToInstagram = 'Instagram\'a Git';
+  static const String visitToMail = 'Mail Gönder';
 }
 
 class BottomNavBarMessages {

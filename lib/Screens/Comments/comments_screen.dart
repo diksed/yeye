@@ -123,6 +123,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                               height: controller.listViewHeight.value,
                               width: Get.width / 1.37,
                               child: DefaultAnnouncement(
+                                  gestureActive: false,
                                   height: Get.height / 4.01,
                                   textFirst:
                                       AnnouncementMessages.noCommentToday,

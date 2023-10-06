@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Announcement/announcement_screen.dart';
 import 'package:yeye/Screens/Comments/comments_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
@@ -20,7 +21,11 @@ class BottomNavBarController extends GetxController {
 
   void goToTab(int page) {
     if (page == 4) {
-      loadMoneyAlertDialog();
+      loadMoneyAlertDialog(
+          LoadMoneyMessages.loadMoneyToCard,
+          LoadMoneyMessages.areYouSure,
+          LoadMoneyMessages.loadMoney,
+          LoadMoneyMessages.websiteUrl);
     } else {
       currentPage.value = page;
       pageController.jumpToPage(page);

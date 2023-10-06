@@ -5,7 +5,6 @@ import 'package:yeye/Common/text_styles.dart';
 import 'package:yeye/Constants/app_colors.dart';
 import 'package:yeye/Constants/app_texts.dart';
 import 'package:yeye/Screens/Announcement/Widgets/default_announcement.dart';
-
 import '../../Models/announcement_model.dart';
 import 'Widgets/Builder/announcement_builder.dart';
 import 'announcement_controller.dart';
@@ -57,6 +56,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                   return Column(
                     children: [
                       DefaultAnnouncement(
+                          gestureActive: false,
                           textFirst: ContactInfoText.yeYe,
                           textSecond: '',
                           textThird: ContactInfoText.purpose,
@@ -67,6 +67,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           secondLogoVisible: false),
                       SizedBox(height: Get.height / 19.51),
                       DefaultAnnouncement(
+                          gestureActive: true,
                           textFirst: ContactInfoText.contactUs,
                           textSecond: ContactInfoText.contactYeYeInstagram,
                           textThird: ContactInfoText.contactYeYeMail,
