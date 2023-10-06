@@ -48,13 +48,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                         MailTextField(
                             emailController: controller.emailController),
                         const CheckSpamFieldError(),
-                        LoginRegisterButton(
-                          width: Get.width / 1.5,
-                          height: Get.height / 13,
-                          isActive: controller.isButtonActive.value,
-                          onPressed: controller.resetPassword,
-                          text: AccountActions.resetPassword,
-                          textFontSize: 23,
+                        Obx(
+                          () => LoginRegisterButton(
+                            width: Get.width / 1.5,
+                            height: Get.height / 13,
+                            isActive: controller.isButtonActive.value,
+                            onPressed: controller.resetPassword,
+                            text: AccountActions.resetPassword,
+                            textFontSize: 23,
+                          ),
                         ),
                       ],
                     ),
