@@ -1,25 +1,21 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:yeye/Constants/app_colors.dart';
+import 'package:yeye/Constants/theme.dart';
 import 'package:yeye/Routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:yeye/Service/maintenance.dart';
 import 'Service/dependency_injection.dart';
-import 'Service/firebase.dart';
 
 Future<void> main() async {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: AppColors.splashColor,
-    systemNavigationBarColor: AppColors.splashColor,
-  ));
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await getDeviceToken();
+  FirebaseMessaging.instance.requestPermission();
   await fetchRemoteConfig();
-  runApp(const MyApp());
+  updateBar();
   DependencyInjection.init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

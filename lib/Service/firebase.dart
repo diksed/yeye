@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 import '../Common/utils.dart';
@@ -32,12 +31,4 @@ void handleFirebaseAuthException(FirebaseAuthException e) {
   } else {
     Utils.showSnackBar(WarningMessages.unknownError);
   }
-}
-
-Future getDeviceToken() async {
-  //request user permission for push notification
-  FirebaseMessaging.instance.requestPermission();
-//  FirebaseMessaging _firebaseMessage = FirebaseMessaging.instance;
-//  String? deviceToken = await _firebaseMessage.getToken();
-//  return (deviceToken == null) ? "" : deviceToken;
 }
