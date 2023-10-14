@@ -6,7 +6,6 @@ import '../../../Constants/app_texts.dart';
 import '../../../Service/firebase.dart';
 
 class ForgotPasswordController extends GetxController {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
 
   final RxBool isButtonActive = false.obs;

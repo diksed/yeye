@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: authController.formKey,
+      key: authController.loginFormKey,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(

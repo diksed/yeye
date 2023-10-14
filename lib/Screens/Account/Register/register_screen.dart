@@ -18,7 +18,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: authController.formKey,
+      key: authController.registerFormKey,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(

@@ -7,7 +7,8 @@ import '../../../Constants/app_texts.dart';
 import '../../../Service/firebase.dart';
 
 class AuthController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
+  final registerFormKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController universityController = TextEditingController();
@@ -50,7 +51,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> signUpShowDialog() async {
-    final isValid = formKey.currentState!.validate();
+    final isValid = registerFormKey.currentState!.validate();
     if (!isValid) return;
 
     final email = emailController.text.trim();
@@ -111,7 +112,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> signIn() async {
-    final isValid = formKey.currentState!.validate();
+    final isValid = loginFormKey.currentState!.validate();
     if (!isValid) return;
 
     if (emailController.text.trim().isEmpty ||
