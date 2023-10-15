@@ -217,4 +217,5 @@ class RemoteParametres {
   static const String snackbarButtonText = 'snackbar_button_text';
   static const String maintenanceMode = 'maintenance_mode';
   static const String appVersion = 'app_version';
+  static const String developmentMode = 'development_mode';
 }

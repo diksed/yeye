@@ -19,12 +19,22 @@ class SplashController extends GetxController {
     var maintenanceMode =
         remoteConfig.getBool(RemoteParametres.maintenanceMode);
     var version = remoteConfig.getString(RemoteParametres.appVersion);
+    var developmentMode =
+        remoteConfig.getBool(RemoteParametres.developmentMode);
 
     if (connectivityResult == ConnectivityResult.none) {
       Get.offAllNamed('/splash-internet-connection');
     } else {
-      if (packageInfo.version != version) {
-        Get.offAllNamed('/update');
+      if (!developmentMode) {
+        if (packageInfo.version != version) {
+          Get.offAllNamed('/update');
+        } else {
+          if (maintenanceMode) {
+            Get.offAllNamed('/maintenance');
+          } else {
+            Get.offAllNamed('/home');
+          }
+        }
       } else {
         if (maintenanceMode) {
           Get.offAllNamed('/maintenance');
