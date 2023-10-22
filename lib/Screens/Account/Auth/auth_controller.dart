@@ -21,8 +21,8 @@ class AuthController extends GetxController {
   RxString? university;
   RxString? campus = ''.obs;
 
+  List<String> schoolMails = [];
   var universities = <RxString>[];
-
   var faculties = {
     '': ['']
   };
@@ -32,8 +32,10 @@ class AuthController extends GetxController {
     super.onInit();
     universities = await getUniversityData();
     faculties = await getFacultyData();
+    schoolMails = await getUniversityMailData();
     passwordVisible.value = false;
     university = ''.obs;
+    print(schoolMails);
   }
 
   @override
@@ -57,6 +59,7 @@ class AuthController extends GetxController {
     final password = passwordController.text.trim();
     final campus = campusController.text.trim();
     final university = universityController.text.trim();
+    print(schoolMails.contains(email.split('@')[1]));
     if (email.isEmpty ||
         password.isEmpty ||
         campus.isEmpty ||
@@ -66,12 +69,10 @@ class AuthController extends GetxController {
     } else if (!acceptedTerms.value) {
       Utils.showSnackBar(WarningMessages.acceptTerms);
       return;
-    }
-    // else if (!email.contains('@samsun.edu.tr')) {
-    //   Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
-    //   return;
-    // }
-    else if (password.length < 6) {
+    } else if (!schoolMails.contains(email.split('@')[1])) {
+      Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+      return;
+    } else if (password.length < 6) {
       Utils.showSnackBar(WarningMessages.least6Characters);
       return;
     } else {

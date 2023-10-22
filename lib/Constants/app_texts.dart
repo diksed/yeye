@@ -120,7 +120,7 @@ class WarningMessages {
   static const String isValidEmail =
       "Lütfen geçerli bir okul mail adresi giriniz!";
   static const String registerWithSchoolMail =
-      "Lütfen Samsun Üniversitesi maili ile kayıt olunuz!";
+      "Lütfen üniversite maili ile kayıt olunuz!";
   static const String checkSpamField = "Spam Kutunu Kontrol Etmeyi Unutma!";
   static const String writeComment = 'Lütfen yorumunuzu giriniz.';
   static const String writeYourComment = 'Yorumunuzu Yazınız..';

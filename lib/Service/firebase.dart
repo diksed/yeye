@@ -36,6 +36,17 @@ Future<Map<String, List<String>>> getFacultyData() async {
   return documentUniversity;
 }
 
+Future<List<String>> getUniversityMailData() async {
+  QuerySnapshot querySnapshot =
+      await firestore.collection('universities').get();
+  List<String> documentUniversity = [];
+
+  for (QueryDocumentSnapshot document in querySnapshot.docs) {
+    documentUniversity.add(document['mail']);
+  }
+  return documentUniversity;
+}
+
 void handleFirebaseAuthException(FirebaseAuthException e) {
   if (e.code == 'user-not-found') {
     Utils.showSnackBar(WarningMessages.userNotFound);
