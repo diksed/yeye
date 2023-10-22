@@ -9,6 +9,7 @@ import '../../../Service/firebase.dart';
 class AuthController extends GetxController {
   final loginFormKey = GlobalKey<FormState>();
   final registerFormKey = GlobalKey<FormState>();
+  GlobalKey<FormFieldState<String>> campusKey = GlobalKey();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController universityController = TextEditingController();
@@ -18,21 +19,19 @@ class AuthController extends GetxController {
   RxBool passwordVisible = false.obs;
   RxBool campusButton = true.obs;
   RxString? university;
-  RxString? campus;
+  RxString? campus = ''.obs;
 
-  var universities = <RxString>['Samsun Üniversitesi'.obs];
+  var universities = <RxString>[];
+
   var faculties = {
-    'Samsun Üniversitesi': [
-      'Canik Kampüsü',
-      'Ballıca Kampüsü',
-      'Kavak Meslek Yüksekokulu'
-    ],
     '': ['']
   };
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    universities = await getUniversityData();
+    faculties = await getFacultyData();
     passwordVisible.value = false;
     university = ''.obs;
   }
@@ -67,10 +66,12 @@ class AuthController extends GetxController {
     } else if (!acceptedTerms.value) {
       Utils.showSnackBar(WarningMessages.acceptTerms);
       return;
-    } else if (!email.contains('@samsun.edu.tr')) {
-      Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
-      return;
-    } else if (password.length < 6) {
+    }
+    // else if (!email.contains('@samsun.edu.tr')) {
+    //   Utils.showSnackBar(WarningMessages.registerWithSchoolMail);
+    //   return;
+    // }
+    else if (password.length < 6) {
       Utils.showSnackBar(WarningMessages.least6Characters);
       return;
     } else {

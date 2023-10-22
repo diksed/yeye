@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
 
 import '../Common/utils.dart';
@@ -11,6 +12,28 @@ getCurrentUser() {
   final User user = auth.currentUser!;
   final email = user.email.toString();
   return email;
+}
+
+Future<List<RxString>> getUniversityData() async {
+  QuerySnapshot querySnapshot =
+      await firestore.collection('universities').get();
+  List<RxString> documentUniversity = [];
+
+  for (QueryDocumentSnapshot document in querySnapshot.docs) {
+    documentUniversity.add(document.id.obs);
+  }
+  return documentUniversity;
+}
+
+Future<Map<String, List<String>>> getFacultyData() async {
+  QuerySnapshot querySnapshot =
+      await firestore.collection('universities').get();
+  Map<String, List<String>> documentUniversity = {};
+
+  for (QueryDocumentSnapshot document in querySnapshot.docs) {
+    documentUniversity[document.id] = List.from(document['refectories']);
+  }
+  return documentUniversity;
 }
 
 void handleFirebaseAuthException(FirebaseAuthException e) {

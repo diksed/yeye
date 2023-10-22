@@ -57,9 +57,8 @@ class RegisterScreen extends StatelessWidget {
                             onChanged: (String? value) {
                               authController.campusButton.value = false;
                               authController.universityController.text = value!;
-                              authController.university = value.obs;
-                              authController.campus = authController
-                                  .faculties[authController.university]![0].obs;
+                              authController.university?.value = value;
+                              authController.campusKey.currentState?.reset();
                             },
                           ),
                         ),
@@ -69,7 +68,8 @@ class RegisterScreen extends StatelessWidget {
                           ignoring: authController.campusButton.value,
                           child: SizedBox(
                             width: Get.width / 1.4,
-                            child: DropdownButtonFormField(
+                            child: DropdownButtonFormField<String>(
+                              key: authController.campusKey,
                               enableFeedback: false,
                               icon: const Padding(
                                 padding: EdgeInsets.only(right: 12),
@@ -78,8 +78,8 @@ class RegisterScreen extends StatelessWidget {
                               hint: const Text(AccountActions.selectCampus,
                                   style: TextStyle(color: Colors.grey)),
                               items: authController
-                                  .faculties[authController.university]!
-                                  .map((String value) {
+                                  .faculties[authController.university?.value]
+                                  ?.map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                               }).toList(),
                               onChanged: (String? value) {
                                 authController.campusController.text = value!;
-                                authController.campus = value.obs;
+                                authController.campus?.value = value;
                               },
                             ),
                           ),
