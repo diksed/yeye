@@ -76,8 +76,10 @@ class MenuScreenController extends GetxController {
     final university = await getSpecificData(UserFields.university);
 
     firestore
-        .collection(university)
-        .doc('foods')
+        .collection('universities')
+        .doc(university)
+        .collection('foods')
+        .doc('food')
         .collection(collectionDateForAll)
         .doc(date)
         .snapshots()
