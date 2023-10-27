@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:yeye/Constants/app_texts.dart';
+import 'package:yeye/Screens/Menu/menu_controller.dart';
 
 import '../Common/utils.dart';
 
@@ -23,6 +24,16 @@ Future<List<RxString>> getUniversityData() async {
     documentUniversity.add(document.id.obs);
   }
   return documentUniversity;
+}
+
+Future<String> getLoadMoneyLink() async {
+  final university = await getSpecificData(UserFields.university);
+
+  final doc = await firestore.collection('universities').doc(university).get();
+
+
+
+  return doc['load_money_link'];
 }
 
 Future<Map<String, List<String>>> getFacultyData() async {

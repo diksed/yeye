@@ -7,6 +7,8 @@ import 'package:yeye/Screens/Menu/menu_screen.dart';
 import 'package:yeye/Screens/Profile/profile_screen.dart';
 import 'package:yeye/Widgets/AlertDialog/alert_dialogs.dart';
 
+import '../../Service/firebase.dart';
+
 class BottomNavBarController extends GetxController {
   late PageController pageController;
 
@@ -19,13 +21,13 @@ class BottomNavBarController extends GetxController {
     const ProfileScreen()
   ];
 
-  void goToTab(int page) {
+  void goToTab(int page) async {
     if (page == 4) {
       loadMoneyAlertDialog(
           LoadMoneyMessages.loadMoneyToCard,
           LoadMoneyMessages.areYouSure,
           LoadMoneyMessages.loadMoney,
-          LoadMoneyMessages.websiteUrl);
+          await getLoadMoneyLink());
     } else {
       currentPage.value = page;
       pageController.jumpToPage(page);
