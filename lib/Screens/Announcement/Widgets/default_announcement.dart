@@ -14,7 +14,6 @@ class DefaultAnnouncement extends StatelessWidget {
       required this.textFirst,
       required this.textSecond,
       required this.textThird,
-      required this.textFourth,
       required this.height,
       required this.firstLogoVisible,
       required this.secondLogoVisible,
@@ -30,7 +29,6 @@ class DefaultAnnouncement extends StatelessWidget {
   final String textFirst;
   final String textSecond;
   final String textThird;
-  final String textFourth;
   final String? firstLogoText;
   final String? secondLogoText;
   final bool firstLogoVisible;
@@ -85,10 +83,6 @@ class DefaultAnnouncement extends StatelessWidget {
                       visible: secondLogoVisible,
                       imageText: secondLogoText),
                 ),
-                DefaultAnnouncementText(
-                    text: textFourth,
-                    textAlign: TextAlign.center,
-                    color: color),
               ],
             ),
           ),

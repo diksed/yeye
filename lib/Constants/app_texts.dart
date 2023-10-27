@@ -34,10 +34,11 @@ class ContactInfoText {
   static const String contactYeYeMail = ' yeye.app@yahoo.com';
 
   static const String developers = 'Sedat KAVAK';
-  static const String yeYe = 'YeYe, kâr amacı gütmeyen\nbir mobil uygulamadır.';
+  static const String yeYe =
+      'YeYe, yemekhane deneyiminizi iyileştirmeyi hedeflemektedir.';
 
   static const String purpose =
-      'Şu an için sadece SAMÜ\nöğrencileri kullanabilmektedir.';
+      'Tüm öğrenciler tarafından\nkullanılabilmektedir.';
   static const String googlePlayLink =
       "https://play.google.com/store/apps/details?id=com.diksed.yeye";
   static const String appStoreLink =

@@ -131,8 +131,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       AnnouncementMessages.makeCommentAboutFood,
                                   textThird: AnnouncementMessages
                                       .makeCommentAboutFood2,
-                                  textFourth:
-                                      AnnouncementMessages.makeFirstComment,
                                   firstLogoVisible: false,
                                   secondLogoVisible: false),
                             );
