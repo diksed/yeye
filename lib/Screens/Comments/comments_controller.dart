@@ -28,7 +28,9 @@ class CommentsScreenController extends GetxController {
     final campus = await getSpecificData(UserFields.campus);
 
     firestore
-        .collection(university)
+        .collection('universities')
+        .doc(university)
+        .collection('campuses')
         .doc(campus)
         .collection(collectionDateForAll)
         .doc('comments')
@@ -88,7 +90,9 @@ class CommentsScreenController extends GetxController {
     final university = await getSpecificData(UserFields.university);
     final campus = await getSpecificData(UserFields.campus);
     final docUser = firestore
-        .collection(university)
+    .collection('universities')
+    .doc(university)
+        .collection('campuses')
         .doc(campus)
         .collection(collectionDateForCurrentTime)
         .doc('comments')
