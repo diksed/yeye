@@ -14,7 +14,9 @@ class AnnouncementController extends GetxController {
     final campus = await getSpecificData(UserFields.campus);
 
     firestore
-        .collection(university)
+        .collection('universities')
+        .doc(university)
+        .collection('campuses')
         .doc(campus)
         .collection(collectionDateForCurrentTime)
         .doc('announcement')
