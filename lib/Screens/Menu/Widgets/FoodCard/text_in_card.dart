@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:yeye/Models/food_model.dart';
 
 class FoodCardText extends StatelessWidget {
-  const FoodCardText({Key? key, required this.foods, required this.item}) : super(key: key);
+  const FoodCardText({Key? key, required this.foods, required this.item})
+      : super(key: key);
 
   final List<FoodModel> foods;
   final String item;

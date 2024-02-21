@@ -11,6 +11,8 @@ final DateTime endOfMonth = (currentTime.month < 12)
 
 String formattedCurrentDate =
     DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
+String formattedToday =
+    DateFormat('dd.MM.yyyy').format(transactionTime).toString();
 String commentDate =
     DateFormat(AppTexts.dateFormat).format(transactionTime).toString();
 String currentDate =

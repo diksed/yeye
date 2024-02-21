@@ -41,14 +41,16 @@ class FoodCardState extends State<FoodCard> {
           ),
         ],
       ),
-      child: Column(
-        children: [
-          SizedBox(height: Get.height / 68.3),
-          TitleInCard(foodName: widget.foodName),
-          const LineInCard(),
-          SizedBox(height: Get.height / 45.53),
-          FoodCardText(foods: widget.foods, item: widget.item),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: Get.height / 68.3),
+            TitleInCard(foodName: widget.foodName),
+            const LineInCard(),
+            SizedBox(height: Get.height / 45.53),
+            FoodCardText(foods: widget.foods, item: widget.item),
+          ],
+        ),
       ),
     );
   }

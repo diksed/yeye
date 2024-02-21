@@ -6,6 +6,7 @@ import 'package:yeye/Screens/Account/VerifyEmail/verify_email_screen.dart';
 import 'package:yeye/Screens/Home/home_screen.dart';
 import 'package:yeye/Screens/InternetConnection/internet_connection_screen.dart';
 import 'package:yeye/Screens/InternetConnection/splash_internet_connection_screen.dart';
+import 'package:yeye/Screens/Kafi/kafi_screen.dart';
 import 'package:yeye/Screens/Maintenance/maintenance_screen.dart';
 import 'package:yeye/Screens/Menu/menu_screen.dart';
 import 'package:yeye/Screens/Update/app_update_screen.dart';
@@ -69,4 +70,8 @@ appRoutes() => [
           name: '/update',
           page: () => const AppUpdateScreen(),
           transition: Transition.fadeIn),
+      GetPage(
+          name: '/kafi',
+          page: () => const KafiScreen(),
+          transition: Transition.fadeIn)
     ];

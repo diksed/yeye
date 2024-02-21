@@ -18,7 +18,7 @@ class BottomNavBar extends StatelessWidget {
         children: [
           BottomAppBar(
             color: AppColors.splashColor,
-            height: Get.height / 12.218,
+            height: Get.height / 10.218,
             elevation: 0,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

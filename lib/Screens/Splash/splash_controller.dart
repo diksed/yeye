@@ -18,6 +18,7 @@ class SplashController extends GetxController {
     var connectivityResult = await Connectivity().checkConnectivity();
     var maintenanceMode =
         remoteConfig.getBool(RemoteParametres.maintenanceMode);
+    var kafiMode = remoteConfig.getBool(RemoteParametres.kafiMode);
     var version = remoteConfig.getString(RemoteParametres.appVersion);
     var developmentMode =
         remoteConfig.getBool(RemoteParametres.developmentMode);
@@ -29,7 +30,9 @@ class SplashController extends GetxController {
         if (packageInfo.version != version) {
           Get.offAllNamed('/update');
         } else {
-          if (maintenanceMode) {
+          if (kafiMode) {
+            Get.offAllNamed('/kafi');
+          } else if (maintenanceMode) {
             Get.offAllNamed('/maintenance');
           } else {
             Get.offAllNamed('/home');

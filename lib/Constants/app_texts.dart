@@ -32,6 +32,7 @@ class ContactInfoText {
   static const String contactUs = 'Bizimle iletişime geçmek için:';
   static const String contactYeYeInstagram = ' yeye.app';
   static const String contactYeYeMail = ' yeye.app@yahoo.com';
+  static const String yeYeMail = 'yeye.application@gmail.com';
 
   static const String developers = 'Sedat KAVAK';
   static const String yeYe = 'YeYe, kâr amacı gütmeyen\nbir mobil uygulamadır.';
@@ -42,6 +43,7 @@ class ContactInfoText {
       "https://play.google.com/store/apps/details?id=com.diksed.yeye";
   static const String appStoreLink =
       "https://apps.apple.com/tr/app/yeye/id6467549574";
+  static const String contributors = 'Emeği Geçenler';
 }
 
 class UserFields {
@@ -58,6 +60,7 @@ class AccountActions {
   static const String login = "Giriş Yap";
   static const String register = "Kayıt Ol";
   static const String giveUp = "Vazgeç";
+  static const String close = "Kapat";
   static const String forgotPassword = "Şifremi Unuttum";
   static const String resetPassword = "Şifreyi Sıfırla";
   static const String dontHaveAccount = "Hesabın yok mu? ";
@@ -89,6 +92,7 @@ class AccountActions {
   static const String update = "Güncelle";
   static const String join = "Çekilişe Katıl";
   static const String evaluations = "Değerlendirmeler";
+  static const String communication = "İletişim:";
 }
 
 class WarningMessages {
@@ -142,6 +146,12 @@ class WarningMessages {
   static const String noInformation = "Bilgi bulunamadı!";
   static const String inMaintenance = "Bakımdayız!";
   static const String thanksForPatience = "Sabrınız için teşekkür ederiz.";
+  static const String farewellText =
+      "Sevgili YeYe Kullanıcıları💛, size üzücü bir haberimiz var.";
+  static const String farewellText2 =
+      "YeYe uygulamamızın faaliyetlerini durduruyoruz.";
+  static const String farewellText3 =
+      "Bugüne kadar gösterdiğiniz ilgi ve destek için teşekkür ederiz!";
   static const String yourAccountSuspended = "Hesabınız askıya alınmıştır!";
   static const String waitingConnection = "İnternet bağlantısı bekleniyor!";
   static const String checkConnection = "Lütfen bağlantınızı kontrol ediniz.";
@@ -149,6 +159,8 @@ class WarningMessages {
       "Kampüs yemekhanesi\nhafta sonları kapalıdır.";
   static const String newestVersion = "Yeni bir güncelleme mevcut!";
   static const String updateApp = "Devam edebilmek için güncelleme yapınız.";
+  static const String noFoodService = "Bugün yemek servisi yoktur.";
+  static const String thanksForEverything = "Her Şey İçin Teşekkürler!";
 }
 
 class TitleMessages {
@@ -218,4 +230,5 @@ class RemoteParametres {
   static const String maintenanceMode = 'maintenance_mode';
   static const String appVersion = 'app_version';
   static const String developmentMode = 'development_mode';
+  static const String kafiMode = 'kafi_mode';
 }
