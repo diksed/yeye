@@ -14,6 +14,7 @@ import 'package:yeye/Widgets/BottomNavBar/bottom_nav_bar.dart';
 
 import '../Screens/Account/Auth/auth_screen.dart';
 import '../Screens/Account/ForgotPassword/forgot_password_screen.dart';
+import '../Screens/Credits/credits_screen.dart';
 import '../Screens/Splash/splash_screen.dart';
 
 appRoutes() => [
@@ -73,5 +74,9 @@ appRoutes() => [
       GetPage(
           name: '/kafi',
           page: () => const KafiScreen(),
-          transition: Transition.fadeIn)
+          transition: Transition.fadeIn),
+      GetPage(
+          name: '/credits',
+          page: () => const CreditsScreen(),
+          transition: Transition.fadeIn),
     ];

@@ -46,11 +46,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_rating_bar: ^4.0.1
-  connectivity_plus: ^4.0.2
+  connectivity_plus: ^5.0.2
   firebase_remote_config: ^4.2.5
-  lottie: ^2.6.0
+  lottie: ^3.1.0
   profanity_filter: ^2.0.0
-  package_info_plus: ^4.1.0
+  package_info_plus: ^5.0.1
+  credits: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +62,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

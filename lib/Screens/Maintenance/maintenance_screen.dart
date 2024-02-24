@@ -75,7 +75,7 @@ class _MaintenanceScreenState extends State<MaintenanceScreen> {
                                 SizedBox(width: Get.width / 41.1),
                                 FoodCard(
                                     item: AppTexts.sideItem,
-                                    foodName: FoodMessages.sideDish,
+                                    foodName: FoodMessages.sideItem,
                                     foods: foods),
                               ]),
                         ],

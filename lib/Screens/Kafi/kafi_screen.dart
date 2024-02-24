@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:yeye/Common/logo_box.dart';
 import 'package:yeye/Constants/app_colors.dart';
 import 'package:yeye/Constants/app_texts.dart';
-import 'package:yeye/Screens/Kafi/Widgets/contributors_dialog.dart';
 import 'package:yeye/Screens/Kafi/Widgets/no_food_card.dart';
 import 'package:yeye/Screens/Kafi/kafi_controller.dart';
 import '../../Common/text_styles.dart';
@@ -91,7 +90,7 @@ class _KafiScreenState extends State<KafiScreen> {
                                   SizedBox(width: Get.width / 41.1),
                                   FoodCard(
                                       item: AppTexts.sideItem,
-                                      foodName: FoodMessages.sideDish,
+                                      foodName: FoodMessages.sideItem,
                                       foods: foods),
                                 ]),
                           ],
@@ -109,7 +108,7 @@ class _KafiScreenState extends State<KafiScreen> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          Get.dialog(contributorsDialog());
+          Get.toNamed('/credits');
         },
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
