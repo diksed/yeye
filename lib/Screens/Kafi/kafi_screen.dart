@@ -37,15 +37,25 @@ class _KafiScreenState extends State<KafiScreen> {
               ),
               SizedBox(height: Get.height / 67.2),
               Text(WarningMessages.thanksForEverything,
-                  style: titleTextStyle(color: AppColors.themeRedColor)),
+                    style: titleTextStyle(color: AppColors.themeRedColor)),
+
               SizedBox(height: Get.height / 67.2),
-              const Text(WarningMessages.farewellText,
-                  textAlign: TextAlign.center),
-              const Text(WarningMessages.farewellText2,
-                  textAlign: TextAlign.center),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(WarningMessages.farewellText,
+                    textAlign: TextAlign.center),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(WarningMessages.farewellText2,
+                    textAlign: TextAlign.center),
+              ),
               SizedBox(height: Get.height / 67.2),
-              const Text(WarningMessages.farewellText3,
-                  textAlign: TextAlign.center),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(WarningMessages.farewellText3,
+                    textAlign: TextAlign.center),
+              ),
               SizedBox(height: Get.height / 67.2),
               const Divider(thickness: 1, color: Colors.amber),
               SizedBox(height: Get.height / 67.2),
@@ -93,7 +103,25 @@ class _KafiScreenState extends State<KafiScreen> {
                                       foodName: FoodMessages.sideItem,
                                       foods: foods),
                                 ]),
+                            SizedBox(height: Get.height / 80.3),
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.toNamed('/credits');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: AppColors.rawSnackbarColor,
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                shape:
+                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              ),
+                              child: const Text(
+                                ContactInfoText.contributors,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
                           ],
+
                         ),
                       );
                     } else {
@@ -106,23 +134,7 @@ class _KafiScreenState extends State<KafiScreen> {
           ),
         ),
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          Get.toNamed('/credits');
-        },
-        style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: AppColors.rawSnackbarColor,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
-        child: const Text(
-          ContactInfoText.contributors,
-          style: TextStyle(fontSize: 16),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
     );
   }
 }
