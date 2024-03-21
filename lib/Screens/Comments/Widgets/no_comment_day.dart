@@ -4,12 +4,12 @@ import '../../Announcement/Widgets/Texts/default_announcement_text.dart';
 
 class NoCommentDay extends StatelessWidget {
   const NoCommentDay({
-    Key? key,
+    super.key,
     required this.textFirst,
     required this.textSecond,
     required this.textThird,
     required this.height,
-  }) : super(key: key);
+  });
 
   final double height;
 

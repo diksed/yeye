@@ -7,10 +7,10 @@ import 'colored_container.dart';
 
 class RatingButton extends StatelessWidget {
   const RatingButton({
-    Key? key,
+    super.key,
     required this.today,
     required this.visible,
-  }) : super(key: key);
+  });
 
   final String today;
   final bool? visible;

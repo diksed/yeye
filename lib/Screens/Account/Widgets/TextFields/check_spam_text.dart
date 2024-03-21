@@ -3,8 +3,8 @@ import 'package:yeye/Constants/app_texts.dart';
 
 class CheckSpamFieldError extends StatelessWidget {
   const CheckSpamFieldError({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

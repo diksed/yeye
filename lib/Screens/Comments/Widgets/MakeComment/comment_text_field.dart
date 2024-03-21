@@ -3,9 +3,9 @@ import 'package:yeye/Constants/app_texts.dart';
 
 class CommentTextField extends StatelessWidget {
   const CommentTextField({
-    Key? key,
+    super.key,
     required this.controllerComment,
-  }) : super(key: key);
+  });
 
   final TextEditingController controllerComment;
 

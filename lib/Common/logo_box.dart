@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 class LogoSizedBox extends StatelessWidget {
   const LogoSizedBox({
-    Key? key,
+    super.key,
     this.height,
     this.width,
-  }) : super(key: key);
+  });
 
   final double? height;
   final double? width;

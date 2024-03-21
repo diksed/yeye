@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class CustomRatingBarIndicator extends StatelessWidget {
-  const CustomRatingBarIndicator({Key? key, required this.rating})
-      : super(key: key);
+  const CustomRatingBarIndicator({super.key, required this.rating});
   final double rating;
 
   @override

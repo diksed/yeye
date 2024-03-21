@@ -4,12 +4,12 @@ import 'package:yeye/Constants/app_texts.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({
-    Key? key,
+    super.key,
     required this.titleText,
     required this.contentText,
     required this.buttonText,
     required this.onPressed,
-  }) : super(key: key);
+  });
   final String titleText;
   final String buttonText;
   final String contentText;
@@ -29,7 +29,7 @@ class CustomAlertDialog extends StatelessWidget {
             color: Colors.black,
           ),
           children: [
-            TextSpan(text: contentText,style: const TextStyle(height: 1.5)),
+            TextSpan(text: contentText, style: const TextStyle(height: 1.5)),
           ],
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LineInCommentCard extends StatelessWidget {
-  const LineInCommentCard({Key? key, required this.color, required this.width})
-      : super(key: key);
+  const LineInCommentCard(
+      {super.key, required this.color, required this.width});
   final Color color;
   final double width;
 

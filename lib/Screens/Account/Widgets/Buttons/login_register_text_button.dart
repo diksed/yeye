@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class LoginRegisterTextButton extends StatelessWidget {
   const LoginRegisterTextButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.textButton,
     required this.onClicked,
-  }) : super(key: key);
+  });
 
   final String text;
   final String textButton;

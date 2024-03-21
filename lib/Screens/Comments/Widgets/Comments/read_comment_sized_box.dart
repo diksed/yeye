@@ -6,10 +6,10 @@ import 'comment_builder.dart';
 
 class ReadCommentSizedBox extends StatelessWidget {
   const ReadCommentSizedBox({
-    Key? key,
+    super.key,
     required this.comments,
     required this.sizedBoxHeight,
-  }) : super(key: key);
+  });
 
   final List<CommentModel> comments;
   final double sizedBoxHeight;

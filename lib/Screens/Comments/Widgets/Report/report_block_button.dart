@@ -5,7 +5,7 @@ import 'package:yeye/Screens/Comments/Widgets/Report/report_dialog.dart';
 import '../../../../Constants/app_colors.dart';
 
 class ReportAndBlockButton extends StatelessWidget {
-  const ReportAndBlockButton({Key? key, required this.email}) : super(key: key);
+  const ReportAndBlockButton({super.key, required this.email});
   final String email;
 
   @override

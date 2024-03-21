@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-
 class EmptyRatingText extends StatelessWidget {
   const EmptyRatingText({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

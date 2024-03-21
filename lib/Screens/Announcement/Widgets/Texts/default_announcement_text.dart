@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 class DefaultAnnouncementText extends StatelessWidget {
   const DefaultAnnouncementText(
-      {Key? key,
+      {super.key,
       required this.text,
       this.textAlign,
       this.fontWeight,
-      this.color})
-      : super(key: key);
+      this.color});
   final String text;
   final TextAlign? textAlign;
   final FontWeight? fontWeight;

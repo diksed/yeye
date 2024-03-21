@@ -6,7 +6,7 @@ import '../../../../../Common/box_decorations.dart';
 import '../../../menu_controller.dart';
 
 class ColoredContainer extends StatelessWidget {
-  ColoredContainer({Key? key}) : super(key: key);
+  ColoredContainer({super.key});
 
   final MenuScreenController controller = Get.find<MenuScreenController>();
 

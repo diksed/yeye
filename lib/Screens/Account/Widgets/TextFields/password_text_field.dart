@@ -6,10 +6,10 @@ class PasswordTextField extends StatelessWidget {
   final TextEditingController passwordController;
 
   const PasswordTextField({
-    Key? key,
+    super.key,
     required this.passwordVisible,
     required this.passwordController,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

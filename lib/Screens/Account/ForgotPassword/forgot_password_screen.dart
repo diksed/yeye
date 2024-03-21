@@ -9,7 +9,7 @@ import '../Widgets/TextFields/mail_text_field.dart';
 import 'forgot_password_controller.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({Key? key}) : super(key: key);
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

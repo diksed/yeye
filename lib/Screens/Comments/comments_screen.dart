@@ -17,7 +17,7 @@ import 'Widgets/Comments/read_comment_sized_box.dart';
 import 'comments_controller.dart';
 
 class CommentsScreen extends StatefulWidget {
-  const CommentsScreen({Key? key}) : super(key: key);
+  const CommentsScreen({super.key});
 
   @override
   State<CommentsScreen> createState() => _CommentsScreenState();

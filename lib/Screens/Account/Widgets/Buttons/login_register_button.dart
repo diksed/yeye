@@ -10,14 +10,14 @@ class LoginRegisterButton extends StatelessWidget {
   final bool isActive;
 
   const LoginRegisterButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     this.textFontSize,
     required this.text,
     required this.height,
     required this.width,
     this.isActive = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,9 @@ class LoginRegisterButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           splashFactory: NoSplash.splashFactory,
           shadowColor: Colors.transparent,
-          backgroundColor: isActive ? AppColors.rawSnackbarColor : const Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: isActive
+              ? AppColors.rawSnackbarColor
+              : const Color.fromARGB(255, 255, 255, 255),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
               side: const BorderSide(color: AppColors.rawSnackbarColor)),

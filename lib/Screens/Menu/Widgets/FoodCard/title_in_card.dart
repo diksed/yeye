@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yeye/Constants/app_colors.dart';
 
 class TitleInCard extends StatelessWidget {
-  const TitleInCard({Key? key, required this.foodName}) : super(key: key);
+  const TitleInCard({super.key, required this.foodName});
 
   final String foodName;
 

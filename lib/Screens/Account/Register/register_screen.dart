@@ -13,7 +13,7 @@ class RegisterScreen extends StatelessWidget {
   final AuthController authController = Get.find();
   final VoidCallback onClickedLogin;
 
-  RegisterScreen({Key? key, required this.onClickedLogin}) : super(key: key);
+  RegisterScreen({super.key, required this.onClickedLogin});
 
   @override
   Widget build(BuildContext context) {

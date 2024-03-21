@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnnouncementTextWidget extends StatelessWidget {
-  const AnnouncementTextWidget({Key? key, required this.text, this.textAlign})
-      : super(key: key);
+  const AnnouncementTextWidget({super.key, required this.text, this.textAlign});
   final String text;
   final TextAlign? textAlign;
 

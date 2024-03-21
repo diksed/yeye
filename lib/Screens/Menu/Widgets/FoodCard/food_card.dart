@@ -9,11 +9,11 @@ import 'text_in_card.dart';
 
 class FoodCard extends StatefulWidget {
   const FoodCard({
-    Key? key,
+    super.key,
     required this.item,
     required this.foodName,
     required this.foods,
-  }) : super(key: key);
+  });
 
   final String item;
   final String foodName;

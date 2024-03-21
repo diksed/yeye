@@ -10,7 +10,7 @@ import 'announcement_icon.dart';
 
 class DefaultAnnouncement extends StatelessWidget {
   const DefaultAnnouncement(
-      {Key? key,
+      {super.key,
       required this.textFirst,
       required this.textSecond,
       required this.textThird,
@@ -21,8 +21,7 @@ class DefaultAnnouncement extends StatelessWidget {
       required this.gestureActive,
       this.firstLogoText,
       this.secondLogoText,
-      this.color})
-      : super(key: key);
+      this.color});
 
   final bool gestureActive;
   final double height;
