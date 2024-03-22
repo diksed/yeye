@@ -31,7 +31,7 @@ YeYe, üniversite öğrencilerinin kullanabildiği bir kampüs yemekhane mobil u
 
 | Giriş Yap | Kayıt Ol | Ana Sayfa | Yorumlar | Duyurular | Profil |
 |:--:|:--:|:--:|:--:|:--:|:--:|
- | <img src="https://github.com/diksed/yeye/assets/73336635/7c42b982-c975-47ba-905c-e803b88bb6f0" width="150" height="318"/> | <img src="https://github.com/diksed/yeye/assets/73336635/746efbfd-b8c2-4691-9b64-a7d0bf8217ff" width="150" height="318"/> | <img src="https://github.com/diksed/yeye/assets/73336635/60bc953b-36d9-4e44-9f77-0818f46d0b50" width="150" height="318"/> | <img src="https://github.com/diksed/yeye/assets/73336635/596c50fb-0269-43fd-a7fe-d63e40ca947b" width="150" height="318"/> | <img src="https://github.com/diksed/yeye/assets/73336635/58eb2cc4-5920-4cbc-bfad-3a78010246e4" width="150" height="318"/> | <img src="https://github.com/diksed/yeye/assets/73336635/b451d762-1077-436a-8723-9de47ce29341" width="150" height="318"/> 
+ | <img src="https://github.com/diksed/yeye/assets/73336635/7c42b982-c975-47ba-905c-e803b88bb6f0" width="150" height="280"/> | <img src="https://github.com/diksed/yeye/assets/73336635/746efbfd-b8c2-4691-9b64-a7d0bf8217ff" width="150" height="280"/> | <img src="https://github.com/diksed/yeye/assets/73336635/60bc953b-36d9-4e44-9f77-0818f46d0b50" width="150" height="280"/> | <img src="https://github.com/diksed/yeye/assets/73336635/596c50fb-0269-43fd-a7fe-d63e40ca947b" width="150" height="280"/> | <img src="https://github.com/diksed/yeye/assets/73336635/58eb2cc4-5920-4cbc-bfad-3a78010246e4" width="150" height="280"/> | <img src="https://github.com/diksed/yeye/assets/73336635/b451d762-1077-436a-8723-9de47ce29341" width="150" height="280"/> 
  
 | Bakım | Güncelleme | İnternet Yok | Hesap Askıya Alındı |
 |:--:|:--:|:--:|:--:|
