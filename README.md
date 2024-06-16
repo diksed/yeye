@@ -16,16 +16,12 @@ YeYe, üniversite öğrencilerinin kullanabildiği bir kampüs yemekhane mobil u
 ## Kullanılan Teknolojiler
 
 - Firebase Auth
-- Firebase Cloud Firestore
-- Firebase Authentication
-- Firebase Cloud Messaging (FCM)
-- Firebase Remote Config
+- Cloud Firestore
+- Authentication
+- Cloud Messaging
+- Remote Config
 - GetX State Management
-- Lottie
-- URL Launcher
-- Connectivity Plus
 - Profanity Filter
-- Package Info Plus
 
 ## Ekran Görüntüleri
 
